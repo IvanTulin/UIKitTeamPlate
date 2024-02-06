@@ -1,19 +1,12 @@
-//
-//  ViewController.swift
-//  UIKitTeamPlate
-//
-//  Created by Ivan Tulin on 05.02.2024.
-//
+// ViewController.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
+/// класс ViewController
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .green
     }
-
-
 }
-
