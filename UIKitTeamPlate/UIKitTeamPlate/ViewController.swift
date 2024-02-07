@@ -18,8 +18,11 @@ class ViewController: UIViewController {
     var nameLabel: UILabel = {
         var label = UILabel()
         let origin = CGPoint(x: 0, y: 48)
-        label.frame = CGRect(x: origin.x, y: origin.y, width: 393, height: 82)
+        label.frame = CGRect(x: origin.x, y: origin.y, width: 393, height: 122)
         label.backgroundColor = #colorLiteral(red: 0.5936434865, green: 0.7938520312, blue: 0.8973758817, alpha: 1)
+        label.textColor = .white
+        label.font = UIFont(name: "Verdana", size: 40)
+        label.numberOfLines = 0
         label.textAlignment = .center
         label.isHidden = true
         return label
@@ -29,6 +32,8 @@ class ViewController: UIViewController {
         var calculateButton = UIButton()
         calculateButton.frame = CGRect(x: 142, y: 500, width: 200, height: 200)
         calculateButton.setTitle("Калькулятор", for: .normal)
+        calculateButton.titleLabel?.textColor = .white
+        calculateButton.titleLabel?.font = UIFont(name: "Verdana", size: 25)
         calculateButton.backgroundColor = #colorLiteral(red: 0.3939370811, green: 0.7096473575, blue: 0.5092409849, alpha: 1)
         calculateButton.layer.cornerRadius = 25
 
@@ -39,6 +44,9 @@ class ViewController: UIViewController {
         var guessTheNumberButton = UIButton()
         guessTheNumberButton.frame = CGRect(x: 92, y: 304, width: 150, height: 150)
         guessTheNumberButton.setTitle("Угадай число", for: .normal)
+        guessTheNumberButton.titleLabel?.numberOfLines = 0
+        guessTheNumberButton.titleLabel?.textColor = .white
+        guessTheNumberButton.titleLabel?.font = UIFont(name: "Verdana", size: 25)
         guessTheNumberButton.backgroundColor = #colorLiteral(red: 0.6101519465, green: 0.4977072477, blue: 0.7082346082, alpha: 1)
         guessTheNumberButton.layer.cornerRadius = 25
 
