@@ -29,7 +29,7 @@ class RegestrationScreenViewController: UIViewController {
         passwordLine.frame = CGRect(x: 17, y: 496, width: 335, height: 1)
         passwordLine.backgroundColor = UIColor.systemGray4.cgColor
         view.layer.addSublayer(passwordLine)
-
+        
         loginButton.layer.cornerRadius = 10
     }
 }

@@ -14,6 +14,7 @@
 		BA632C692B711B3C00D0F110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA632C682B711B3C00D0F110 /* Assets.xcassets */; };
 		BA632C6C2B711B3C00D0F110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */; };
 		BA75FC652B75384900EB90C4 /* CafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA75FC642B75384900EB90C4 /* CafeViewController.swift */; };
+		BA75FC672B75527D00EB90C4 /* ChequeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA75FC662B75527D00EB90C4 /* ChequeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		BA632C6B2B711B3C00D0F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA632C6D2B711B3C00D0F110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA75FC642B75384900EB90C4 /* CafeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeViewController.swift; sourceTree = "<group>"; };
+		BA75FC662B75527D00EB90C4 /* ChequeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChequeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				BA632C612B711B3B00D0F110 /* SceneDelegate.swift */,
 				BA632C632B711B3B00D0F110 /* RegestrationScreenViewController.swift */,
 				BA75FC642B75384900EB90C4 /* CafeViewController.swift */,
+				BA75FC662B75527D00EB90C4 /* ChequeViewController.swift */,
 				BA632C652B711B3B00D0F110 /* Main.storyboard */,
 				BA632C682B711B3C00D0F110 /* Assets.xcassets */,
 				BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */,
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA632C642B711B3B00D0F110 /* RegestrationScreenViewController.swift in Sources */,
+				BA75FC672B75527D00EB90C4 /* ChequeViewController.swift in Sources */,
 				BA75FC652B75384900EB90C4 /* CafeViewController.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
 				BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */,
