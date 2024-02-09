@@ -4,11 +4,7 @@
 import UIKit
 
 /// Экран чека
-class ChequeViewController: UIViewController {
-    // MARK: - Constants
-
-    let segueIdentifier = "goToElectronicCheque"
-
+final class ChequeViewController: UIViewController {
     // MARK: - @IBOutlets
 
     @IBOutlet var resultButton: UIButton!
@@ -22,6 +18,10 @@ class ChequeViewController: UIViewController {
     var prepaid = "Номер стола: "
     var vipRoom = "VIP комната: "
 
+    // MARK: - Private Properties
+
+    private let segueIdentifier = "goToElectronicCheque"
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -29,10 +29,9 @@ class ChequeViewController: UIViewController {
         configureUIElements()
     }
 
-    // MARK: - Methods
+    // MARK: - Private Method
 
-    func configureUIElements() {
-        resultButton.layer.cornerRadius = 10
+    private func configureUIElements() {
         tableReservationLabel.text = tableReserve
         prepaidLabel.text = prepaid
         labelVipRoom.text = vipRoom

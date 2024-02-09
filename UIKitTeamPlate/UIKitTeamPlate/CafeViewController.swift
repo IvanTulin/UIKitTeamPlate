@@ -4,11 +4,7 @@
 import UIKit
 
 /// Экран кафе
-class CafeViewController: UIViewController {
-    // MARK: - Constants
-
-    let segueIdentifier = "goToCheque"
-
+final class CafeViewController: UIViewController {
     // MARK: - @IBOutlets
 
     @IBOutlet var nameTextField: UITextField!
@@ -19,18 +15,7 @@ class CafeViewController: UIViewController {
     @IBOutlet var switchVipRoom: UISwitch!
     @IBOutlet var invoiceButton: UIButton!
 
-    // MARK: - Life Cycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureUIElements()
-    }
-
     // MARK: - Methods
-
-    func configureUIElements() {
-        invoiceButton.layer.cornerRadius = 10
-    }
 
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true)
