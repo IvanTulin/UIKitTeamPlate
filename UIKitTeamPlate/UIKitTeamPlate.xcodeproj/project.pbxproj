@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA1CC99B2B7560400098371E /* ElectronicReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1CC99A2B7560400098371E /* ElectronicReceiptViewController.swift */; };
 		BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */; };
 		BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C612B711B3B00D0F110 /* SceneDelegate.swift */; };
 		BA632C642B711B3B00D0F110 /* RegestrationScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C632B711B3B00D0F110 /* RegestrationScreenViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA1CC99A2B7560400098371E /* ElectronicReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectronicReceiptViewController.swift; sourceTree = "<group>"; };
 		BA632C5C2B711B3B00D0F110 /* UIKitTeamPlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitTeamPlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA632C612B711B3B00D0F110 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				BA632C632B711B3B00D0F110 /* RegestrationScreenViewController.swift */,
 				BA75FC642B75384900EB90C4 /* CafeViewController.swift */,
 				BA75FC662B75527D00EB90C4 /* ChequeViewController.swift */,
+				BA1CC99A2B7560400098371E /* ElectronicReceiptViewController.swift */,
 				BA632C652B711B3B00D0F110 /* Main.storyboard */,
 				BA632C682B711B3C00D0F110 /* Assets.xcassets */,
 				BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */,
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA632C642B711B3B00D0F110 /* RegestrationScreenViewController.swift in Sources */,
+				BA1CC99B2B7560400098371E /* ElectronicReceiptViewController.swift in Sources */,
 				BA75FC672B75527D00EB90C4 /* ChequeViewController.swift in Sources */,
 				BA75FC652B75384900EB90C4 /* CafeViewController.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
