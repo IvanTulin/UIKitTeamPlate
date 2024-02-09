@@ -4,10 +4,10 @@
 import UIKit
 
 /// Стартовый экран
-class StartViewController: UIViewController {
-    // MARK: - Properties
+final class StartViewController: UIViewController {
+    // MARK: - Private Properties
 
-    var startButton: UIButton = {
+    private var startButton: UIButton = {
         var startButton = UIButton()
         let origin = CGPoint(x: 20, y: 406)
         let size = CGSize(width: 350, height: 44)
@@ -22,15 +22,21 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(startButton)
-
-        startButton.addTarget(self, action: #selector(enterWord), for: .touchUpInside)
+        configure()
     }
 
-    // MARK: - Method
+    // MARK: - Private Method
 
-    @objc func enterWord() {
+    private func configure() {
+        view.backgroundColor = .white
+        view.addSubview(startButton)
+        startButton.addTarget(
+            self, action: #selector(enterWord),
+            for: .touchUpInside
+        )
+    }
+    
+    @objc private func enterWord() {
         let alertController = UIAlertController(title: "Введите ваше слово", message: nil, preferredStyle: .alert)
         alertController.addTextField { text in
             text.placeholder = "Введите слово"
@@ -38,7 +44,7 @@ class StartViewController: UIViewController {
         let forwardAction = UIAlertAction(title: "Ok", style: .cancel) { [weak self] _ in
             let showVC = ShowViewController()
             let text = alertController.textFields?.first
-            showVC.firstLabel.text = text?.text?.lowercased()
+            showVC.labelFirstWord.text = text?.text?.lowercased()
             self?.present(showVC, animated: true)
         }
 
