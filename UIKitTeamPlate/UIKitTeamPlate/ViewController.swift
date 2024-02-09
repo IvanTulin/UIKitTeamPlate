@@ -4,18 +4,18 @@
 import UIKit
 
 /// Стартовый экран
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     // MARK: - Properties
-
-    lazy var imageView: UIImageView = {
+    
+    private lazy var imageView: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "Background")
         let origin = CGPoint(x: 0, y: 0)
         image.frame = CGRect(origin: origin, size: view.bounds.size)
         return image
     }()
-
-    var nameLabel: UILabel = {
+    
+    private var nameLabel: UILabel = {
         var label = UILabel()
         let origin = CGPoint(x: 0, y: 48)
         label.frame = CGRect(x: origin.x, y: origin.y, width: 393, height: 122)
@@ -27,8 +27,8 @@ class ViewController: UIViewController {
         label.isHidden = true
         return label
     }()
-
-    var calculateButton: UIButton = {
+    
+    private var calculateButton: UIButton = {
         var calculateButton = UIButton()
         calculateButton.frame = CGRect(x: 142, y: 500, width: 200, height: 200)
         calculateButton.setTitle("Калькулятор", for: .normal)
@@ -38,11 +38,11 @@ class ViewController: UIViewController {
         calculateButton.layer.cornerRadius = 25
         calculateButton.layer.borderColor = UIColor.black.cgColor
         calculateButton.layer.borderWidth = 2
-
+        
         return calculateButton
     }()
-
-    var guessTheNumberButton: UIButton = {
+    
+    private var guessTheNumberButton: UIButton = {
         var guessTheNumberButton = UIButton()
         guessTheNumberButton.frame = CGRect(x: 92, y: 304, width: 150, height: 150)
         guessTheNumberButton.setTitle("Угадай число", for: .normal)
@@ -53,39 +53,67 @@ class ViewController: UIViewController {
         guessTheNumberButton.layer.cornerRadius = 25
         guessTheNumberButton.layer.borderColor = UIColor.black.cgColor
         guessTheNumberButton.layer.borderWidth = 2
-
+        
         return guessTheNumberButton
     }()
-
+    
     // MARK: - Life Cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configure()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        requestName()
+    }
+    
+    // MARK: - Method
+    
+    private func configure() {
         view.backgroundColor = .white
-
+        
         view.addSubview(imageView)
         view.addSubview(nameLabel)
         view.addSubview(guessTheNumberButton)
         view.addSubview(calculateButton)
-
+        
         calculateButton.addTarget(self, action: #selector(calclulate), for: .touchUpInside)
-        guessTheNumberButton.addTarget(self, action: #selector(guess), for: .touchUpInside)
+        guessTheNumberButton.addTarget(self, action: #selector(getRandomNumber), for: .touchUpInside)
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        requestName()
+    
+    private func requestName() {
+        let alertController = UIAlertController(
+            title: "Пожалуйста,\n предтсавьтесь",
+            message: nil,
+            preferredStyle: .alert
+        )
+        
+        alertController.addTextField { textField in
+            textField.placeholder = "Введите ваше имя"
+        }
+        
+        let okAction = UIAlertAction(title: "Готово", style: .default) { [weak self] _ in
+            guard let textField = alertController.textFields?.first, let name = textField.text else {
+                return
+            }
+            self?.nameLabel.text = "Приветсвую,\n \(name)!"
+            self?.nameLabel.isHidden = false
+        }
+        
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
-
-    // MARK: - Method
-
-    @objc func guess() {
+    
+    @objc private func getRandomNumber() {
         let alertController = UIAlertController(
             title: "Угадайте число от 1 до 10",
             message: nil,
             preferredStyle: .alert
         )
         let randomNumber = String(Int.random(in: 1 ... 10))
-
+        
         alertController.addTextField { text in
             text.placeholder = "Введите текст"
         }
@@ -94,87 +122,64 @@ class ViewController: UIViewController {
             if text?.text == randomNumber {
                 let alert = UIAlertController(title: "Поздравляю!", message: "Вы угадали", preferredStyle: .alert)
                 let cancelButton = UIAlertAction(title: "Oк", style: .cancel)
-
+                
                 alert.addAction(cancelButton)
                 alert.preferredAction = cancelButton
                 self?.present(alert, animated: true)
             } else {
                 let alert = UIAlertController(title: "Упс!", message: "Это неверный ответ", preferredStyle: .alert)
                 let cancelButton = UIAlertAction(title: "Oк", style: .cancel)
-
+                
                 alert.addAction(cancelButton)
                 alert.preferredAction = cancelButton
                 self?.present(alert, animated: true)
             }
         }
         let actionCancel = UIAlertAction(title: "Отмена", style: .default)
-
+        
         alertController.addAction(actionCancel)
         alertController.addAction(actionOK)
         alertController.preferredAction = actionOK
-
+        
         present(alertController, animated: true)
     }
-
-    @objc func calclulate() {
+    
+    @objc private func calclulate() {
         let alertController = UIAlertController(title: "Введите ваши числа", message: nil, preferredStyle: .alert)
-
+        
         alertController.addTextField { textField in
             textField.placeholder = "Число 1"
         }
         alertController.addTextField { textField in
             textField.placeholder = "Число 2"
         }
-
+        
         let actionFold = UIAlertAction(title: "Сложить", style: .cancel) { [weak self] _ in
-
+            
             let firstNumber = alertController.textFields?[0]
             let secondNumber = alertController.textFields?[1]
             if let firstNumberText = firstNumber?.text, let secondNumberText = secondNumber?.text {
                 if let firstInt = Int(firstNumberText), let secondInt = Int(secondNumberText) {
                     let result = String(firstInt + secondInt)
-
+                    
                     let alertResult = UIAlertController(title: "Ваш результат", message: result, preferredStyle: .alert)
                     let stepForward = UIAlertAction(title: "Ок", style: .default)
                     let actionaCancel = UIAlertAction(title: "Отмена", style: .default)
-
+                    
                     alertResult.addAction(actionaCancel)
                     alertResult.addAction(stepForward)
                     alertResult.preferredAction = stepForward
-
+                    
                     self?.present(alertResult, animated: true)
                 }
             }
         }
-
+        
         let actionCancel = UIAlertAction(title: "Сancel", style: .default)
         alertController.addAction(actionFold)
         alertController.addAction(actionCancel)
-
+        
         present(alertController, animated: true)
     }
-
-    func requestName() {
-        let alertController = UIAlertController(
-            title: "Пожалуйста,\n предтсавьтесь",
-            message: nil,
-            preferredStyle: .alert
-        )
-
-        alertController.addTextField { textField in
-            textField.placeholder = "Введите ваше имя"
-        }
-
-        let okAction = UIAlertAction(title: "Готово", style: .default) { [weak self] _ in
-            guard let textField = alertController.textFields?.first, let name = textField.text else {
-                return
-            }
-            self?.nameLabel.text = "Приветсвую,\n \(name)!"
-            self?.nameLabel.isHidden = false
-        }
-
-        alertController.addAction(okAction)
-
-        present(alertController, animated: true, completion: nil)
-    }
+    
 }
