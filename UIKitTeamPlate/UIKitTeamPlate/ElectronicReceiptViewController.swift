@@ -15,6 +15,7 @@ final class ElectronicReceiptViewController: UIViewController {
     @IBAction func backButton(_ sender: UIButton) {
         dismiss(animated: true)
     }
+    
     @IBAction func closeButton(_ sender: UIButton) {
         dismiss(animated: true)
     }
