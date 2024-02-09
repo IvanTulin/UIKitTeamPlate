@@ -42,7 +42,31 @@ class CafeViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Отмена", style: .default)
         let chequeAction = UIAlertAction(title: "Чек", style: .default) { [weak self] _ in
             guard let self = self else { return }
-            self.performSegue(withIdentifier: self.segueIdentifier, sender: nil)
+
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let cheque = storyboard.instantiateViewController(
+                identifier: "Cheque"
+            ) as? ChequeViewController {
+                if switchReservations.isOn {
+                    cheque.tableReserve += "да"
+                } else {
+                    cheque.tableReserve += "нет"
+                }
+
+                if switchPrepayments.isOn {
+                    cheque.prepaid += "да"
+                } else {
+                    cheque.prepaid += "нет"
+                }
+
+                if switchVipRoom.isOn {
+                    cheque.vipRoom += "да"
+                } else {
+                    cheque.vipRoom += "нет"
+                }
+
+                self.show(cheque, sender: nil)
+            }
         }
 
         alertController.addAction(cancelAction)

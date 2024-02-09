@@ -12,6 +12,15 @@ class ChequeViewController: UIViewController {
     // MARK: - @IBOutlets
 
     @IBOutlet var resultButton: UIButton!
+    @IBOutlet var tableReservationLabel: UILabel!
+    @IBOutlet var prepaidLabel: UILabel!
+    @IBOutlet var labelVipRoom: UILabel!
+
+    // MARK: - Properties
+
+    var tableReserve = "Стол забронирован: "
+    var prepaid = "Номер стола: "
+    var vipRoom = "VIP комната: "
 
     // MARK: - Life Cycle
 
@@ -24,6 +33,9 @@ class ChequeViewController: UIViewController {
 
     func configureUIElements() {
         resultButton.layer.cornerRadius = 10
+        tableReservationLabel.text = tableReserve
+        prepaidLabel.text = prepaid
+        labelVipRoom.text = vipRoom
     }
 
     @IBAction func backButton(_ sender: UIButton) {
