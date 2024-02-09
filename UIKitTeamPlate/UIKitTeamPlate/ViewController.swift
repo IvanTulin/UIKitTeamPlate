@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         label.frame = CGRect(x: origin.x, y: origin.y, width: 393, height: 122)
         label.backgroundColor = #colorLiteral(red: 0.5936434865, green: 0.7938520312, blue: 0.8973758817, alpha: 1)
         label.textColor = .white
-        label.font = UIFont(name: "Verdana", size: 40)
+        label.font = UIFont(name: "Verdana", size: 35)
         label.numberOfLines = 0
         label.textAlignment = .center
         label.isHidden = true
@@ -36,6 +36,8 @@ class ViewController: UIViewController {
         calculateButton.titleLabel?.font = UIFont(name: "Verdana", size: 25)
         calculateButton.backgroundColor = #colorLiteral(red: 0.3939370811, green: 0.7096473575, blue: 0.5092409849, alpha: 1)
         calculateButton.layer.cornerRadius = 25
+        calculateButton.layer.borderColor = UIColor.black.cgColor
+        calculateButton.layer.borderWidth = 2
 
         return calculateButton
     }()
@@ -49,6 +51,8 @@ class ViewController: UIViewController {
         guessTheNumberButton.titleLabel?.font = UIFont(name: "Verdana", size: 25)
         guessTheNumberButton.backgroundColor = #colorLiteral(red: 0.6101519465, green: 0.4977072477, blue: 0.7082346082, alpha: 1)
         guessTheNumberButton.layer.cornerRadius = 25
+        guessTheNumberButton.layer.borderColor = UIColor.black.cgColor
+        guessTheNumberButton.layer.borderWidth = 2
 
         return guessTheNumberButton
     }()
@@ -89,20 +93,26 @@ class ViewController: UIViewController {
             let text = alertController.textFields?.first
             if text?.text == randomNumber {
                 let alert = UIAlertController(title: "Поздравляю!", message: "Вы угадали", preferredStyle: .alert)
-                let cancelButton = UIAlertAction(title: "OK", style: .cancel)
+                let cancelButton = UIAlertAction(title: "Oк", style: .cancel)
 
                 alert.addAction(cancelButton)
+                alert.preferredAction = cancelButton
                 self?.present(alert, animated: true)
             } else {
                 let alert = UIAlertController(title: "Упс!", message: "Это неверный ответ", preferredStyle: .alert)
-                let cancelButton = UIAlertAction(title: "OK", style: .cancel)
+                let cancelButton = UIAlertAction(title: "Oк", style: .cancel)
 
                 alert.addAction(cancelButton)
+                alert.preferredAction = cancelButton
                 self?.present(alert, animated: true)
             }
         }
+        let actionCancel = UIAlertAction(title: "Отмена", style: .default)
 
+        alertController.addAction(actionCancel)
         alertController.addAction(actionOK)
+        alertController.preferredAction = actionOK
+
         present(alertController, animated: true)
     }
 
@@ -126,10 +136,11 @@ class ViewController: UIViewController {
 
                     let alertResult = UIAlertController(title: "Ваш результат", message: result, preferredStyle: .alert)
                     let stepForward = UIAlertAction(title: "Ок", style: .default)
-                    let actionaCancel = UIAlertAction(title: "Отмена", style: .cancel)
+                    let actionaCancel = UIAlertAction(title: "Отмена", style: .default)
 
                     alertResult.addAction(actionaCancel)
                     alertResult.addAction(stepForward)
+                    alertResult.preferredAction = stepForward
 
                     self?.present(alertResult, animated: true)
                 }
@@ -145,7 +156,7 @@ class ViewController: UIViewController {
 
     func requestName() {
         let alertController = UIAlertController(
-            title: "Пожалуйста, предтсавьтесь",
+            title: "Пожалуйста,\n предтсавьтесь",
             message: nil,
             preferredStyle: .alert
         )
@@ -158,7 +169,7 @@ class ViewController: UIViewController {
             guard let textField = alertController.textFields?.first, let name = textField.text else {
                 return
             }
-            self?.nameLabel.text = "Приветсвую, \(name)!"
+            self?.nameLabel.text = "Приветсвую,\n \(name)!"
             self?.nameLabel.isHidden = false
         }
 
