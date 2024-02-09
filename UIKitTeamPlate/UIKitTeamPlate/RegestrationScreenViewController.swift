@@ -6,15 +6,17 @@ import UIKit
 /// Экран регистрации
 class RegestrationScreenViewController: UIViewController {
     // MARK: - Constants
+
     let segueIdentifier = "goToCafe"
     private let loginLine = CALayer()
     private let passwordLine = CALayer()
-    
-    
+
     // MARK: - Properties
+
     private var isSecureTextEntry = false
 
     // MARK: - @IBOutlets
+
     @IBOutlet var imageViewLabel: UIImageView!
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
@@ -22,18 +24,19 @@ class RegestrationScreenViewController: UIViewController {
     @IBOutlet var securityButton: UIButton!
 
     // MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         checkText()
         configureUIElements()
-        
+
         // убираем клавиатуру при нажатии на любую часть экрана
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(hideScreen))
         view.addGestureRecognizer(tapGR)
     }
-    
+
     // MARK: - Methods
-    
+
     func checkText() {
         loginButton.isEnabled = false
         loginButton.alpha = 0.5
@@ -54,9 +57,9 @@ class RegestrationScreenViewController: UIViewController {
 
         loginButton.layer.cornerRadius = 10
     }
-    
+
     @objc func textFieldDidChange() {
-        if let login = loginTextField.text, let password = passwordTextField.text, !login.isEmpty && !password.isEmpty {
+        if let login = loginTextField.text, let password = passwordTextField.text, !login.isEmpty, !password.isEmpty {
             loginButton.isEnabled = true
             loginButton.alpha = 1.0
         } else {
