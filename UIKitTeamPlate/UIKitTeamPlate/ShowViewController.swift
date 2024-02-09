@@ -68,7 +68,8 @@ class ShowViewController: UIViewController {
         startButton.frame = CGRect(origin: origin, size: size)
         startButton.setTitle("Начать", for: .normal)
         startButton.titleLabel?.font = UIFont(name: "Verdana", size: 16)
-        startButton.backgroundColor = #colorLiteral(red: 0.2979461551, green: 0.8465514779, blue: 0.399361372, alpha: 1)
+        startButton.backgroundColor = #colorLiteral(red: 0.2979461551, green: 0.8465514779, blue: 0.399361372, alpha:
+            1)
         return startButton
     }()
 
