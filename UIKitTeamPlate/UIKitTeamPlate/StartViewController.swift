@@ -25,7 +25,7 @@ final class StartViewController: UIViewController {
         configure()
     }
 
-    // MARK: - Private Method
+    // MARK: - Private Methods
 
     private func configure() {
         view.backgroundColor = .white

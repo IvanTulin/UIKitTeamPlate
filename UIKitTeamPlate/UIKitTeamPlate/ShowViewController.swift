@@ -5,7 +5,7 @@ import UIKit
 
 /// Экран демонстрации
 final class ShowViewController: UIViewController {
-    // MARK: - Properties
+    // MARK: - Constants
     
     let labelFirstWord: UILabel = {
         var firstLabel = UILabel()
@@ -25,7 +25,6 @@ final class ShowViewController: UIViewController {
     // MARK: - Private Properties
     
     private var model = Model()
-    
     private let labelOfTheFirstName: UILabel = {
         var labelOfTheFirstName = UILabel()
         let origin = CGPoint(x: 60, y: 106)
@@ -81,7 +80,7 @@ final class ShowViewController: UIViewController {
         configure()
     }
     
-    // MARK: - Private Method
+    // MARK: - Private Methods
     
     private func configure() {
         view.backgroundColor = .white
