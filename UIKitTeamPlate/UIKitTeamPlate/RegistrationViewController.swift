@@ -96,13 +96,14 @@ final class RegistrationViewController: UIViewController {
         return securityButton
     }()
 
-    private let loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let securityButton = UIButton()
         securityButton.frame = CGRect(x: 20, y: 671, width: 335, height: 44)
         securityButton.setTitle("Login", for: .normal)
         securityButton.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 16)
         securityButton.backgroundColor = .appPurple
         securityButton.layer.cornerRadius = 10
+        securityButton.addTarget(self, action: #selector(switchToTheNextController), for: .touchUpInside)
         return securityButton
     }()
 
@@ -129,5 +130,11 @@ final class RegistrationViewController: UIViewController {
 
         view.layer.addSublayer(emailLine)
         view.layer.addSublayer(paswordLine)
+    }
+
+    /// метод для перехода на экран BirthdayReminderViewController
+    @objc private func switchToTheNextController() {
+        let birthdayVC = BirthdayReminderViewController()
+        navigationController?.pushViewController(birthdayVC, animated: true)
     }
 }
