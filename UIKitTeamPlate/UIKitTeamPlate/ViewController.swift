@@ -5,7 +5,7 @@ import UIKit
 
 /// Стартовый экран
 final class ViewController: UIViewController {
-    // MARK: - Properties
+    // MARK: - Private Properties
     
     private lazy var imageView: UIImageView = {
         var image = UIImageView()
@@ -38,7 +38,6 @@ final class ViewController: UIViewController {
         calculateButton.layer.cornerRadius = 25
         calculateButton.layer.borderColor = UIColor.black.cgColor
         calculateButton.layer.borderWidth = 2
-        
         return calculateButton
     }()
     
@@ -53,7 +52,6 @@ final class ViewController: UIViewController {
         guessTheNumberButton.layer.cornerRadius = 25
         guessTheNumberButton.layer.borderColor = UIColor.black.cgColor
         guessTheNumberButton.layer.borderWidth = 2
-        
         return guessTheNumberButton
     }()
     
@@ -68,7 +66,7 @@ final class ViewController: UIViewController {
         requestName()
     }
     
-    // MARK: - Method
+   // MARK: - Private Methods
     
     private func configure() {
         view.backgroundColor = .white
@@ -102,7 +100,6 @@ final class ViewController: UIViewController {
         }
         
         alertController.addAction(okAction)
-        
         present(alertController, animated: true, completion: nil)
     }
     
@@ -135,12 +132,12 @@ final class ViewController: UIViewController {
                 self?.present(alert, animated: true)
             }
         }
+        
         let actionCancel = UIAlertAction(title: "Отмена", style: .default)
         
         alertController.addAction(actionCancel)
         alertController.addAction(actionOK)
         alertController.preferredAction = actionOK
-        
         present(alertController, animated: true)
     }
     
@@ -178,8 +175,6 @@ final class ViewController: UIViewController {
         let actionCancel = UIAlertAction(title: "Сancel", style: .default)
         alertController.addAction(actionFold)
         alertController.addAction(actionCancel)
-        
         present(alertController, animated: true)
     }
-    
 }
