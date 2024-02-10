@@ -110,7 +110,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="imageViewLabel" destination="Jhn-jn-2GY" id="sRL-Wn-C0A"/>
                         <outlet property="loginButton" destination="gfg-a6-HJc" id="31J-VT-UEd"/>
                         <outlet property="loginTextField" destination="D4P-3n-er6" id="zfv-S4-d2M"/>
                         <outlet property="passwordTextField" destination="Ssu-qF-uqq" id="f90-jT-Qkl"/>
@@ -269,12 +268,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="invoiceButton" destination="lMe-46-tYy" id="Lhb-LU-dz1"/>
-                        <outlet property="nameTextField" destination="1zG-7f-0wP" id="tC1-1b-GU3"/>
-                        <outlet property="numberOfGuestTextField" destination="rsG-Wm-ReU" id="LMQ-s6-gaz"/>
                         <outlet property="switchPrepayments" destination="aW9-sA-me2" id="h5k-qA-w7C"/>
                         <outlet property="switchReservations" destination="syT-pg-mKf" id="HSo-ge-xlj"/>
                         <outlet property="switchVipRoom" destination="qeb-hz-TQR" id="Uve-5T-LMs"/>
-                        <outlet property="tableNumberTextField" destination="gBU-5E-vO8" id="z27-jc-BhX"/>
                         <segue destination="Zd2-km-yBs" kind="show" identifier="goToCheque" id="8am-b1-gQL"/>
                     </connections>
                 </viewController>
@@ -476,10 +472,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="n60-Of-jYs"/>
-                    <connections>
-                        <outlet property="closeButton" destination="WlN-2v-XCK" id="Aaf-gT-Ddg"/>
-                        <outlet property="infoLable" destination="qYc-AI-bHL" id="9iT-Jm-5oR"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whC-Hk-qLp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

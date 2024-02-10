@@ -12,11 +12,10 @@ final class RegestrationScreenViewController: UIViewController {
 
     // MARK: - @IBOutlets
 
-    @IBOutlet var imageViewLabel: UIImageView!
-    @IBOutlet var loginTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var loginButton: UIButton!
-    @IBOutlet var securityButton: UIButton!
+    @IBOutlet private var loginTextField: UITextField!
+    @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var loginButton: UIButton!
+    @IBOutlet private var securityButton: UIButton!
 
     // MARK: - Life Cycle
 
@@ -56,7 +55,7 @@ final class RegestrationScreenViewController: UIViewController {
         view.endEditing(true)
     }
 
-    @IBAction func securityButton(_ sender: UIButton) {
+    @IBAction private func securityButton(_ sender: UIButton) {
         if isSecureTextEntry {
             securityButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
             passwordTextField.isSecureTextEntry = true
@@ -68,7 +67,7 @@ final class RegestrationScreenViewController: UIViewController {
         }
     }
 
-    @IBAction func loginButton(_ sender: Any) {
+    @IBAction private func loginButton(_ sender: Any) {
         if loginTextField.text == "example@mail.ru", passwordTextField.text == "Qwerty1234" {
             performSegue(withIdentifier: segueIdentifier, sender: nil)
         }

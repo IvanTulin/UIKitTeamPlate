@@ -7,21 +7,18 @@ import UIKit
 final class CafeViewController: UIViewController {
     // MARK: - @IBOutlets
 
-    @IBOutlet var nameTextField: UITextField!
-    @IBOutlet var numberOfGuestTextField: UITextField!
-    @IBOutlet var tableNumberTextField: UITextField!
-    @IBOutlet var switchReservations: UISwitch!
-    @IBOutlet var switchPrepayments: UISwitch!
-    @IBOutlet var switchVipRoom: UISwitch!
-    @IBOutlet var invoiceButton: UIButton!
+    @IBOutlet private var switchReservations: UISwitch!
+    @IBOutlet private var switchPrepayments: UISwitch!
+    @IBOutlet private var switchVipRoom: UISwitch!
+    @IBOutlet private var invoiceButton: UIButton!
 
-    // MARK: - Methods
+    // MARK: - Private Properties
 
-    @IBAction func backButton(_ sender: Any) {
+    @IBAction private func backButton(_ sender: Any) {
         dismiss(animated: true)
     }
 
-    @IBAction func invoiceButton(_ sender: Any) {
+    @IBAction private func invoiceButton(_ sender: Any) {
         let alertController = UIAlertController(title: "Выставить счет?", message: nil, preferredStyle: .alert)
 
         let cancelAction = UIAlertAction(title: "Отмена", style: .default)

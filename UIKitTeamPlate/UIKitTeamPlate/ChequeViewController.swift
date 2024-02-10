@@ -7,10 +7,10 @@ import UIKit
 final class ChequeViewController: UIViewController {
     // MARK: - @IBOutlets
 
-    @IBOutlet var resultButton: UIButton!
-    @IBOutlet var tableReservationLabel: UILabel!
-    @IBOutlet var prepaidLabel: UILabel!
-    @IBOutlet var labelVipRoom: UILabel!
+    @IBOutlet private var resultButton: UIButton!
+    @IBOutlet private var tableReservationLabel: UILabel!
+    @IBOutlet private var prepaidLabel: UILabel!
+    @IBOutlet private var labelVipRoom: UILabel!
 
     // MARK: - Properties
 
@@ -37,11 +37,11 @@ final class ChequeViewController: UIViewController {
         labelVipRoom.text = vipRoom
     }
 
-    @IBAction func backButton(_ sender: UIButton) {
+    @IBAction private func backButton(_ sender: UIButton) {
         dismiss(animated: true)
     }
 
-    @IBAction func resultButton(_ sender: UIButton) {
+    @IBAction private func resultButton(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Вы хотите оплатить чек?", message: nil, preferredStyle: .alert)
 
         let actionYes = UIAlertAction(title: "Да", style: .default) { [weak self] _ in
