@@ -3,7 +3,6 @@
 
 import UIKit
 
-/// Расширение для CALayer
 extension CALayer {
     /// создание кастомного CALayer
     func createCustomCALayer(

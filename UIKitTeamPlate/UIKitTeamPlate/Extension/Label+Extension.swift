@@ -3,7 +3,6 @@
 
 import UIKit
 
-/// Расширение для UILabel
 extension UILabel {
     /// создание кастомного Лейбла
     func createCustomLabel(

@@ -3,9 +3,15 @@
 
 import UIKit
 
+protocol BirthdayDelegate: AnyObject {
+    func update(photo: UIImage, name: String, dateOfBirth: String)
+}
+
 /// Экран со списком дней рождения
 class BirthdayReminderViewController: UIViewController {
     // MARK: - Private Constants
+
+    private let userProfileVC = UserProfileViewController()
 
     private let photoHelenaImageView: UIImageView = {
         let photoHelenaImageView = UIImageView()
@@ -49,99 +55,164 @@ class BirthdayReminderViewController: UIViewController {
 
     private let helenaLabel: UILabel = {
         let helenaLabel = UILabel()
-        helenaLabel.text = "Helena Link"
-        helenaLabel.font = UIFont(name: "Verdana-Bold", size: 16)
-        helenaLabel.frame = CGRect(x: 102, y: 119, width: 209, height: 20)
-        return helenaLabel
+        return helenaLabel.createCustomLabel(
+            text: "Helena Link",
+            fontName: "Verdana-Bold",
+            fontsize: 16,
+            frame: CGRect(x: 102, y: 119, width: 209, height: 20),
+            textAligment: .left
+        )
     }()
 
     private let veronaLabel: UILabel = {
         let veronaLabel = UILabel()
-        veronaLabel.text = "Verona Tusk"
-        veronaLabel.font = UIFont(name: "Verdana-Bold", size: 16)
-        veronaLabel.frame = CGRect(x: 102, y: 214, width: 209, height: 20)
-        return veronaLabel
+        return veronaLabel.createCustomLabel(
+            text: "Verona Tusk",
+            fontName: "Verdana-Bold",
+            fontsize: 16,
+            frame: CGRect(x: 102, y: 214, width: 209, height: 20),
+            textAligment: .left
+        )
     }()
 
     private let alexLabel: UILabel = {
         let alexLabel = UILabel()
-        alexLabel.text = "Alex Smith"
-        alexLabel.font = UIFont(name: "Verdana-Bold", size: 16)
-        alexLabel.frame = CGRect(x: 102, y: 309, width: 209, height: 20)
-        return alexLabel
+        return alexLabel.createCustomLabel(
+            text: "Alex Smith",
+            fontName: "Verdana-Bold",
+            fontsize: 16,
+            frame: CGRect(x: 102, y: 309, width: 209, height: 20),
+            textAligment: .left
+        )
     }()
 
     private let tomLabel: UILabel = {
         let tomLabel = UILabel()
-        tomLabel.text = "Tom Johnson"
-        tomLabel.font = UIFont(name: "Verdana-Bold", size: 16)
-        tomLabel.frame = CGRect(x: 102, y: 404, width: 209, height: 20)
-        return tomLabel
+        return tomLabel.createCustomLabel(
+            text: "Tom Johnson",
+            fontName: "Verdana-Bold",
+            fontsize: 16,
+            frame: CGRect(x: 102, y: 404, width: 209, height: 20),
+            textAligment: .left
+        )
     }()
 
     private let birthdayHelenaLabel: UILabel = {
         let birthdayLabel = UILabel()
-        birthdayLabel.text = "10.03 - turns 25!"
-        birthdayLabel.font = UIFont(name: "Verdana", size: 16)
-        birthdayLabel.frame = CGRect(x: 102, y: 147, width: 209, height: 20)
-        return birthdayLabel
+        return birthdayLabel.createCustomLabel(
+            text: "10.03 - turns 25!",
+            fontName: "Verdana",
+            fontsize: 16,
+            frame: CGRect(x: 102, y: 147, width: 209, height: 20),
+            textAligment: .left
+        )
     }()
 
     private let birthdayVeronaLabel: UILabel = {
         let birthdayLabel = UILabel()
-        birthdayLabel.text = "20.03 - turns 39!"
-        birthdayLabel.font = UIFont(name: "Verdana", size: 16)
-        birthdayLabel.frame = CGRect(x: 102, y: 242, width: 209, height: 20)
-        return birthdayLabel
+        return birthdayLabel.createCustomLabel(
+            text: "20.03 - turns 39!",
+            fontName: "Verdana",
+            fontsize: 16,
+            frame: CGRect(x: 102, y: 242, width: 209, height: 20),
+            textAligment: .left
+        )
     }()
 
     private let birthdayAlexLabel: UILabel = {
         let birthdayLabel = UILabel()
-        birthdayLabel.text = "21.04 - turns 51!"
-        birthdayLabel.font = UIFont(name: "Verdana", size: 16)
-        birthdayLabel.frame = CGRect(x: 102, y: 337, width: 209, height: 20)
-        return birthdayLabel
+        return birthdayLabel.createCustomLabel(
+            text: "21.04 - turns 51!",
+            fontName: "Verdana",
+            fontsize: 16,
+            frame: CGRect(x: 102, y: 337, width: 209, height: 20),
+            textAligment: .left
+        )
     }()
 
     private let birthdayTomLabel: UILabel = {
         let birthdayLabel = UILabel()
-        birthdayLabel.text = "05.05 - turns 18!"
-        birthdayLabel.font = UIFont(name: "Verdana", size: 16)
-        birthdayLabel.frame = CGRect(x: 102, y: 432, width: 209, height: 20)
-        return birthdayLabel
+        return birthdayLabel.createCustomLabel(
+            text: "05.05 - turns 18!",
+            fontName: "Verdana",
+            fontsize: 16,
+            frame: CGRect(x: 102, y: 432, width: 209, height: 20),
+            textAligment: .left
+        )
+
     }()
 
     private let daysBeforeVeronaBirthdayLabel: UILabel = {
         let daysBeforeHP = UILabel()
-        daysBeforeHP.text = "42\ndays"
-        daysBeforeHP.numberOfLines = 0
-        daysBeforeHP.font = UIFont(name: "Verdana-Bold", size: 16)
-        daysBeforeHP.textAlignment = .center
-        daysBeforeHP.textColor = .appViolet
-        daysBeforeHP.frame = CGRect(x: 310, y: 214, width: 52, height: 42)
-        return daysBeforeHP
+        return daysBeforeHP.createCustomLabel(
+            text: "10\ndays",
+            fontName: "Verdana-Bold",
+            fontsize: 16,
+            frame: CGRect(x: 310, y: 214, width: 52, height: 42),
+            numberOfLine: 0,
+            textAligment: .center,
+            textColor: .appViolet
+        )
     }()
 
     private let daysBeforeAlexBirthdayLabel: UILabel = {
         let daysBeforeHP = UILabel()
-        daysBeforeHP.text = "42\ndays"
-        daysBeforeHP.numberOfLines = 0
-        daysBeforeHP.font = UIFont(name: "Verdana-Bold", size: 16)
-        daysBeforeHP.textAlignment = .center
-        daysBeforeHP.textColor = .appViolet
-        daysBeforeHP.frame = CGRect(x: 310, y: 309, width: 52, height: 42)
-        return daysBeforeHP
+        return daysBeforeHP.createCustomLabel(
+            text: "42\ndays",
+            fontName: "Verdana-Bold",
+            fontsize: 16,
+            frame: CGRect(x: 310, y: 309, width: 52, height: 42),
+            numberOfLine: 0,
+            textAligment: .center,
+            textColor: .appViolet
+        )
     }()
 
     private let daysBeforeTomBirthdayLabel: UILabel = {
         let daysBeforeHP = UILabel()
-        daysBeforeHP.text = "87\ndays"
-        daysBeforeHP.numberOfLines = 0
-        daysBeforeHP.font = UIFont(name: "Verdana-Bold", size: 16)
-        daysBeforeHP.textAlignment = .center
-        daysBeforeHP.textColor = .appViolet
-        daysBeforeHP.frame = CGRect(x: 310, y: 404, width: 52, height: 42)
-        return daysBeforeHP
+        return daysBeforeHP.createCustomLabel(
+            text: "82\ndays",
+            fontName: "Verdana-Bold",
+            fontsize: 16,
+            frame: CGRect(x: 310, y: 404, width: 52, height: 42),
+            numberOfLine: 0,
+            textAligment: .center,
+            textColor: .appViolet
+        )
+    }()
+
+    // MARK: - Private Properties
+
+    private var photoNewUserImageView: UIImageView = {
+        let photoTomImageView = UIImageView()
+        return photoTomImageView.createCustomUIImageView(
+            imageName: "",
+            frame: CGRect(x: 19, y: 485, width: 75, height: 75),
+            clipsToBounds: true,
+            cornerRadius: 37
+        )
+    }()
+
+    private var newUserNameLabel: UILabel = {
+        let newUserNameLabel = UILabel()
+        return newUserNameLabel.createCustomLabel(
+            text: "",
+            fontName: "Verdana-Bold",
+            fontsize: 16,
+            frame: CGRect(x: 102, y: 499, width: 209, height: 20),
+            textAligment: .left
+        )
+    }()
+
+    private var birthdayNewUserLabel: UILabel = {
+        let birthdayLabel = UILabel()
+        return birthdayLabel.createCustomLabel(
+            text: "",
+            fontName: "Verdana",
+            fontsize: 16,
+            frame: CGRect(x: 102, y: 527, width: 209, height: 20),
+            textAligment: .left
+        )
     }()
 
     // MARK: - Life Cycle
@@ -181,14 +252,25 @@ class BirthdayReminderViewController: UIViewController {
         view.addSubview(daysBeforeVeronaBirthdayLabel)
         view.addSubview(daysBeforeAlexBirthdayLabel)
         view.addSubview(daysBeforeTomBirthdayLabel)
+        view.addSubview(photoNewUserImageView)
+        view.addSubview(newUserNameLabel)
+        view.addSubview(birthdayNewUserLabel)
     }
 
+    /// переход на новый экрна создания пользователя
     @objc private func createUserProfile() {
         let userProfileVC = UserProfileViewController()
-        let navigationController = UINavigationController(
-            rootViewController: userProfileVC
-        )
-        navigationController.modalPresentationStyle = .popover
-        present(navigationController, animated: true)
+        userProfileVC.delegate = self
+        present(userProfileVC, animated: true)
+    }
+}
+
+// MARK: - BirthdayDelegate
+
+extension BirthdayReminderViewController: BirthdayDelegate {
+    func update(photo: UIImage, name: String, dateOfBirth: String) {
+        photoNewUserImageView.image = photo
+        newUserNameLabel.text = name
+        birthdayNewUserLabel.text = dateOfBirth
     }
 }

@@ -3,7 +3,6 @@
 
 import UIKit
 
-/// Расширение для UITextField
 extension UITextField {
     /// создание кастомного UITextField
     func createCustomUITextField(
