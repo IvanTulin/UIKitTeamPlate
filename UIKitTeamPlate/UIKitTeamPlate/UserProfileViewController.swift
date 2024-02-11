@@ -6,7 +6,7 @@ import UIKit
 /// Экран создания профиля
 class UserProfileViewController: UIViewController {
     weak var delegate: BirthdayDelegate?
-    
+
     // MARK: - Private Constants
 
     private let profilePhotoImageView: UIImageView = {
@@ -18,7 +18,7 @@ class UserProfileViewController: UIViewController {
             cornerRadius: 62
         )
     }()
-    
+
     private let nameLabel: UILabel = {
         let nameLabel = UILabel()
         return nameLabel.createCustomLabel(
@@ -170,11 +170,11 @@ class UserProfileViewController: UIViewController {
         datePicker.preferredDatePickerStyle = .wheels
         return datePicker
     }()
-    
+
     private let gender = ["Male", "Female"]
-    
+
     // MARK: - Private Properties
-    
+
     private lazy var addNewUserButton: UIButton = {
         let addButton = UIButton()
         addButton.setTitle("Add", for: .normal)
@@ -202,7 +202,7 @@ class UserProfileViewController: UIViewController {
         )
         return addButton
     }()
-    
+
     private lazy var changePhotoButton: UIButton = {
         let changePhotoButton = UIButton()
         changePhotoButton.setTitle("Change photo", for: .normal)
