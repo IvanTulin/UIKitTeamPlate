@@ -8,81 +8,95 @@ final class RegistrationViewController: UIViewController {
     // MARK: - Private Constants
 
     private let emailLine: CALayer = {
-        let bottonLine = CALayer()
-        bottonLine.frame = CGRect(x: 20, y: 372, width: 335, height: 1)
-        bottonLine.backgroundColor = UIColor.systemGray4.cgColor
-        return bottonLine
+        let emailLine = CALayer()
+        return emailLine.createCustomCALayer(
+            frame: CGRect(x: 20, y: 372, width: 335, height: 1),
+            backgroundColor: .systemGray4
+        )
     }()
 
     private let paswordLine: CALayer = {
-        let bottonLine = CALayer()
-        bottonLine.frame = CGRect(x: 20, y: 448, width: 335, height: 1)
-        bottonLine.backgroundColor = UIColor.systemGray4.cgColor
-        return bottonLine
+        let paswordLine = CALayer()
+        return paswordLine.createCustomCALayer(
+            frame: CGRect(x: 20, y: 448, width: 335, height: 1),
+            backgroundColor: .systemGray4
+        )
     }()
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "imageCalendar")
-        imageView.frame = CGRect(x: 125, y: 70, width: 125, height: 125)
-        return imageView
+        return imageView.createCustomUIImageView(
+            imageName: "imageCalendar",
+            frame: CGRect(x: 125, y: 70, width: 125, height: 125)
+        )
     }()
 
     private let birthdayLabel: UILabel = {
         let birthdayLabel = UILabel()
-        birthdayLabel.frame = CGRect(x: 100, y: 200, width: 175, height: 44)
-        birthdayLabel.numberOfLines = 0
-        birthdayLabel.textAlignment = .center
-        birthdayLabel.text = "Birthday\nReminder"
-        birthdayLabel.textColor = .appViolet
-        birthdayLabel.font = UIFont(name: "Verdana-Bold", size: 18)
-        return birthdayLabel
+        return birthdayLabel.createCustomLabel(
+            text: "Birthday\nReminder",
+            fontName: "Verdana-Bold",
+            fontsize: 18,
+            frame: CGRect(x: 100, y: 200, width: 175, height: 44),
+            textAligment: .center,
+            textColor: .appViolet
+        )
     }()
 
     private let signInLabel: UILabel = {
         let signInLabel = UILabel()
-        signInLabel.frame = CGRect(x: 20, y: 266, width: 175, height: 31)
-        signInLabel.textAlignment = .left
-        signInLabel.text = "Sign in"
-        signInLabel.textColor = .appPurple
-        signInLabel.font = UIFont(name: "Verdana-Bold", size: 26)
-        return signInLabel
+        return signInLabel.createCustomLabel(
+            text: "Sign in",
+            fontName: "Verdana-Bold",
+            fontsize: 26,
+            frame: CGRect(x: 20, y: 266, width: 175, height: 31),
+            textAligment: .left,
+            textColor: .appPurple
+        )
     }()
 
     private let emailLabel: UILabel = {
         let emailLabel = UILabel()
-        emailLabel.frame = CGRect(x: 20, y: 318, width: 175, height: 19)
-        emailLabel.textAlignment = .left
-        emailLabel.text = "Email"
-        emailLabel.textColor = .appPurple
-        emailLabel.font = UIFont(name: "Verdana-Bold", size: 16)
-        return emailLabel
+        return emailLabel.createCustomLabel(
+            text: "Email",
+            fontName: "Verdana-Bold",
+            fontsize: 16,
+            frame: CGRect(x: 20, y: 318, width: 175, height: 19),
+            textAligment: .left,
+            textColor: .appPurple
+        )
     }()
 
     private let emailTextField: UITextField = {
         let emailTextField = UITextField()
-        emailTextField.frame = CGRect(x: 20, y: 347, width: 175, height: 20)
-        emailTextField.placeholder = "Typing email"
-        emailTextField.font = UIFont(name: "Verdana", size: 14)
-        return emailTextField
+        return emailTextField.createCustomUITextField(
+            frame: CGRect(x: 20, y: 347, width: 175, height: 20),
+            placeholder: "Typing email",
+            fontName: "Verdana",
+            fontSize: 14
+        )
     }()
 
     private let passwordLabel: UILabel = {
-        let emailLabel = UILabel()
-        emailLabel.frame = CGRect(x: 20, y: 393, width: 175, height: 19)
-        emailLabel.textAlignment = .left
-        emailLabel.text = "Password"
-        emailLabel.textColor = .appPurple
-        emailLabel.font = UIFont(name: "Verdana-Bold", size: 16)
-        return emailLabel
+        let passwordLabel = UILabel()
+        return passwordLabel.createCustomLabel(
+            text: "Password",
+            fontName: "Verdana-Bold",
+            fontsize: 16,
+            frame: CGRect(x: 20, y: 393, width: 175, height: 19),
+            textAligment: .left,
+            textColor: .appPurple
+        )
     }()
 
     private let passwordTextField: UITextField = {
         let emailTextField = UITextField()
-        emailTextField.frame = CGRect(x: 20, y: 422, width: 175, height: 20)
-        emailTextField.placeholder = "Typing password"
-        emailTextField.font = UIFont(name: "Verdana", size: 14)
-        return emailTextField
+        return emailTextField.createCustomUITextField(
+            frame: CGRect(x: 20, y: 422, width: 175, height: 20),
+            placeholder: "Typing password",
+            fontName: "Verdana",
+            fontSize: 14
+        )
     }()
 
     private let securityButton: UIButton = {

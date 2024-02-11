@@ -13,6 +13,11 @@
 		BA632C642B711B3B00D0F110 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C632B711B3B00D0F110 /* RegistrationViewController.swift */; };
 		BA632C692B711B3C00D0F110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA632C682B711B3C00D0F110 /* Assets.xcassets */; };
 		BA632C6C2B711B3C00D0F110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */; };
+		BA78F1772B78A3C400AF6B44 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78F1762B78A3C400AF6B44 /* UserProfileViewController.swift */; };
+		BA78F1792B78AE7300AF6B44 /* Label+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78F1782B78AE7300AF6B44 /* Label+Extension.swift */; };
+		BA78F17B2B78B4F100AF6B44 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78F17A2B78B4F100AF6B44 /* CALayer+Extension.swift */; };
+		BA78F17E2B78B6E000AF6B44 /* ImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78F17D2B78B6E000AF6B44 /* ImageView+Extension.swift */; };
+		BA78F1802B78B8E500AF6B44 /* TextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78F17F2B78B8E500AF6B44 /* TextField+Extension.swift */; };
 		BAC934412B77EBCC00EEC1A8 /* BirthdayReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC934402B77EBCC00EEC1A8 /* BirthdayReminderViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +30,11 @@
 		BA632C682B711B3C00D0F110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA632C6B2B711B3C00D0F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA632C6D2B711B3C00D0F110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA78F1762B78A3C400AF6B44 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		BA78F1782B78AE7300AF6B44 /* Label+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Extension.swift"; sourceTree = "<group>"; };
+		BA78F17A2B78B4F100AF6B44 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		BA78F17D2B78B6E000AF6B44 /* ImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Extension.swift"; sourceTree = "<group>"; };
+		BA78F17F2B78B8E500AF6B44 /* TextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+Extension.swift"; sourceTree = "<group>"; };
 		BAC934402B77EBCC00EEC1A8 /* BirthdayReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayReminderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,12 +72,25 @@
 				BA632C612B711B3B00D0F110 /* SceneDelegate.swift */,
 				BA632C632B711B3B00D0F110 /* RegistrationViewController.swift */,
 				BAC934402B77EBCC00EEC1A8 /* BirthdayReminderViewController.swift */,
+				BA78F1762B78A3C400AF6B44 /* UserProfileViewController.swift */,
+				BA78F17C2B78B50300AF6B44 /* Extension */,
 				BA632C682B711B3C00D0F110 /* Assets.xcassets */,
 				BA602B3C2B77B2F000837E52 /* Colors.xcassets */,
 				BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */,
 				BA632C6D2B711B3C00D0F110 /* Info.plist */,
 			);
 			path = UIKitTeamPlate;
+			sourceTree = "<group>";
+		};
+		BA78F17C2B78B50300AF6B44 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BA78F1782B78AE7300AF6B44 /* Label+Extension.swift */,
+				BA78F17A2B78B4F100AF6B44 /* CALayer+Extension.swift */,
+				BA78F17D2B78B6E000AF6B44 /* ImageView+Extension.swift */,
+				BA78F17F2B78B8E500AF6B44 /* TextField+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,9 +209,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA78F1802B78B8E500AF6B44 /* TextField+Extension.swift in Sources */,
 				BA632C642B711B3B00D0F110 /* RegistrationViewController.swift in Sources */,
+				BA78F1772B78A3C400AF6B44 /* UserProfileViewController.swift in Sources */,
+				BA78F17E2B78B6E000AF6B44 /* ImageView+Extension.swift in Sources */,
+				BA78F17B2B78B4F100AF6B44 /* CALayer+Extension.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
 				BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */,
+				BA78F1792B78AE7300AF6B44 /* Label+Extension.swift in Sources */,
 				BAC934412B77EBCC00EEC1A8 /* BirthdayReminderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
