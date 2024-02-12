@@ -5,7 +5,7 @@ import AVFoundation
 import UIKit
 
 /// Экран Плеера
-class PlayerViewController: UIViewController {
+final class PlayerViewController: UIViewController {
     // MARK: - @IBOutlets
 
     @IBOutlet var volumeslider: UISlider!

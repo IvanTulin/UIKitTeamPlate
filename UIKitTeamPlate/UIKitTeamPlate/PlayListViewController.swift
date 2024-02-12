@@ -5,7 +5,7 @@ import AVFoundation
 import UIKit
 
 /// Экран Плейлиста
-class PlayListViewController: UIViewController {
+final class PlayListViewController: UIViewController {
     // MARK: - Enum
 
     private enum Constants {
