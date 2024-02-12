@@ -67,8 +67,9 @@ final class RegistrationViewController: UIViewController {
         )
     }()
 
-    private let emailTextField: UITextField = {
+    private lazy var emailTextField: UITextField = {
         let emailTextField = UITextField()
+        emailTextField.addTarget(self, action: #selector(activateButton), for: .editingChanged)
         return emailTextField.createCustomUITextField(
             frame: CGRect(x: 20, y: 347, width: 175, height: 20),
             placeholder: "Typing email",
@@ -89,8 +90,13 @@ final class RegistrationViewController: UIViewController {
         )
     }()
 
-    private let passwordTextField: UITextField = {
+    private lazy var passwordTextField: UITextField = {
         let emailTextField = UITextField()
+        emailTextField.addTarget(
+            self,
+            action: #selector(activateButton),
+            for: .editingChanged
+        )
         return emailTextField.createCustomUITextField(
             frame: CGRect(x: 20, y: 422, width: 175, height: 20),
             placeholder: "Typing password",
@@ -99,26 +105,31 @@ final class RegistrationViewController: UIViewController {
         )
     }()
 
-    private let securityButton: UIButton = {
+    private lazy var securityButton: UIButton = {
         let securityButton = UIButton()
         securityButton.frame = CGRect(x: 332, y: 419, width: 22, height: 19)
         let eyeImage = UIImage(
-            systemName: "eye.slash.fill"
+            systemName: "eye"
         )?.withRenderingMode(.alwaysTemplate)
         securityButton.setImage(eyeImage, for: .normal)
         securityButton.tintColor = UIColor.systemGray4
+        securityButton.addTarget(
+            self,
+            action: #selector(hidePasword),
+            for: .touchUpInside
+        )
         return securityButton
     }()
 
     private lazy var loginButton: UIButton = {
-        let securityButton = UIButton()
-        securityButton.frame = CGRect(x: 20, y: 671, width: 335, height: 44)
-        securityButton.setTitle("Login", for: .normal)
-        securityButton.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 16)
-        securityButton.backgroundColor = .appPurple
-        securityButton.layer.cornerRadius = 10
-        securityButton.addTarget(self, action: #selector(switchToTheNextController), for: .touchUpInside)
-        return securityButton
+        let loginButton = UIButton()
+        loginButton.frame = CGRect(x: 20, y: 671, width: 335, height: 44)
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 16)
+        loginButton.backgroundColor = .appPurple
+        loginButton.layer.cornerRadius = 10
+        loginButton.addTarget(self, action: #selector(switchToTheNextController), for: .touchUpInside)
+        return loginButton
     }()
 
     // MARK: - Life Cycle
@@ -144,11 +155,50 @@ final class RegistrationViewController: UIViewController {
 
         view.layer.addSublayer(emailLine)
         view.layer.addSublayer(paswordLine)
+
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(removeKeyboard)
+        )
+        view.addGestureRecognizer(tapGesture)
+
+        loginButton.isEnabled = false
+        loginButton.alpha = 0.5
+    }
+
+    /// скрывать клавиатуру
+    @objc private func removeKeyboard() {
+        view.endEditing(true)
+    }
+
+    @objc private func activateButton() {
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            if !email.isEmpty, !password.isEmpty {
+                loginButton.isEnabled = true
+                loginButton.alpha = 1.0
+            } else {
+                loginButton.isEnabled = false
+                loginButton.alpha = 0.5
+            }
+        }
+    }
+
+    /// скрыть пароль
+    @objc private func hidePasword() {
+        if passwordTextField.isSecureTextEntry == false {
+            passwordTextField.isSecureTextEntry = true
+            securityButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        } else {
+            passwordTextField.isSecureTextEntry = false
+            securityButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        }
     }
 
     /// метод для перехода на экран BirthdayReminderViewController
     @objc private func switchToTheNextController() {
-        let birthdayVC = BirthdayReminderViewController()
-        navigationController?.pushViewController(birthdayVC, animated: true)
+        if emailTextField.text == "example@mail.ru", passwordTextField.text == "Qwerty1234" {
+            let birthdayVC = BirthdayReminderViewController()
+            navigationController?.pushViewController(birthdayVC, animated: true)
+        }
     }
 }

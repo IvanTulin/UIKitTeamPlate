@@ -8,7 +8,7 @@ protocol BirthdayDelegate: AnyObject {
 }
 
 /// Экран со списком дней рождения
-class BirthdayReminderViewController: UIViewController {
+final class BirthdayReminderViewController: UIViewController {
     // MARK: - Private Constants
 
     private let userProfileVC = UserProfileViewController()

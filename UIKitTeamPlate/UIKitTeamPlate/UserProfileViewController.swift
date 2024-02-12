@@ -4,7 +4,7 @@
 import UIKit
 
 /// Экран создания профиля
-class UserProfileViewController: UIViewController {
+final class UserProfileViewController: UIViewController {
     weak var delegate: BirthdayDelegate?
 
     // MARK: - Private Constants
