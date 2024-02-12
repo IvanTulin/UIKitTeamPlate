@@ -234,6 +234,7 @@ final class BirthdayReminderViewController: UIViewController {
         )
     }
 
+    /// конфигурируем все UI элементы
     private func configureUI() {
         view.backgroundColor = .white
         view.addSubview(photoHelenaImageView)

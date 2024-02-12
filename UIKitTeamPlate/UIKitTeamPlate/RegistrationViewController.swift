@@ -7,6 +7,22 @@ import UIKit
 final class RegistrationViewController: UIViewController {
     // MARK: - Private Constants
 
+    private let faceIDLabel: UILabel = {
+        let faceIDLabel = UILabel()
+        faceIDLabel.text = "Use FaceID"
+        faceIDLabel.font = UIFont(name: "Verdana-Bold", size: 16)
+        faceIDLabel.frame = CGRect(x: 86, y: 544, width: 0, height: 0)
+        faceIDLabel.sizeToFit()
+        return faceIDLabel
+    }()
+
+    private let faceIDSwitch: UISwitch = {
+        let faceIDSwitch = UISwitch()
+        faceIDSwitch.isOn = true
+        faceIDSwitch.frame = CGRect(x: 230, y: 538, width: 0, height: 0)
+        return faceIDSwitch
+    }()
+
     private let emailLine: CALayer = {
         let emailLine = CALayer()
         return emailLine.createCustomCALayer(
@@ -67,9 +83,8 @@ final class RegistrationViewController: UIViewController {
         )
     }()
 
-    private lazy var emailTextField: UITextField = {
+    private let emailTextField: UITextField = {
         let emailTextField = UITextField()
-        emailTextField.addTarget(self, action: #selector(activateButton), for: .editingChanged)
         return emailTextField.createCustomUITextField(
             frame: CGRect(x: 20, y: 347, width: 175, height: 20),
             placeholder: "Typing email",
@@ -90,13 +105,8 @@ final class RegistrationViewController: UIViewController {
         )
     }()
 
-    private lazy var passwordTextField: UITextField = {
+    private let passwordTextField: UITextField = {
         let emailTextField = UITextField()
-        emailTextField.addTarget(
-            self,
-            action: #selector(activateButton),
-            for: .editingChanged
-        )
         return emailTextField.createCustomUITextField(
             frame: CGRect(x: 20, y: 422, width: 175, height: 20),
             placeholder: "Typing password",
@@ -104,6 +114,8 @@ final class RegistrationViewController: UIViewController {
             fontSize: 14
         )
     }()
+
+    // MARK: - Private Properties
 
     private lazy var securityButton: UIButton = {
         let securityButton = UIButton()
@@ -138,6 +150,7 @@ final class RegistrationViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
+        checkText()
     }
 
     // MARK: - Private Methods
@@ -152,6 +165,8 @@ final class RegistrationViewController: UIViewController {
         view.addSubview(passwordTextField)
         view.addSubview(securityButton)
         view.addSubview(loginButton)
+        view.addSubview(faceIDLabel)
+        view.addSubview(faceIDSwitch)
 
         view.layer.addSublayer(emailLine)
         view.layer.addSublayer(paswordLine)
@@ -161,26 +176,37 @@ final class RegistrationViewController: UIViewController {
             action: #selector(removeKeyboard)
         )
         view.addGestureRecognizer(tapGesture)
+    }
+
+    /// проверяем на пустоту текста эмейл и пароль
+    private func checkText() {
+        faceIDLabel.isHidden = true
+        faceIDSwitch.isHidden = true
 
         loginButton.isEnabled = false
         loginButton.alpha = 0.5
+        emailTextField.addTarget(self, action: #selector(activateLoginButton), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(activateLoginButton), for: .editingChanged)
+    }
+
+    /// активация кнопки loginButton
+    @objc private func activateLoginButton() {
+        if let login = emailTextField.text, let password = passwordTextField.text, !login.isEmpty, !password.isEmpty {
+            loginButton.isEnabled = true
+            loginButton.alpha = 1.0
+            faceIDLabel.isHidden = false
+            faceIDSwitch.isHidden = false
+        } else {
+            loginButton.isEnabled = false
+            loginButton.alpha = 0.5
+            faceIDLabel.isHidden = true
+            faceIDSwitch.isHidden = true
+        }
     }
 
     /// скрывать клавиатуру
     @objc private func removeKeyboard() {
         view.endEditing(true)
-    }
-
-    @objc private func activateButton() {
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            if !email.isEmpty, !password.isEmpty {
-                loginButton.isEnabled = true
-                loginButton.alpha = 1.0
-            } else {
-                loginButton.isEnabled = false
-                loginButton.alpha = 0.5
-            }
-        }
     }
 
     /// скрыть пароль
