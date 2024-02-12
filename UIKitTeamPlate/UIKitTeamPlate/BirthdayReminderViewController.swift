@@ -11,7 +11,7 @@ protocol BirthdayDelegate: AnyObject {
 final class BirthdayReminderViewController: UIViewController {
     // MARK: - Private Constants
 
-    private let userProfileVC = UserProfileViewController()
+    private let userProfilesVC = UserProfileViewController()
 
     private let photoHelenaImageView: UIImageView = {
         let photoHelenaImageView = UIImageView()
