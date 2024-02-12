@@ -15,12 +15,12 @@ final class PlayListViewController: UIViewController {
 
     // MARK: - @IBOutlets
 
-    @IBOutlet var imageGriby: UIImageView!
-    @IBOutlet var gribyNameLabel: UILabel!
-    @IBOutlet var nameOfTheSonGribyLabel: UILabel!
-    @IBOutlet var imageLubimka: UIImageView!
-    @IBOutlet var nilettoNameLabel: UILabel!
-    @IBOutlet var nameOfTheSonNiletto: UILabel!
+    @IBOutlet private var imageGriby: UIImageView!
+    @IBOutlet private var gribyNameLabel: UILabel!
+    @IBOutlet private var nameOfTheSonGribyLabel: UILabel!
+    @IBOutlet private var imageLubimka: UIImageView!
+    @IBOutlet private var nilettoNameLabel: UILabel!
+    @IBOutlet private var nameOfTheSonNiletto: UILabel!
 
     // MARK: - Methods
 

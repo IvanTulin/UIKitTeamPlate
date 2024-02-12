@@ -8,13 +8,13 @@ import UIKit
 final class PlayerViewController: UIViewController {
     // MARK: - @IBOutlets
 
-    @IBOutlet var volumeslider: UISlider!
-    @IBOutlet var photoArtistImageView: UIImageView!
-    @IBOutlet var nameArtistLabel: UILabel!
-    @IBOutlet var nameSongsLabel: UILabel!
-    @IBOutlet var playerSlider: UISlider!
-    @IBOutlet var remainingTime: UILabel!
-    @IBOutlet var playButtonOutlet: UIButton!
+    @IBOutlet private var volumeslider: UISlider!
+    @IBOutlet private var photoArtistImageView: UIImageView!
+    @IBOutlet private var nameArtistLabel: UILabel!
+    @IBOutlet private var nameSongsLabel: UILabel!
+    @IBOutlet private var playerSlider: UISlider!
+    @IBOutlet private var remainingTime: UILabel!
+    @IBOutlet private var playButtonOutlet: UIButton!
 
     // MARK: - Properties
 
@@ -74,19 +74,19 @@ final class PlayerViewController: UIViewController {
     // MARK: - @IBActions
 
     /// задаем значения для playerSlider
-    @IBAction func playerSlider(_ sender: UISlider) {
+    @IBAction private func playerSlider(_ sender: UISlider) {
         if sender == playerSlider {
             playerTrack.currentTime = TimeInterval(sender.value)
         }
     }
 
     /// задаем значения для слайдера громкости
-    @IBAction func volumeSlider(_ sender: UISlider) {
+    @IBAction private func volumeSlider(_ sender: UISlider) {
         playerTrack.volume = sender.value
     }
 
     /// включение предыдущего трека
-    @IBAction func backwardButton(_ sender: UIButton) {
+    @IBAction private func backwardButton(_ sender: UIButton) {
         if numberSong == 1 {
             numberSong = 0
             photoArtistImageView.image = UIImage(named: "imageGriby")
@@ -115,7 +115,7 @@ final class PlayerViewController: UIViewController {
     }
 
     /// включаем/ставим на паузу трек
-    @IBAction func playButton(_ sender: UIButton) {
+    @IBAction private func playButton(_ sender: UIButton) {
         if playerTrack.isPlaying {
             playerTrack.pause()
             sender.setImage(UIImage(named: "playButton"), for: .normal)
@@ -128,7 +128,7 @@ final class PlayerViewController: UIViewController {
     }
 
     /// включение следующего трека
-    @IBAction func forwardButton(_ sender: UIButton) {
+    @IBAction private func forwardButton(_ sender: UIButton) {
         if numberSong == 1 {
             numberSong = 0
             photoArtistImageView.image = UIImage(named: "imageGriby")
@@ -157,7 +157,7 @@ final class PlayerViewController: UIViewController {
     }
 
     /// реализация функионала для кнопки share
-    @IBAction func shareButton(_ sender: UIButton) {
+    @IBAction private func shareButton(_ sender: UIButton) {
         let activity = URL(filePath: Bundle.main.path(forResource: songs[numberSong], ofType: "mp3") ?? "")
         let shareController = UIActivityViewController(activityItems: [activity], applicationActivities: nil)
         shareController.popoverPresentationController?.sourceView = view
@@ -166,7 +166,7 @@ final class PlayerViewController: UIViewController {
     }
 
     /// закрытие плеера
-    @IBAction func closedButton(_ sender: UIButton) {
+    @IBAction private func closedButton(_ sender: UIButton) {
         dismiss(animated: true)
         playerTrack.stop()
     }
