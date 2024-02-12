@@ -5,7 +5,7 @@
 import UIKit
 
 /// Главный контролер с меню
-class MainViewController: UIViewController {
+class MainMenuViewController: UIViewController {
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
 //

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA5A91152B7A94B6005E23F3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A91142B7A94B6005E23F3 /* MainViewController.swift */; };
+		BA5A91152B7A94B6005E23F3 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A91142B7A94B6005E23F3 /* MainMenuViewController.swift */; };
 		BA5A91172B7A954C005E23F3 /* CoffeeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A91162B7A954C005E23F3 /* CoffeeMenuViewController.swift */; };
 		BA5A91192B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A91182B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift */; };
 		BA5A911B2B7A9633005E23F3 /* AdditionalIngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A911A2B7A9633005E23F3 /* AdditionalIngredientsViewController.swift */; };
@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BA5A91142B7A94B6005E23F3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BA5A91142B7A94B6005E23F3 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		BA5A91162B7A954C005E23F3 /* CoffeeMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeMenuViewController.swift; sourceTree = "<group>"; };
 		BA5A91182B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoastingOptionViewControllerViewController.swift; sourceTree = "<group>"; };
 		BA5A911A2B7A9633005E23F3 /* AdditionalIngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalIngredientsViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 				BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */,
 				BA632C612B711B3B00D0F110 /* SceneDelegate.swift */,
 				BA632C632B711B3B00D0F110 /* AuthorizationViewController.swift */,
-				BA5A91142B7A94B6005E23F3 /* MainViewController.swift */,
+				BA5A91142B7A94B6005E23F3 /* MainMenuViewController.swift */,
 				BA5A91162B7A954C005E23F3 /* CoffeeMenuViewController.swift */,
 				BA5A91182B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift */,
 				BA5A911A2B7A9633005E23F3 /* AdditionalIngredientsViewController.swift */,
@@ -205,7 +205,7 @@
 				BA5A91192B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
 				BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */,
-				BA5A91152B7A94B6005E23F3 /* MainViewController.swift in Sources */,
+				BA5A91152B7A94B6005E23F3 /* MainMenuViewController.swift in Sources */,
 				BA5A91172B7A954C005E23F3 /* CoffeeMenuViewController.swift in Sources */,
 				BA5A911F2B7A96C2005E23F3 /* PaymentViewController.swift in Sources */,
 				BA5A91212B7A970C005E23F3 /* ClosingViewController.swift in Sources */,
