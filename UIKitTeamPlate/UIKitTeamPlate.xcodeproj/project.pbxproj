@@ -7,20 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA5A91152B7A94B6005E23F3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A91142B7A94B6005E23F3 /* MainViewController.swift */; };
+		BA5A91172B7A954C005E23F3 /* CoffeeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A91162B7A954C005E23F3 /* CoffeeMenuViewController.swift */; };
+		BA5A91192B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A91182B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift */; };
+		BA5A911B2B7A9633005E23F3 /* AdditionalIngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A911A2B7A9633005E23F3 /* AdditionalIngredientsViewController.swift */; };
+		BA5A911D2B7A9670005E23F3 /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A911C2B7A9670005E23F3 /* OrderListViewController.swift */; };
+		BA5A911F2B7A96C2005E23F3 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A911E2B7A96C2005E23F3 /* PaymentViewController.swift */; };
+		BA5A91212B7A970C005E23F3 /* ClosingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A91202B7A970C005E23F3 /* ClosingViewController.swift */; };
 		BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */; };
 		BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C612B711B3B00D0F110 /* SceneDelegate.swift */; };
-		BA632C642B711B3B00D0F110 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C632B711B3B00D0F110 /* ViewController.swift */; };
-		BA632C672B711B3B00D0F110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA632C652B711B3B00D0F110 /* Main.storyboard */; };
+		BA632C642B711B3B00D0F110 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C632B711B3B00D0F110 /* AuthorizationViewController.swift */; };
 		BA632C692B711B3C00D0F110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA632C682B711B3C00D0F110 /* Assets.xcassets */; };
 		BA632C6C2B711B3C00D0F110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA5A91142B7A94B6005E23F3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BA5A91162B7A954C005E23F3 /* CoffeeMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeMenuViewController.swift; sourceTree = "<group>"; };
+		BA5A91182B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoastingOptionViewControllerViewController.swift; sourceTree = "<group>"; };
+		BA5A911A2B7A9633005E23F3 /* AdditionalIngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalIngredientsViewController.swift; sourceTree = "<group>"; };
+		BA5A911C2B7A9670005E23F3 /* OrderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewController.swift; sourceTree = "<group>"; };
+		BA5A911E2B7A96C2005E23F3 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		BA5A91202B7A970C005E23F3 /* ClosingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosingViewController.swift; sourceTree = "<group>"; };
 		BA632C5C2B711B3B00D0F110 /* UIKitTeamPlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitTeamPlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA632C612B711B3B00D0F110 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BA632C632B711B3B00D0F110 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BA632C662B711B3B00D0F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BA632C632B711B3B00D0F110 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		BA632C682B711B3C00D0F110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA632C6B2B711B3C00D0F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA632C6D2B711B3C00D0F110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,8 +70,14 @@
 			children = (
 				BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */,
 				BA632C612B711B3B00D0F110 /* SceneDelegate.swift */,
-				BA632C632B711B3B00D0F110 /* ViewController.swift */,
-				BA632C652B711B3B00D0F110 /* Main.storyboard */,
+				BA632C632B711B3B00D0F110 /* AuthorizationViewController.swift */,
+				BA5A91142B7A94B6005E23F3 /* MainViewController.swift */,
+				BA5A91162B7A954C005E23F3 /* CoffeeMenuViewController.swift */,
+				BA5A91182B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift */,
+				BA5A911A2B7A9633005E23F3 /* AdditionalIngredientsViewController.swift */,
+				BA5A911C2B7A9670005E23F3 /* OrderListViewController.swift */,
+				BA5A911E2B7A96C2005E23F3 /* PaymentViewController.swift */,
+				BA5A91202B7A970C005E23F3 /* ClosingViewController.swift */,
 				BA632C682B711B3C00D0F110 /* Assets.xcassets */,
 				BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */,
 				BA632C6D2B711B3C00D0F110 /* Info.plist */,
@@ -129,7 +147,6 @@
 			files = (
 				BA632C6C2B711B3C00D0F110 /* LaunchScreen.storyboard in Resources */,
 				BA632C692B711B3C00D0F110 /* Assets.xcassets in Resources */,
-				BA632C672B711B3B00D0F110 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,23 +200,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA632C642B711B3B00D0F110 /* ViewController.swift in Sources */,
+				BA632C642B711B3B00D0F110 /* AuthorizationViewController.swift in Sources */,
+				BA5A911B2B7A9633005E23F3 /* AdditionalIngredientsViewController.swift in Sources */,
+				BA5A91192B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
 				BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */,
+				BA5A91152B7A94B6005E23F3 /* MainViewController.swift in Sources */,
+				BA5A91172B7A954C005E23F3 /* CoffeeMenuViewController.swift in Sources */,
+				BA5A911F2B7A96C2005E23F3 /* PaymentViewController.swift in Sources */,
+				BA5A91212B7A970C005E23F3 /* ClosingViewController.swift in Sources */,
+				BA5A911D2B7A9670005E23F3 /* OrderListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BA632C652B711B3B00D0F110 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BA632C662B711B3B00D0F110 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -342,7 +358,6 @@
 				INFOPLIST_FILE = UIKitTeamPlate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -370,7 +385,6 @@
 				INFOPLIST_FILE = UIKitTeamPlate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
