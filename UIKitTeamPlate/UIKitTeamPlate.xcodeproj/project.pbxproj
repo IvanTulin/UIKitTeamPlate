@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */; };
 		BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C612B711B3B00D0F110 /* SceneDelegate.swift */; };
-		BA632C642B711B3B00D0F110 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C632B711B3B00D0F110 /* ViewController.swift */; };
+		BA632C642B711B3B00D0F110 /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C632B711B3B00D0F110 /* PlayListViewController.swift */; };
 		BA632C672B711B3B00D0F110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA632C652B711B3B00D0F110 /* Main.storyboard */; };
 		BA632C692B711B3C00D0F110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA632C682B711B3C00D0F110 /* Assets.xcassets */; };
 		BA632C6C2B711B3C00D0F110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */; };
+		BA7C54A22B798007001CD14C /* griby-taet-ljod.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA7C54A12B798007001CD14C /* griby-taet-ljod.mp3 */; };
+		BA7C54A42B79800E001CD14C /* niletto-ljubimka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA7C54A32B79800E001CD14C /* niletto-ljubimka.mp3 */; };
+		BA81379D2B7962BD00180811 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA81379C2B7962BD00180811 /* Color.xcassets */; };
+		BA8137A12B796CD200180811 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8137A02B796CD200180811 /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BA632C5C2B711B3B00D0F110 /* UIKitTeamPlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitTeamPlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA632C612B711B3B00D0F110 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BA632C632B711B3B00D0F110 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA632C632B711B3B00D0F110 /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewController.swift; sourceTree = "<group>"; };
 		BA632C662B711B3B00D0F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA632C682B711B3C00D0F110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA632C6B2B711B3C00D0F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA632C6D2B711B3C00D0F110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA7C54A12B798007001CD14C /* griby-taet-ljod.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "griby-taet-ljod.mp3"; sourceTree = "<group>"; };
+		BA7C54A32B79800E001CD14C /* niletto-ljubimka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "niletto-ljubimka.mp3"; sourceTree = "<group>"; };
+		BA81379C2B7962BD00180811 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		BA8137A02B796CD200180811 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +66,25 @@
 			children = (
 				BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */,
 				BA632C612B711B3B00D0F110 /* SceneDelegate.swift */,
-				BA632C632B711B3B00D0F110 /* ViewController.swift */,
+				BA632C632B711B3B00D0F110 /* PlayListViewController.swift */,
+				BA8137A02B796CD200180811 /* PlayerViewController.swift */,
+				BA7C54A02B797FE5001CD14C /* Songs */,
 				BA632C652B711B3B00D0F110 /* Main.storyboard */,
 				BA632C682B711B3C00D0F110 /* Assets.xcassets */,
+				BA81379C2B7962BD00180811 /* Color.xcassets */,
 				BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */,
 				BA632C6D2B711B3C00D0F110 /* Info.plist */,
 			);
 			path = UIKitTeamPlate;
+			sourceTree = "<group>";
+		};
+		BA7C54A02B797FE5001CD14C /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				BA7C54A12B798007001CD14C /* griby-taet-ljod.mp3 */,
+				BA7C54A32B79800E001CD14C /* niletto-ljubimka.mp3 */,
+			);
+			path = Songs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,7 +148,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA632C6C2B711B3C00D0F110 /* LaunchScreen.storyboard in Resources */,
+				BA7C54A42B79800E001CD14C /* niletto-ljubimka.mp3 in Resources */,
+				BA81379D2B7962BD00180811 /* Color.xcassets in Resources */,
 				BA632C692B711B3C00D0F110 /* Assets.xcassets in Resources */,
+				BA7C54A22B798007001CD14C /* griby-taet-ljod.mp3 in Resources */,
 				BA632C672B711B3B00D0F110 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,7 +206,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA632C642B711B3B00D0F110 /* ViewController.swift in Sources */,
+				BA632C642B711B3B00D0F110 /* PlayListViewController.swift in Sources */,
+				BA8137A12B796CD200180811 /* PlayerViewController.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
 				BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */,
 			);
