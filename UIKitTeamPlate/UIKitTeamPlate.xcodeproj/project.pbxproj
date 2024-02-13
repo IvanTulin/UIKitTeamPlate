@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA0C937C2B7BEC270057A498 /* CoffeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0C937B2B7BEC270057A498 /* CoffeeModel.swift */; };
 		BA5A91152B7A94B6005E23F3 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A91142B7A94B6005E23F3 /* MainMenuViewController.swift */; };
 		BA5A91172B7A954C005E23F3 /* CoffeeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A91162B7A954C005E23F3 /* CoffeeMenuViewController.swift */; };
 		BA5A91192B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5A91182B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA0C937B2B7BEC270057A498 /* CoffeeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeModel.swift; sourceTree = "<group>"; };
 		BA5A91142B7A94B6005E23F3 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		BA5A91162B7A954C005E23F3 /* CoffeeMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeMenuViewController.swift; sourceTree = "<group>"; };
 		BA5A91182B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoastingOptionViewControllerViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				BAC34D2E2B7B5FA400618391 /* Authorization */,
 				BAC34D332B7B873C00618391 /* Menu */,
 				BA5A91162B7A954C005E23F3 /* CoffeeMenuViewController.swift */,
+				BA0C937B2B7BEC270057A498 /* CoffeeModel.swift */,
 				BA5A91182B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift */,
 				BA5A911A2B7A9633005E23F3 /* AdditionalIngredientsViewController.swift */,
 				BA5A911C2B7A9670005E23F3 /* OrderListViewController.swift */,
@@ -248,6 +251,7 @@
 				BAC34D2C2B7B5DE200618391 /* AuthorizationView.swift in Sources */,
 				BA5A91192B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
+				BA0C937C2B7BEC270057A498 /* CoffeeModel.swift in Sources */,
 				BAC34D282B7B589A00618391 /* Label+Extension.swift in Sources */,
 				BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */,
 				BAC34D352B7B98DD00618391 /* View+Extension.swift in Sources */,

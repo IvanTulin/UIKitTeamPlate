@@ -10,7 +10,8 @@ extension UILabel {
         fontName: String,
         fontSize: CGFloat,
         frame: CGRect,
-        numberOfLines: Int = 0
+        numberOfLines: Int = 0,
+        textAlignment: NSTextAlignment = .left
     ) -> UILabel {
         let label = UILabel()
         label.text = text
@@ -18,6 +19,7 @@ extension UILabel {
         label.font = UIFont(name: fontName, size: fontSize)
         label.frame = frame
         label.numberOfLines = numberOfLines
+        label.textAlignment = textAlignment
         return label
     }
 }

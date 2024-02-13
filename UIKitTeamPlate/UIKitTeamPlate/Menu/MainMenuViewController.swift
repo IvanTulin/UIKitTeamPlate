@@ -5,7 +5,7 @@
 import UIKit
 
 /// Главный контролер с меню
-class MainMenuViewController: UIViewController {
+final class MainMenuViewController: UIViewController {
     // MARK: - Private Constants
 
     /// Логотип кофйени
@@ -67,6 +67,7 @@ class MainMenuViewController: UIViewController {
 
     // MARK: - Private Methods
 
+    /// добавляем и конфигурируем UI элементы на контроллер
     private func configure() {
         view.backgroundColor = .appBrown
         view.addSubview(logoImageView)
