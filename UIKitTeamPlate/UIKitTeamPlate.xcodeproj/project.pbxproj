@@ -19,6 +19,12 @@
 		BA632C642B711B3B00D0F110 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C632B711B3B00D0F110 /* AuthorizationViewController.swift */; };
 		BA632C692B711B3C00D0F110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA632C682B711B3C00D0F110 /* Assets.xcassets */; };
 		BA632C6C2B711B3C00D0F110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */; };
+		BAC34D252B7B50D700618391 /* ColorsCoffeeShops.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAC34D242B7B50D700618391 /* ColorsCoffeeShops.xcassets */; };
+		BAC34D282B7B589A00618391 /* Label+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC34D272B7B589A00618391 /* Label+Extension.swift */; };
+		BAC34D2C2B7B5DE200618391 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC34D2B2B7B5DE200618391 /* AuthorizationView.swift */; };
+		BAC34D302B7B605D00618391 /* TextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC34D2F2B7B605D00618391 /* TextField+Extension.swift */; };
+		BAC34D322B7B873400618391 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC34D312B7B873400618391 /* MenuView.swift */; };
+		BAC34D352B7B98DD00618391 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC34D342B7B98DD00618391 /* View+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +42,12 @@
 		BA632C682B711B3C00D0F110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA632C6B2B711B3C00D0F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA632C6D2B711B3C00D0F110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAC34D242B7B50D700618391 /* ColorsCoffeeShops.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorsCoffeeShops.xcassets; sourceTree = "<group>"; };
+		BAC34D272B7B589A00618391 /* Label+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Extension.swift"; sourceTree = "<group>"; };
+		BAC34D2B2B7B5DE200618391 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
+		BAC34D2F2B7B605D00618391 /* TextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+Extension.swift"; sourceTree = "<group>"; };
+		BAC34D312B7B873400618391 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		BAC34D342B7B98DD00618391 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,19 +82,49 @@
 			children = (
 				BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */,
 				BA632C612B711B3B00D0F110 /* SceneDelegate.swift */,
-				BA632C632B711B3B00D0F110 /* AuthorizationViewController.swift */,
-				BA5A91142B7A94B6005E23F3 /* MainMenuViewController.swift */,
+				BAC34D2E2B7B5FA400618391 /* Authorization */,
+				BAC34D332B7B873C00618391 /* Menu */,
 				BA5A91162B7A954C005E23F3 /* CoffeeMenuViewController.swift */,
 				BA5A91182B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift */,
 				BA5A911A2B7A9633005E23F3 /* AdditionalIngredientsViewController.swift */,
 				BA5A911C2B7A9670005E23F3 /* OrderListViewController.swift */,
 				BA5A911E2B7A96C2005E23F3 /* PaymentViewController.swift */,
 				BA5A91202B7A970C005E23F3 /* ClosingViewController.swift */,
+				BAC34D262B7B584C00618391 /* Extension */,
 				BA632C682B711B3C00D0F110 /* Assets.xcassets */,
+				BAC34D242B7B50D700618391 /* ColorsCoffeeShops.xcassets */,
 				BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */,
 				BA632C6D2B711B3C00D0F110 /* Info.plist */,
 			);
 			path = UIKitTeamPlate;
+			sourceTree = "<group>";
+		};
+		BAC34D262B7B584C00618391 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BAC34D272B7B589A00618391 /* Label+Extension.swift */,
+				BAC34D2F2B7B605D00618391 /* TextField+Extension.swift */,
+				BAC34D342B7B98DD00618391 /* View+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		BAC34D2E2B7B5FA400618391 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				BA632C632B711B3B00D0F110 /* AuthorizationViewController.swift */,
+				BAC34D2B2B7B5DE200618391 /* AuthorizationView.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		BAC34D332B7B873C00618391 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				BA5A91142B7A94B6005E23F3 /* MainMenuViewController.swift */,
+				BAC34D312B7B873400618391 /* MenuView.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA632C6C2B711B3C00D0F110 /* LaunchScreen.storyboard in Resources */,
+				BAC34D252B7B50D700618391 /* ColorsCoffeeShops.xcassets in Resources */,
 				BA632C692B711B3C00D0F110 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,14 +245,19 @@
 			files = (
 				BA632C642B711B3B00D0F110 /* AuthorizationViewController.swift in Sources */,
 				BA5A911B2B7A9633005E23F3 /* AdditionalIngredientsViewController.swift in Sources */,
+				BAC34D2C2B7B5DE200618391 /* AuthorizationView.swift in Sources */,
 				BA5A91192B7A95AE005E23F3 /* RoastingOptionViewControllerViewController.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
+				BAC34D282B7B589A00618391 /* Label+Extension.swift in Sources */,
 				BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */,
+				BAC34D352B7B98DD00618391 /* View+Extension.swift in Sources */,
+				BAC34D322B7B873400618391 /* MenuView.swift in Sources */,
 				BA5A91152B7A94B6005E23F3 /* MainMenuViewController.swift in Sources */,
 				BA5A91172B7A954C005E23F3 /* CoffeeMenuViewController.swift in Sources */,
 				BA5A911F2B7A96C2005E23F3 /* PaymentViewController.swift in Sources */,
 				BA5A91212B7A970C005E23F3 /* ClosingViewController.swift in Sources */,
 				BA5A911D2B7A9670005E23F3 /* OrderListViewController.swift in Sources */,
+				BAC34D302B7B605D00618391 /* TextField+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
