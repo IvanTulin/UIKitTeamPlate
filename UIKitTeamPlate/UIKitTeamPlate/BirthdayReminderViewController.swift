@@ -9,9 +9,7 @@ protocol BirthdayDelegate: AnyObject {
 
 /// Экран со списком дней рождения
 final class BirthdayReminderViewController: UIViewController {
-    // MARK: - Private Constants
-
-    private let userProfilesVC = UserProfileViewController()
+    // MARK: - Visual Components
 
     private let photoHelenaImageView: UIImageView = {
         let photoHelenaImageView = UIImageView()
@@ -181,8 +179,6 @@ final class BirthdayReminderViewController: UIViewController {
         )
     }()
 
-    // MARK: - Private Properties
-
     private var photoNewUserImageView: UIImageView = {
         let photoTomImageView = UIImageView()
         return photoTomImageView.createCustomUIImageView(
@@ -214,6 +210,10 @@ final class BirthdayReminderViewController: UIViewController {
             textAligment: .left
         )
     }()
+
+    // MARK: - Private Constants
+
+    private let userProfilesVC = UserProfileViewController()
 
     // MARK: - Life Cycle
 

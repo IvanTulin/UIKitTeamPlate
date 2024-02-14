@@ -5,9 +5,7 @@ import UIKit
 
 /// Экран создания профиля
 final class UserProfileViewController: UIViewController {
-    weak var delegate: BirthdayDelegate?
-
-    // MARK: - Private Constants
+    // MARK: - Visual Components
 
     private let profilePhotoImageView: UIImageView = {
         let profilePhotoImageView = UIImageView()
@@ -171,10 +169,6 @@ final class UserProfileViewController: UIViewController {
         return datePicker
     }()
 
-    private let gender = ["Male", "Female"]
-
-    // MARK: - Private Properties
-
     private lazy var addNewUserButton: UIButton = {
         let addButton = UIButton()
         addButton.setTitle("Add", for: .normal)
@@ -234,6 +228,14 @@ final class UserProfileViewController: UIViewController {
         return genderPicker
     }()
 
+    // MARK: - Properties
+
+    weak var delegate: BirthdayDelegate?
+
+    // MARK: - Private Constants
+
+    private let gender = ["Male", "Female"]
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -272,7 +274,7 @@ final class UserProfileViewController: UIViewController {
         view.layer.addSublayer(lineButtonTelegram)
 
         /// убираем пикеры и клавиатуру по нажатию на экран
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(removeKeyboard))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(pressedButton))
         view.addGestureRecognizer(tapGesture)
         telegramTextField.delegate = self
     }
@@ -298,7 +300,7 @@ final class UserProfileViewController: UIViewController {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
 
-        let doneButton = UIBarButtonItem(title: "ОK", style: .plain, target: self, action: #selector(closePickerView))
+        let doneButton = UIBarButtonItem(title: "ОK", style: .plain, target: self, action: #selector(pressedButton))
         let flexspace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolBar.setItems([flexspace, doneButton], animated: true)
 
@@ -310,10 +312,6 @@ final class UserProfileViewController: UIViewController {
         genderTextField.inputView = genderPicker
     }
 
-    /// закрываем PickerView
-    @objc func closePickerView() {
-        view.endEditing(true)
-    }
 
     /// передаем данных в birthdayTextField и  закрывающий DatePicker
     @objc private func transferringDataToTheTextField() {
@@ -332,7 +330,7 @@ final class UserProfileViewController: UIViewController {
     }
 
     /// убираем клавиатуру
-    @objc func removeKeyboard() {
+    @objc private func pressedButton() {
         view.endEditing(true)
     }
 

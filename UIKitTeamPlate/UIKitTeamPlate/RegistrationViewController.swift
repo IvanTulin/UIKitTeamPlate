@@ -5,7 +5,7 @@ import UIKit
 
 /// Экран регистрации
 final class RegistrationViewController: UIViewController {
-    // MARK: - Private Constants
+    // MARK: - Visual Components
 
     private let faceIDLabel: UILabel = {
         let faceIDLabel = UILabel()
