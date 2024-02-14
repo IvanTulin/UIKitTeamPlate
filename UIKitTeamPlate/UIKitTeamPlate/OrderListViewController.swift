@@ -50,6 +50,7 @@ final class OrderListViewController: UIViewController {
         return imageView
     }()
 
+    
     /// Изображение правого узора
     private let rightTraceryImageView: UIImageView = {
         let imageView = UIImageView()
