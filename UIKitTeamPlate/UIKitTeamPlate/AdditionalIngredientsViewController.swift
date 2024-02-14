@@ -181,4 +181,3 @@ final class AdditionalIngredientsViewController: UIViewController {
         dismiss(animated: true)
     }
 }
-

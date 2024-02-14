@@ -45,7 +45,7 @@ final class CoffeeMenuViewController: UIViewController {
     // MARK: - Private Properties
 
     private var coffeeItem = Coffee() {
-        didSet { setupUI() }
+        didSet { configureUI() }
     }
 
     private lazy var priceLabelText = "\(Constants.startPriceText)\(coffeeItem.fullPrice)\(Constants.endPriceText)"
