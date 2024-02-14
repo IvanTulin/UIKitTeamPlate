@@ -14,9 +14,12 @@ final class RoastingOptionViewController: UIViewController {
         static let darkRoastText = "Темная обжарка"
         static let lightRoastText = "Свѣтлая обжарка"
 
-        /// Картинки типов обжарки
+        /// Названия изображений типов обжарки
         static let darkRoastImage = "dark roast"
         static let lightRoastImage = "light roast"
+
+        /// Название изображения для кнопки "Назад"
+        static let closeImage = "close"
 
         /// Шрифты
         static let verdanaFont = "Verdana"
@@ -37,7 +40,7 @@ final class RoastingOptionViewController: UIViewController {
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 20, y: 26, width: 14, height: 14)
-        button.setImage(UIImage(named: "close"), for: .normal)
+        button.setImage(UIImage(named: Constants.closeImage), for: .normal)
         button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
         return button
     }()

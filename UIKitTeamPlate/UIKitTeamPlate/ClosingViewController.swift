@@ -4,6 +4,4 @@
 import UIKit
 
 /// Закрывающий экран
-class ClosingViewController: UIViewController {
-
-}
+class ClosingViewController: UIViewController {}

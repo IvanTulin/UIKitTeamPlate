@@ -4,7 +4,9 @@
 // Наташа
 import UIKit
 
+/// Протокол для передачи экземпляра модели Coffee между контроллерами после смены опций
 protocol TransferCoffeeOptionsDelegate: AnyObject {
+    /// Метод передачи экземпляра модели Coffee между контроллерами после смены опций
     func transferCoffeeOptions(item: Coffee)
 }
 
@@ -16,18 +18,22 @@ final class CoffeeMenuViewController: UIViewController, UIGestureRecognizerDeleg
         /// Массив заголовков для использования в сегмент контроллере
         static let coffeeTitles = ["Американо", "Капучино", "Латте"]
 
-        /// Картинки для основного изображения
+        /// Имена изображений для основного изображения
         static let americanoImage = "americano"
         static let cappuccinoImage = "cappuccino"
         static let latteImage = "latte"
 
-        /// Картинки для кнопки типа обжарки
+        /// Имена изображений для кнопки типа обжарки
         static let darkRoastImage = "dark roast"
         static let lightRoastImage = "light roast"
 
-        /// Картинки для кнопки выбора дополнительных опций
+        /// Имена изображений для кнопки выбора дополнительных опций
         static let addItemImage = "addItem"
         static let addedItemImage = "added"
+
+        /// Имена изображений для кнопок Navigation Bar
+        static let arrowImage = "arrow"
+        static let paperPlaneImage = "plane"
 
         /// Строки для текстовых лейблов
         static let modificationLabelText = "Модификация"
@@ -268,11 +274,12 @@ extension CoffeeMenuViewController: TransferCoffeeOptionsDelegate {
 
 /// Расширение создает кастомные кнопки для навигейшн бара и функции для них.
 extension CoffeeMenuViewController {
+    /// Метод создания левой кнопки
     func createLeftBarButtonItem() -> UIBarButtonItem {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         button.clipsToBounds = true
-        button.setImage(UIImage(named: "Стрелка 2"), for: .normal)
+        button.setImage(UIImage(named: Constants.arrowImage), for: .normal)
         button.layer.backgroundColor = UIColor(red: 235 / 255, green: 246 / 255, blue: 247 / 255, alpha: 1).cgColor
         button.layer.cornerRadius = 22
         button.addTarget(self, action: #selector(popBack), for: .touchUpInside)
@@ -280,20 +287,23 @@ extension CoffeeMenuViewController {
         return item
     }
 
+    /// Метод создания правой кнопки
     func createRightBarButtonItem() -> UIBarButtonItem {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         button.clipsToBounds = true
-        button.setImage(UIImage(named: "plane"), for: .normal)
+        button.setImage(UIImage(named: Constants.paperPlaneImage), for: .normal)
         button.addTarget(self, action: #selector(shareCode), for: .touchUpInside)
         let item = UIBarButtonItem(customView: button)
         return item
     }
 
+    /// Метод-таргет для левой кнопки "Назад"
     @objc private func popBack() {
         navigationController?.popViewController(animated: true)
     }
 
+    /// Метод-таргет для правой кнопки "Поделиться"
     @objc private func shareCode() {
         present(shareSheetController, animated: true)
     }

@@ -5,6 +5,4 @@
 import UIKit
 
 /// Экран счета
-class OrderListViewController: UIViewController {
-
-}
+class OrderListViewController: UIViewController {}
