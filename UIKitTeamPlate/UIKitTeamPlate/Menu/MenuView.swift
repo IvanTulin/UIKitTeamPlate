@@ -5,7 +5,7 @@ import UIKit
 
 /// Вью меню для контроллера
 class MenuView: UIView {
-    // MARK: - Private Constants
+    // MARK: - Visual Components
 
     /// вью адресов кофеен
     private let addressesCoffeeShopsView: UIView = {
@@ -77,9 +77,8 @@ class MenuView: UIView {
         )
     }()
 
-    // TODO: Finish the transition
     /// Вью для меню выбора кофе
-    private let coffeeSelectionView: UIView = {
+    let coffeeSelectionView: UIView = {
         let view = UIView()
         return view.createCustomView(
             viewBackgroundColor: .appLightBrown,

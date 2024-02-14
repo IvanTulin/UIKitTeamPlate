@@ -6,7 +6,7 @@ import UIKit
 
 /// Экран авторизации
 final class AuthorizationViewController: UIViewController {
-    // MARK: - Private Constants
+    // MARK: - Visual Components
 
     /// Логотип кофйени
     private let logoImageView: UIImageView = {
@@ -50,12 +50,27 @@ final class AuthorizationViewController: UIViewController {
         view.addSubview(logoImageView)
         view.addSubview(authorizationView)
 
-        authorizationView.loginButton.addTarget(self, action: #selector(goToMainController), for: .touchUpInside)
+        let tapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(removeKeyboard)
+        )
+        view.addGestureRecognizer(tapGestureRecognizer)
+
+        authorizationView.loginButton.addTarget(
+            self,
+            action: #selector(goToMainController),
+            for: .touchUpInside
+        )
+    }
+
+    /// Убираем клавиатуру
+    @objc private func removeKeyboard() {
+        view.endEditing(true)
     }
 
     /// переход на экран MainMenuViewController
     @objc private func goToMainController() {
         let mainVC = MainMenuViewController()
-        present(mainVC, animated: true)
+        navigationController?.present(mainVC, animated: true)
     }
 }

@@ -5,7 +5,31 @@ import UIKit
 
 /// вья авторизации для AuthorizationViewController
 final class AuthorizationView: UIView {
-    // MARK: - Properties
+    // MARK: - Constants
+    
+    /// Текстфилд логина
+    let loginTextField: UITextField = {
+        let loginTextField = UITextField()
+        return loginTextField.creatCustomTextField(
+            fontName: "Verdana",
+            fontSize: 14,
+            frame: CGRect(x: 20, y: 113, width: 175, height: 17),
+            placeholder: "Введите почту"
+        )
+    }()
+
+    /// Текстфилд пароля
+     let passwordTextField: UITextField = {
+        let loginTextField = UITextField()
+        return loginTextField.creatCustomTextField(
+            fontName: "Verdana",
+            fontSize: 14,
+            frame: CGRect(x: 20, y: 188, width: 175, height: 17),
+            placeholder: "Введите пароль"
+        )
+    }()
+    
+    // MARK: - Visual Components
 
     /// Кнопка перехода на экран MainMenuViewController
     lazy var loginButton: UIButton = {
@@ -18,8 +42,6 @@ final class AuthorizationView: UIView {
         button.layer.cornerRadius = 10
         return button
     }()
-
-    // MARK: - Private Constants
 
     /// Лейбл авторизации
     private let authorizationLabel: UILabel = {
@@ -54,30 +76,6 @@ final class AuthorizationView: UIView {
         )
     }()
 
-    /// Текстфилд логина
-    private let loginTextField: UITextField = {
-        let loginTextField = UITextField()
-        return loginTextField.creatCustomTextField(
-            fontName: "Verdana",
-            fontSize: 14,
-            frame: CGRect(x: 20, y: 113, width: 175, height: 17),
-            placeholder: "Введите почту"
-        )
-    }()
-
-    /// Текстфилд пароля
-    private let passwordTextField: UITextField = {
-        let loginTextField = UITextField()
-        return loginTextField.creatCustomTextField(
-            fontName: "Verdana",
-            fontSize: 14,
-            frame: CGRect(x: 20, y: 188, width: 175, height: 17),
-            placeholder: "Введите пароль"
-        )
-    }()
-
-    // MARK: - Private Properties
-
     /// Кнопка скрывающая пароля
     private lazy var securityButton: UIButton = {
         let button = UIButton()
@@ -95,6 +93,7 @@ final class AuthorizationView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
+        checkText()
     }
 
     @available(*, unavailable)
@@ -114,6 +113,14 @@ final class AuthorizationView: UIView {
         addSubview(securityButton)
         addSubview(loginButton)
     }
+    
+    /// Делаем проверку на пустоту текстфилдов
+    private func checkText() {
+        loginButton.isEnabled = false
+        loginButton.alpha = 0.5
+        loginTextField.addTarget(self, action: #selector(activateButton), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(activateButton), for: .editingChanged)
+    }
 
     /// скрываем/показываем пароль
     @objc private func hideText() {
@@ -123,6 +130,17 @@ final class AuthorizationView: UIView {
         } else {
             passwordTextField.isSecureTextEntry = false
             securityButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        }
+    }
+    
+    /// Активируем кнопку
+    @objc private func activateButton() {
+        if let login = loginTextField.text, let password = passwordTextField.text, !login.isEmpty, !password.isEmpty {
+            loginButton.isEnabled = true
+            loginButton.alpha = 1.0
+        } else {
+            loginButton.isEnabled = false
+            loginButton.alpha = 0.5
         }
     }
 }

@@ -6,7 +6,7 @@ import UIKit
 
 /// Главный контролер с меню
 final class MainMenuViewController: UIViewController {
-    // MARK: - Private Constants
+    // MARK: - Visual Components
 
     /// Логотип кофйени
     private let logoImageView: UIImageView = {
@@ -74,5 +74,14 @@ final class MainMenuViewController: UIViewController {
         view.addSubview(welcomeLabel)
         view.addSubview(guestButton)
         view.addSubview(menuView)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(pressedButton))
+
+        menuView.coffeeSelectionView.addGestureRecognizer(tapGesture)
+    }
+
+    /// переход на экран CoffeeMenuViewController
+    @objc private func pressedButton() {
+        let cofeeMenuVC = CoffeeMenuViewController()
+        present(cofeeMenuVC, animated: true)
     }
 }

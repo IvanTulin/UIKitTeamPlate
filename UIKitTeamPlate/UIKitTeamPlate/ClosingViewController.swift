@@ -5,7 +5,7 @@ import UIKit
 
 /// Закрывающий экран
 final class ClosingViewController: UIViewController {
-    // MARK: - Private Constants
+    // MARK: - Visual Components
 
     /// Изображение узора
     private let traceryImageView: UIImageView = {
@@ -42,8 +42,6 @@ final class ClosingViewController: UIViewController {
             textAlignment: .center
         )
     }()
-
-    // MARK: - Private Properties
 
     /// Кнопка перехода на экран ClosingViewController
     private lazy var returnMainMenuScreenButton: UIButton = {

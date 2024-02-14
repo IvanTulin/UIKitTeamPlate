@@ -6,9 +6,9 @@ import UIKit
 
 /// Контролер кофейнного меню
 class CoffeeMenuViewController: UIViewController {
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        // Do any additional setup after loading the view.
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        view.backgroundColor = .systemBlue
+    }
 }
