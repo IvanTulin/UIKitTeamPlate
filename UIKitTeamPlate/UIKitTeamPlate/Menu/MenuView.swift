@@ -5,6 +5,27 @@ import UIKit
 
 /// Вью меню для контроллера
 class MenuView: UIView {
+    // MARK: - Constants
+
+    enum Constants {
+        static let titleForAddressesCoffeeShops = "Адреса кофеен"
+        static let textForAddressesCoffeeShops = "Разрѣшите доступъ къ ​геолокаціи для поиска ближайшей кофейни"
+        static let nameImageAddressesCoffeeShops = "mappinPlace"
+        static let textForWelcomeLabel = "Добро пожаловать,\nГость"
+        static let nameFont = "Verdana"
+        static let nameFontBold = "Verdana-Bold"
+        static let nameImageForLogoMenu = "menu"
+
+        static let titleForPieSelection = "Пти пате аля «РюсЪ»"
+        static let nameImageForPieSelection = "pieImage"
+
+        static let titleForSelectionHotDrinks = "Горячiя напитки»"
+        static let nameImageForSelectionHotDrinks = "hotDrinksImage"
+
+        static let titleForCoffeeSelection = "Кофий"
+        static let nameImageForCoffeeSelection = "coffeeImage"
+    }
+
     // MARK: - Visual Components
 
     /// вью адресов кофеен
@@ -14,16 +35,16 @@ class MenuView: UIView {
             viewBackgroundColor: .appLightBlue,
             viewFrame: CGRect(x: 20, y: 40, width: 335, height: 70),
             viewCornerRadius: 20,
-            title: "Адреса кофеен",
-            titleFontName: "Verdana-Bold",
+            title: Constants.titleForAddressesCoffeeShops,
+            titleFontName: Constants.nameFontBold,
             titleFontSize: 12,
             titleFrame: CGRect(x: 15, y: 12, width: 0, height: 0),
-            text: "Разрѣшите доступъ къ ​геолокаціи для поиска ближайшей кофейни",
+            text: Constants.textForAddressesCoffeeShops,
             textColor: .systemGray,
-            textFontName: "Verdana",
+            textFontName: Constants.nameFont,
             textFontSize: 12,
             textFrame: CGRect(x: 15, y: 30, width: 260, height: 30),
-            imageName: "mappinPlace",
+            imageName: Constants.nameImageAddressesCoffeeShops,
             imageFrame: CGRect(x: 290, y: 20, width: 0, height: 0)
         )
     }()
@@ -31,7 +52,7 @@ class MenuView: UIView {
     /// Логотип меню
     private let logoMenuImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "menu")
+        imageView.image = UIImage(named: Constants.nameImageForLogoMenu)
         imageView.frame = CGRect(x: 125, y: 122, width: 0, height: 0)
         imageView.sizeToFit()
         return imageView
@@ -44,15 +65,15 @@ class MenuView: UIView {
             viewBackgroundColor: .appLightBrown,
             viewFrame: CGRect(x: 20, y: 216, width: 335, height: 80),
             viewCornerRadius: 20,
-            title: "Пти пате аля «РюсЪ»",
-            titleFontName: "Verdana-Bold",
+            title: Constants.titleForPieSelection,
+            titleFontName: Constants.nameFontBold,
             titleFontSize: 16,
             titleFrame: CGRect(x: 25, y: 30, width: 0, height: 0),
             text: nil,
             textFontName: nil,
             textFontSize: nil,
             textFrame: nil,
-            imageName: "pieImage",
+            imageName: Constants.nameImageForPieSelection,
             imageFrame: CGRect(x: 252, y: 5, width: 0, height: 0)
         )
     }()
@@ -64,15 +85,15 @@ class MenuView: UIView {
             viewBackgroundColor: .appLightBrown,
             viewFrame: CGRect(x: 20, y: 316, width: 335, height: 80),
             viewCornerRadius: 20,
-            title: "Горячiя напитки»",
-            titleFontName: "Verdana-Bold",
+            title: Constants.titleForSelectionHotDrinks,
+            titleFontName: Constants.nameFontBold,
             titleFontSize: 16,
             titleFrame: CGRect(x: 25, y: 30, width: 0, height: 0),
             text: nil,
             textFontName: nil,
             textFontSize: nil,
             textFrame: nil,
-            imageName: "hotDrinksImage",
+            imageName: Constants.nameImageForSelectionHotDrinks,
             imageFrame: CGRect(x: 252, y: 20, width: 0, height: 0)
         )
     }()
@@ -84,15 +105,15 @@ class MenuView: UIView {
             viewBackgroundColor: .appLightBrown,
             viewFrame: CGRect(x: 20, y: 416, width: 335, height: 80),
             viewCornerRadius: 20,
-            title: "Кофий",
-            titleFontName: "Verdana-Bold",
+            title: Constants.titleForCoffeeSelection,
+            titleFontName: Constants.nameFontBold,
             titleFontSize: 16,
             titleFrame: CGRect(x: 25, y: 30, width: 0, height: 0),
             text: nil,
             textFontName: nil,
             textFontSize: nil,
             textFrame: nil,
-            imageName: "coffeeImage",
+            imageName: Constants.nameImageForCoffeeSelection,
             imageFrame: CGRect(x: 252, y: 5, width: 0, height: 0)
         )
     }()

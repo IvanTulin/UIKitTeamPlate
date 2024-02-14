@@ -6,12 +6,18 @@ import UIKit
 
 /// Экран авторизации
 final class AuthorizationViewController: UIViewController {
+    // MARK: - Constants
+
+    enum Constants {
+        static let imageNameLogo = "КофеиновЪ"
+    }
+
     // MARK: - Visual Components
 
     /// Логотип кофйени
     private let logoImageView: UIImageView = {
         let logoImageView = UIImageView()
-        logoImageView.image = UIImage(named: "КофеиновЪ")
+        logoImageView.image = UIImage(named: Constants.imageNameLogo)
         logoImageView.frame = CGRect(x: 100, y: 103, width: 0, height: 0)
         logoImageView.sizeToFit()
         return logoImageView

@@ -6,12 +6,22 @@ import UIKit
 
 /// Главный контролер с меню
 final class MainMenuViewController: UIViewController {
+    // MARK: - Constants
+
+    enum Constants {
+        static let nameImageForlogo = "КофеиновЪ"
+        static let textForWelcomeLabel = "Добро пожаловать,\nГость"
+        static let nameFont = "Verdana"
+        static let nameFontBold = "Verdana-Bold"
+        static let titleForGuestButton = "Г"
+    }
+
     // MARK: - Visual Components
 
     /// Логотип кофйени
     private let logoImageView: UIImageView = {
         let logoImageView = UIImageView()
-        logoImageView.image = UIImage(named: "КофеиновЪ")
+        logoImageView.image = UIImage(named: Constants.nameImageForlogo)
         logoImageView.frame = CGRect(x: 100, y: 49, width: 0, height: 0)
         logoImageView.sizeToFit()
         return logoImageView
@@ -21,9 +31,9 @@ final class MainMenuViewController: UIViewController {
     private let welcomeLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "Добро пожаловать,\nГость",
+            text: Constants.textForWelcomeLabel,
             color: .systemGray4,
-            fontName: "Verdana-Bold",
+            fontName: Constants.nameFontBold,
             fontSize: 16,
             frame: CGRect(x: 20, y: 147, width: 185, height: 44)
         )
@@ -32,8 +42,11 @@ final class MainMenuViewController: UIViewController {
     /// Кнопка-лейбл гостя
     private let guestButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Г", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 16)
+        button.setTitle(Constants.titleForGuestButton, for: .normal)
+        button.titleLabel?.font = UIFont(
+            name: Constants.nameFontBold,
+            size: 16
+        )
         button.backgroundColor = .appTurquoise
         button.frame = CGRect(x: 311, y: 147, width: 44, height: 44)
         button.layer.cornerRadius = 22
@@ -80,7 +93,6 @@ final class MainMenuViewController: UIViewController {
 
     /// переход на экран CoffeeMenuViewController
     @objc private func pressedButton() {
-        print("go to coffee vc")
         let cofeeMenuVC = CoffeeMenuViewController()
         navigationController?.pushViewController(cofeeMenuVC, animated: true)
     }

@@ -4,6 +4,12 @@
 // Иван
 import UIKit
 
+/// Переход на корневой контроллер
+protocol Rootable: AnyObject {
+    /// Уведомление, что контроллер только что был закртыт
+    func didDismissModal()
+}
+
 /// Экран счета
 final class OrderListViewController: UIViewController {
     // MARK: - Visual Components
@@ -283,11 +289,21 @@ final class OrderListViewController: UIViewController {
     /// Создаем переход на экран спасибо
     @objc private func buttonPressed() {
         let closingVC = ClosingViewController()
-        navigationController?.pushViewController(closingVC, animated: true)
+        // navigationController?.pushViewController(closingVC, animated: true)
+        closingVC.delegate = self
+        closingVC.modalPresentationStyle = .fullScreen
+        present(closingVC, animated: true)
     }
 
     /// вернуться на экран меню кофе
     @objc private func exitOrderController() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+/// Расширение, реализующее возврат в корневой контроллер
+extension OrderListViewController: Rootable {
+    func didDismissModal() {
+        navigationController?.popToRootViewController(animated: true)
     }
 }

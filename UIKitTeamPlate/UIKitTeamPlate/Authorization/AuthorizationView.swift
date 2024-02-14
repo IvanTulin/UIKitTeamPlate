@@ -7,14 +7,29 @@ import UIKit
 final class AuthorizationView: UIView {
     // MARK: - Constants
 
+    enum Constants {
+        static let nameFont = "Verdana"
+        static let nameFontBold = "Verdana-Bold"
+        static let namePlaceholderLogin = "Введите почту"
+        static let namePlaceholderPassword = "Введите парол"
+        static let titleButton = "Войти"
+        static let textForLabelAuthorization = "Авторизация"
+        static let textForLoginLabel = "Логин"
+        static let textForPasswordLabel = "Пароль"
+        static let nameImageSecurityButton = "eye"
+        static let nameImageSlashSecurityButton = "eye.slash.fill"
+    }
+
+    // MARK: - Visual Components
+
     /// Текстфилд логина
     let loginTextField: UITextField = {
         let loginTextField = UITextField()
         return loginTextField.creatCustomTextField(
-            fontName: "Verdana",
+            fontName: Constants.nameFont,
             fontSize: 14,
             frame: CGRect(x: 20, y: 113, width: 175, height: 17),
-            placeholder: "Введите почту"
+            placeholder: Constants.namePlaceholderLogin
         )
     }()
 
@@ -22,20 +37,21 @@ final class AuthorizationView: UIView {
     let passwordTextField: UITextField = {
         let loginTextField = UITextField()
         return loginTextField.creatCustomTextField(
-            fontName: "Verdana",
+            fontName: Constants.nameFont,
             fontSize: 14,
             frame: CGRect(x: 20, y: 188, width: 175, height: 17),
-            placeholder: "Введите пароль"
+            placeholder: Constants.namePlaceholderPassword
         )
     }()
-
-    // MARK: - Visual Components
 
     /// Кнопка перехода на экран MainMenuViewController
     lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Войти", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 16)
+        button.setTitle(Constants.titleButton, for: .normal)
+        button.titleLabel?.font = UIFont(
+            name: Constants.nameFontBold,
+            size: 16
+        )
         button.tintColor = .white
         button.backgroundColor = .appTurquoise
         button.frame = CGRect(x: 20, y: 416, width: 335, height: 44)
@@ -47,8 +63,8 @@ final class AuthorizationView: UIView {
     private let authorizationLabel: UILabel = {
         let authorizationLabel = UILabel()
         return authorizationLabel.createCustomLabel(
-            text: "Авторизация",
-            fontName: "Verdana-Bold",
+            text: Constants.textForLabelAuthorization,
+            fontName: Constants.nameFontBold,
             fontSize: 26,
             frame: CGRect(x: 20, y: 32, width: 195, height: 31)
         )
@@ -58,8 +74,8 @@ final class AuthorizationView: UIView {
     private let loginLabel: UILabel = {
         let loginLabel = UILabel()
         return loginLabel.createCustomLabel(
-            text: "Логин",
-            fontName: "Verdana-Bold",
+            text: Constants.textForLoginLabel,
+            fontName: Constants.nameFontBold,
             fontSize: 16,
             frame: CGRect(x: 20, y: 84, width: 175, height: 19)
         )
@@ -69,8 +85,8 @@ final class AuthorizationView: UIView {
     private let passwordLabel: UILabel = {
         let passwordLabel = UILabel()
         return passwordLabel.createCustomLabel(
-            text: "Пароль",
-            fontName: "Verdana-Bold",
+            text: Constants.textForPasswordLabel,
+            fontName: Constants.nameFontBold,
             fontSize: 16,
             frame: CGRect(x: 20, y: 159, width: 175, height: 19)
         )
@@ -79,7 +95,7 @@ final class AuthorizationView: UIView {
     /// Кнопка скрывающая пароля
     private lazy var securityButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "eye"), for: .normal)
+        button.setImage(UIImage(systemName: Constants.nameImageSecurityButton), for: .normal)
         button.frame = CGRect(x: 333, y: 185, width: 0, height: 0)
         button.tintColor = .systemGray4
         button.sizeToFit()
@@ -126,10 +142,15 @@ final class AuthorizationView: UIView {
     @objc private func hideText() {
         if passwordTextField.isSecureTextEntry == false {
             passwordTextField.isSecureTextEntry = true
-            securityButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+            securityButton.setImage(
+                UIImage(
+                    systemName: Constants.nameImageSlashSecurityButton
+                ),
+                for: .normal
+            )
         } else {
             passwordTextField.isSecureTextEntry = false
-            securityButton.setImage(UIImage(systemName: "eye"), for: .normal)
+            securityButton.setImage(UIImage(systemName: Constants.nameImageSecurityButton), for: .normal)
         }
     }
 
