@@ -15,17 +15,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         let authorizationVC = AuthorizationViewController()
-        let mainMenu = MainMenuViewController()
-
-        let navigationVC = UINavigationController(rootViewController: mainMenu)
         window.rootViewController = authorizationVC
         self.window = window
         window.makeKeyAndVisible()
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene
-        // `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see
-        // `application:configurationForConnectingSceneSession` instead).
+        
     }
 
     func sceneDidDisconnect(_: UIScene) {
@@ -57,3 +50,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 }
+
+// или
+
+// navigationController?.popViewController(animated: true)
+//        if let viewControllers = navigationController?.viewControllers {
+//            for viewController in viewControllers {
+//                if let mainMenuVC = viewController as? MainMenuViewController {
+//                    navigationController?.popToViewController(mainMenuVC, animated: true)
+//                }
+//            }
+//        }

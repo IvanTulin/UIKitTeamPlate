@@ -101,16 +101,5 @@ final class ClosingViewController: UIViewController {
     @objc private func buttonPressed() {
         delegate?.didDismissModal()
         dismiss(animated: false)
-
-        // или
-
-        // navigationController?.popViewController(animated: true)
-//        if let viewControllers = navigationController?.viewControllers {
-//            for viewController in viewControllers {
-//                if let mainMenuVC = viewController as? MainMenuViewController {
-//                    navigationController?.popToViewController(mainMenuVC, animated: true)
-//                }
-//            }
-//        }
     }
 }

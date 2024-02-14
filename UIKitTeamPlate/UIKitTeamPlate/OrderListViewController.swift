@@ -12,12 +12,39 @@ protocol Rootable: AnyObject {
 
 /// Экран счета
 final class OrderListViewController: UIViewController {
+    // MARK: - Constants
+
+    enum Constants {
+        static let nameForLeftTraceryImage = "leftTraceryImage"
+        static let nameForRightTraceryImage = "rightTraceryImage"
+        static let nameFont = "Verdana"
+        static let nameFontBold = "Verdana-Bold"
+        static let titleForYourOrderLabel = "Вашъ Заказъ"
+        static let nameImageForBottomTracery = "bottomTraceryImage"
+        static let titleForPaymentButton = "Оплатить"
+        static let nameImageForExitButton = "cross"
+
+        static let textForNameCoffee = "Название кофе"
+        static let textForCostCoffee = "0 руб"
+        static let textForMilkIndgredient = "Молоко"
+        static let textForCostMilkLabel = "0 руб"
+        static let textForSyrupIndgredient = "Сироп"
+        static let textForCostSyrup = "0 руб"
+        static let textForSoyMilkIndgredient = "Молоко соевое"
+        static let textForCostSoyMilk = "0 руб"
+        static let textForAlmondMilkIndgredient = "Молоко миндальное"
+        static let textForCostAlmondMilkLabel = "0 руб"
+        static let textForEspressoIndgredient = "Эспрессо"
+        static let textForCostEspresso = "0 руб"
+        static let textForResultCostLabel = "Цѣна - 0 руб"
+    }
+
     // MARK: - Visual Components
 
     /// Изображение левого узора
     private let leftTraceryImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "leftTraceryImage")
+        imageView.image = UIImage(named: Constants.nameForLeftTraceryImage)
         imageView.frame = CGRect(x: 20, y: 48, width: 0, height: 0)
         imageView.sizeToFit()
         return imageView
@@ -26,7 +53,7 @@ final class OrderListViewController: UIViewController {
     /// Изображение правого узора
     private let rightTraceryImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "rightTraceryImage")
+        imageView.image = UIImage(named: Constants.nameForRightTraceryImage)
         imageView.frame = CGRect(x: 260, y: 48, width: 0, height: 0)
         imageView.sizeToFit()
         return imageView
@@ -36,9 +63,9 @@ final class OrderListViewController: UIViewController {
     private let yourOrderLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "Вашъ Заказъ",
+            text: Constants.titleForYourOrderLabel,
             color: .black,
-            fontName: "Verdana-Bold",
+            fontName: Constants.nameFontBold,
             fontSize: 18,
             frame: CGRect(x: 120, y: 100, width: 140, height: 30)
         )
@@ -47,7 +74,7 @@ final class OrderListViewController: UIViewController {
     /// Узор под итоговой ценой
     private let bottomTraceryImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "bottomTraceryImage")
+        imageView.image = UIImage(named: Constants.nameImageForBottomTracery)
         imageView.frame = CGRect(x: 145, y: 472, width: 0, height: 0)
         imageView.sizeToFit()
         return imageView
@@ -56,8 +83,11 @@ final class OrderListViewController: UIViewController {
     /// Кнопка перехода на экран ClosingViewController
     private lazy var paymentButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Оплатить", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 16)
+        button.setTitle(Constants.titleForPaymentButton, for: .normal)
+        button.titleLabel?.font = UIFont(
+            name: Constants.nameFontBold,
+            size: 16
+        )
         button.tintColor = .white
         button.backgroundColor = .appTurquoise
         button.frame = CGRect(x: 20, y: 632, width: 345, height: 53)
@@ -72,7 +102,7 @@ final class OrderListViewController: UIViewController {
 
     private lazy var exitButton: UIButton = {
         let exitButton = UIButton()
-        exitButton.setImage(UIImage(named: "cross"), for: .normal)
+        exitButton.setImage(UIImage(named: Constants.nameImageForExitButton), for: .normal)
         exitButton.tintColor = .black
         exitButton.addTarget(
             self,
@@ -88,9 +118,9 @@ final class OrderListViewController: UIViewController {
     var nameCoffeeLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "Название кофе",
+            text: Constants.textForNameCoffee,
             color: .black,
-            fontName: "Verdana-Bold",
+            fontName: Constants.nameFontBold,
             fontSize: 16,
             frame: CGRect(x: 20, y: 155, width: 150, height: 30)
         )
@@ -100,9 +130,9 @@ final class OrderListViewController: UIViewController {
     var costCoffeeLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "0 руб",
+            text: Constants.textForCostCoffee,
             color: .black,
-            fontName: "Verdana-Bold",
+            fontName: Constants.nameFontBold,
             fontSize: 16,
             frame: CGRect(x: 215, y: 155, width: 150, height: 30),
             textAlignment: .right
@@ -113,9 +143,9 @@ final class OrderListViewController: UIViewController {
     var milkIndgredientLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "Молоко",
+            text: Constants.textForMilkIndgredient,
             color: .black,
-            fontName: "Verdana",
+            fontName: Constants.nameFont,
             fontSize: 16,
             frame: CGRect(x: 20, y: 191, width: 150, height: 30)
         )
@@ -125,9 +155,9 @@ final class OrderListViewController: UIViewController {
     var costMilkLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "0 руб",
+            text: Constants.textForCostMilkLabel,
             color: .black,
-            fontName: "Verdana",
+            fontName: Constants.nameFont,
             fontSize: 16,
             frame: CGRect(x: 215, y: 191, width: 150, height: 30),
             textAlignment: .right
@@ -138,9 +168,9 @@ final class OrderListViewController: UIViewController {
     var syrupIndgredientLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "Сироп",
+            text: Constants.textForSyrupIndgredient,
             color: .black,
-            fontName: "Verdana",
+            fontName: Constants.nameFont,
             fontSize: 16,
             frame: CGRect(x: 20, y: 227, width: 150, height: 30)
         )
@@ -150,9 +180,9 @@ final class OrderListViewController: UIViewController {
     var costSyrupLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "0 руб",
+            text: Constants.textForCostSyrup,
             color: .black,
-            fontName: "Verdana",
+            fontName: Constants.nameFont,
             fontSize: 16,
             frame: CGRect(x: 215, y: 227, width: 150, height: 30),
             textAlignment: .right
@@ -163,9 +193,9 @@ final class OrderListViewController: UIViewController {
     var soyMilkIndgredientLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "Молоко соевое",
+            text: Constants.textForSoyMilkIndgredient,
             color: .black,
-            fontName: "Verdana",
+            fontName: Constants.nameFont,
             fontSize: 16,
             frame: CGRect(x: 20, y: 263, width: 150, height: 30)
         )
@@ -175,9 +205,9 @@ final class OrderListViewController: UIViewController {
     var costSoyMilkLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "0 руб",
+            text: Constants.textForCostSoyMilk,
             color: .black,
-            fontName: "Verdana",
+            fontName: Constants.nameFont,
             fontSize: 16,
             frame: CGRect(x: 215, y: 263, width: 150, height: 30),
             textAlignment: .right
@@ -188,9 +218,9 @@ final class OrderListViewController: UIViewController {
     var almondMilkIndgredientLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "Молоко миндальное",
+            text: Constants.textForAlmondMilkIndgredient,
             color: .black,
-            fontName: "Verdana",
+            fontName: Constants.nameFont,
             fontSize: 16,
             frame: CGRect(x: 20, y: 299, width: 170, height: 30)
         )
@@ -200,9 +230,9 @@ final class OrderListViewController: UIViewController {
     var costAlmondMilkLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "0 руб",
+            text: Constants.textForCostAlmondMilkLabel,
             color: .black,
-            fontName: "Verdana",
+            fontName: Constants.nameFont,
             fontSize: 16,
             frame: CGRect(x: 215, y: 299, width: 150, height: 30),
             textAlignment: .right
@@ -213,9 +243,9 @@ final class OrderListViewController: UIViewController {
     var espressoIndgredientLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "Эспрессо",
+            text: Constants.textForEspressoIndgredient,
             color: .black,
-            fontName: "Verdana",
+            fontName: Constants.nameFont,
             fontSize: 16,
             frame: CGRect(x: 20, y: 335, width: 150, height: 30)
         )
@@ -225,9 +255,9 @@ final class OrderListViewController: UIViewController {
     var costEspressoLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "0 руб",
+            text: Constants.textForCostEspresso,
             color: .black,
-            fontName: "Verdana",
+            fontName: Constants.nameFont,
             fontSize: 16,
             frame: CGRect(x: 215, y: 335, width: 150, height: 30),
             textAlignment: .right
@@ -238,8 +268,8 @@ final class OrderListViewController: UIViewController {
     var resultCostLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
-            text: "Цѣна - 0 руб",
-            fontName: "Verdana-Bold",
+            text: Constants.textForResultCostLabel,
+            fontName: Constants.nameFontBold,
             fontSize: 18,
             frame: CGRect(x: 80, y: 433, width: 231, height: 30),
             textAlignment: .center
