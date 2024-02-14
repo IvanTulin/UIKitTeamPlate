@@ -6,7 +6,7 @@ import UIKit
 /// вья авторизации для AuthorizationViewController
 final class AuthorizationView: UIView {
     // MARK: - Constants
-    
+
     /// Текстфилд логина
     let loginTextField: UITextField = {
         let loginTextField = UITextField()
@@ -19,7 +19,7 @@ final class AuthorizationView: UIView {
     }()
 
     /// Текстфилд пароля
-     let passwordTextField: UITextField = {
+    let passwordTextField: UITextField = {
         let loginTextField = UITextField()
         return loginTextField.creatCustomTextField(
             fontName: "Verdana",
@@ -28,7 +28,7 @@ final class AuthorizationView: UIView {
             placeholder: "Введите пароль"
         )
     }()
-    
+
     // MARK: - Visual Components
 
     /// Кнопка перехода на экран MainMenuViewController
@@ -113,7 +113,7 @@ final class AuthorizationView: UIView {
         addSubview(securityButton)
         addSubview(loginButton)
     }
-    
+
     /// Делаем проверку на пустоту текстфилдов
     private func checkText() {
         loginButton.isEnabled = false
@@ -132,7 +132,7 @@ final class AuthorizationView: UIView {
             securityButton.setImage(UIImage(systemName: "eye"), for: .normal)
         }
     }
-    
+
     /// Активируем кнопку
     @objc private func activateButton() {
         if let login = loginTextField.text, let password = passwordTextField.text, !login.isEmpty, !password.isEmpty {

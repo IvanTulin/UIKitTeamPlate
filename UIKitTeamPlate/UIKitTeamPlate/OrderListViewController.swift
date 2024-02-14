@@ -63,6 +63,18 @@ final class OrderListViewController: UIViewController {
         )
         return button
     }()
+    
+    private lazy var exitButton: UIButton = {
+        let exitButton = UIButton()
+        exitButton.setImage(UIImage(named: "cross"), for: .normal)
+        exitButton.tintColor = .black
+        exitButton.addTarget(
+            self,
+            action: #selector(exitOrderController),
+            for: .touchUpInside
+        )
+        return exitButton
+    }()
 
     // MARK: - Properties
 
@@ -262,6 +274,9 @@ final class OrderListViewController: UIViewController {
         view.addSubview(resultCostLabel)
         view.addSubview(bottomTraceryImageView)
         view.addSubview(paymentButton)
+
+        let buttomItem = UIBarButtonItem(customView: exitButton)
+        navigationItem.leftBarButtonItem = buttomItem
     }
 
     /// Создаем переход на экран спасибо
@@ -269,5 +284,10 @@ final class OrderListViewController: UIViewController {
         let closingVC = ClosingViewController()
         closingVC.modalPresentationStyle = .fullScreen
         present(closingVC, animated: true)
+    }
+
+    /// вернуться на экран меню кофе
+    @objc private func exitOrderController() {
+        navigationController?.popViewController(animated: true)
     }
 }

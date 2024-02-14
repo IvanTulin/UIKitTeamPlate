@@ -97,6 +97,15 @@ class MenuView: UIView {
         )
     }()
 
+    let switchCoffeeMenu: UIButton = {
+        let button = UIButton()
+        button.frame = CGRect(x: 20, y: 416, width: 335, height: 80)
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.red.cgColor
+        return button
+    }()
+
     // MARK: - Life Cycle
 
     override init(frame: CGRect) {
@@ -117,5 +126,6 @@ class MenuView: UIView {
         addSubview(pieSelectionView)
         addSubview(viewOfTheSelectionHotDrinks)
         addSubview(coffeeSelectionView)
+        addSubview(switchCoffeeMenu)
     }
 }

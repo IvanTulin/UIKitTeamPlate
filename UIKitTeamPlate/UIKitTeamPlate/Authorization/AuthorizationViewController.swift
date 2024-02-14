@@ -70,7 +70,11 @@ final class AuthorizationViewController: UIViewController {
 
     /// переход на экран MainMenuViewController
     @objc private func goToMainController() {
-        let mainVC = MainMenuViewController()
-        navigationController?.present(mainVC, animated: true)
+        let mainMenuVC = MainMenuViewController()
+        let navigationVC = UINavigationController(
+            rootViewController: mainMenuVC
+        )
+        navigationVC.modalPresentationStyle = .fullScreen
+        present(navigationVC, animated: true)
     }
 }

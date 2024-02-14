@@ -81,7 +81,8 @@ final class ClosingViewController: UIViewController {
     // TODO: Finish the transition
     /// возврат на экран MainMenuViewController
     @objc private func buttonPressed() {
+        print("go to main")
         let mainMenuVC = MainMenuViewController()
-        present(mainMenuVC, animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }

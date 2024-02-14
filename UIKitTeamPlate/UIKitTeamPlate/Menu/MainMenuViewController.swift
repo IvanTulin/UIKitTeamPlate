@@ -74,14 +74,14 @@ final class MainMenuViewController: UIViewController {
         view.addSubview(welcomeLabel)
         view.addSubview(guestButton)
         view.addSubview(menuView)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(pressedButton))
 
-        menuView.coffeeSelectionView.addGestureRecognizer(tapGesture)
+        menuView.switchCoffeeMenu.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
     }
 
     /// переход на экран CoffeeMenuViewController
     @objc private func pressedButton() {
+        print("go to coffee vc")
         let cofeeMenuVC = CoffeeMenuViewController()
-        present(cofeeMenuVC, animated: true)
+        navigationController?.pushViewController(cofeeMenuVC, animated: true)
     }
 }
