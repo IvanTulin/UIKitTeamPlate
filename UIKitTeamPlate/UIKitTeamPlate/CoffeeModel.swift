@@ -8,7 +8,7 @@ struct Coffee {
     /// Перечисление с типами обжарки
     enum RoastingOption: String {
         case dark = "Темная обжарка"
-        case light = "Светлая обжарка"
+        case light = "Свѣтлая обжарка"
     }
 
     /// Перечисление с типами кофе
@@ -18,7 +18,11 @@ struct Coffee {
         case latte = "Латте"
     }
 
+    /// Перечисление с ценами стандартными и дополнительных опций
     enum CoffeePrice {
+        static let standardAmericano = 100
+        static let standardCapuccino = 200
+        static let standardLatte = 300
         static let milk = 50
         static let syrup = 20
         static let soyaMilk = 50
@@ -44,11 +48,11 @@ struct Coffee {
     var standardPrice: Int {
         switch coffeeType {
         case .americano:
-            100
+            CoffeePrice.standardAmericano
         case .cappuccino:
-            200
+            CoffeePrice.standardCapuccino
         case .latte:
-            300
+            CoffeePrice.standardLatte
         }
     }
 
