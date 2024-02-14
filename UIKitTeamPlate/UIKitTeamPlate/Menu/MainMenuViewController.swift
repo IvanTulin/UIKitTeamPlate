@@ -4,21 +4,19 @@
 // Иван
 import UIKit
 
-/// Главный контролер с меню
+/// Экран меню
 final class MainMenuViewController: UIViewController {
     // MARK: - Constants
 
     enum Constants {
         static let nameImageForlogo = "КофеиновЪ"
         static let textForWelcomeLabel = "Добро пожаловать,\nГость"
-        static let nameFont = "Verdana"
         static let nameFontBold = "Verdana-Bold"
         static let titleForGuestButton = "Г"
     }
 
     // MARK: - Visual Components
 
-    /// Логотип кофйени
     private let logoImageView: UIImageView = {
         let logoImageView = UIImageView()
         logoImageView.image = UIImage(named: Constants.nameImageForlogo)
@@ -27,7 +25,6 @@ final class MainMenuViewController: UIViewController {
         return logoImageView
     }()
 
-    /// Лейбл приветствия
     private let welcomeLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
@@ -39,7 +36,6 @@ final class MainMenuViewController: UIViewController {
         )
     }()
 
-    /// Кнопка-лейбл гостя
     private let guestButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.titleForGuestButton, for: .normal)
@@ -53,7 +49,6 @@ final class MainMenuViewController: UIViewController {
         return button
     }()
 
-    /// Вью для меню
     private let menuView: MenuView = {
         let view = MenuView()
         view.frame = CGRect(

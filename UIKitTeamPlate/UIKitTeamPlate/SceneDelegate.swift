@@ -14,11 +14,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let authorizationVC = AuthorizationViewController()
-        window.rootViewController = authorizationVC
+        let authorizationViewController = AuthorizationViewController()
+        window.rootViewController = authorizationViewController
         self.window = window
         window.makeKeyAndVisible()
-        
     }
 
     func sceneDidDisconnect(_: UIScene) {
@@ -51,13 +50,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
-// или
-
-// navigationController?.popViewController(animated: true)
-//        if let viewControllers = navigationController?.viewControllers {
-//            for viewController in viewControllers {
-//                if let mainMenuVC = viewController as? MainMenuViewController {
-//                    navigationController?.popToViewController(mainMenuVC, animated: true)
-//                }
-//            }
-//        }

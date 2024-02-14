@@ -9,21 +9,19 @@ final class AuthorizationViewController: UIViewController {
     // MARK: - Constants
 
     enum Constants {
-        static let imageNameLogo = "КофеиновЪ"
+        static let imageLogoName = "КофеиновЪ"
     }
 
     // MARK: - Visual Components
 
-    /// Логотип кофйени
     private let logoImageView: UIImageView = {
         let logoImageView = UIImageView()
-        logoImageView.image = UIImage(named: Constants.imageNameLogo)
+        logoImageView.image = UIImage(named: Constants.imageLogoName)
         logoImageView.frame = CGRect(x: 100, y: 103, width: 0, height: 0)
         logoImageView.sizeToFit()
         return logoImageView
     }()
 
-    /// Вью авторизации
     private let authorizationView: AuthorizationView = {
         let authorizationView = AuthorizationView()
         authorizationView.frame = CGRect(
@@ -64,7 +62,7 @@ final class AuthorizationViewController: UIViewController {
 
         authorizationView.loginButton.addTarget(
             self,
-            action: #selector(goToMainController),
+            action: #selector(showMainMenuViewController),
             for: .touchUpInside
         )
     }
@@ -75,12 +73,12 @@ final class AuthorizationViewController: UIViewController {
     }
 
     /// переход на экран MainMenuViewController
-    @objc private func goToMainController() {
-        let mainMenuVC = MainMenuViewController()
-        let navigationVC = UINavigationController(
-            rootViewController: mainMenuVC
+    @objc private func showMainMenuViewController() {
+        let mainMenuViewController = MainMenuViewController()
+        let navigationViewController = UINavigationController(
+            rootViewController: mainMenuViewController
         )
-        navigationVC.modalPresentationStyle = .fullScreen
-        present(navigationVC, animated: true)
+        navigationViewController.modalPresentationStyle = .fullScreen
+        present(navigationViewController, animated: true)
     }
 }

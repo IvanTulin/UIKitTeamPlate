@@ -3,12 +3,12 @@
 
 import UIKit
 
-/// вья авторизации для AuthorizationViewController
+/// Вью авторизации для AuthorizationViewController
 final class AuthorizationView: UIView {
     // MARK: - Constants
 
     enum Constants {
-        static let nameFont = "Verdana"
+        static let nameFontName = "Verdana"
         static let nameFontBold = "Verdana-Bold"
         static let namePlaceholderLogin = "Введите почту"
         static let namePlaceholderPassword = "Введите парол"
@@ -22,29 +22,26 @@ final class AuthorizationView: UIView {
 
     // MARK: - Visual Components
 
-    /// Текстфилд логина
     let loginTextField: UITextField = {
         let loginTextField = UITextField()
         return loginTextField.creatCustomTextField(
-            fontName: Constants.nameFont,
+            fontName: Constants.nameFontName,
             fontSize: 14,
             frame: CGRect(x: 20, y: 113, width: 175, height: 17),
             placeholder: Constants.namePlaceholderLogin
         )
     }()
 
-    /// Текстфилд пароля
     let passwordTextField: UITextField = {
         let loginTextField = UITextField()
         return loginTextField.creatCustomTextField(
-            fontName: Constants.nameFont,
+            fontName: Constants.nameFontName,
             fontSize: 14,
             frame: CGRect(x: 20, y: 188, width: 175, height: 17),
             placeholder: Constants.namePlaceholderPassword
         )
     }()
 
-    /// Кнопка перехода на экран MainMenuViewController
     lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.titleButton, for: .normal)
@@ -59,7 +56,6 @@ final class AuthorizationView: UIView {
         return button
     }()
 
-    /// Лейбл авторизации
     private let authorizationLabel: UILabel = {
         let authorizationLabel = UILabel()
         return authorizationLabel.createCustomLabel(
@@ -70,7 +66,6 @@ final class AuthorizationView: UIView {
         )
     }()
 
-    /// Лейбл логина
     private let loginLabel: UILabel = {
         let loginLabel = UILabel()
         return loginLabel.createCustomLabel(
@@ -81,7 +76,6 @@ final class AuthorizationView: UIView {
         )
     }()
 
-    /// Лейбл пароля
     private let passwordLabel: UILabel = {
         let passwordLabel = UILabel()
         return passwordLabel.createCustomLabel(
@@ -92,7 +86,6 @@ final class AuthorizationView: UIView {
         )
     }()
 
-    /// Кнопка скрывающая пароля
     private lazy var securityButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: Constants.nameImageSecurityButton), for: .normal)

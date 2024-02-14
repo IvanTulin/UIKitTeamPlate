@@ -5,7 +5,7 @@
 import UIKit
 
 /// Переход на корневой контроллер
-protocol Rootable: AnyObject {
+protocol RootableDelegate: AnyObject {
     /// Уведомление, что контроллер только что был закртыт
     func didDismissModal()
 }
@@ -17,7 +17,7 @@ final class OrderListViewController: UIViewController {
     enum Constants {
         static let nameForLeftTraceryImage = "leftTraceryImage"
         static let nameForRightTraceryImage = "rightTraceryImage"
-        static let nameFont = "Verdana"
+        static let nameFontName = "Verdana"
         static let nameFontBold = "Verdana-Bold"
         static let titleForYourOrderLabel = "Вашъ Заказъ"
         static let nameImageForBottomTracery = "bottomTraceryImage"
@@ -41,7 +41,6 @@ final class OrderListViewController: UIViewController {
 
     // MARK: - Visual Components
 
-    /// Изображение левого узора
     private let leftTraceryImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.nameForLeftTraceryImage)
@@ -50,8 +49,6 @@ final class OrderListViewController: UIViewController {
         return imageView
     }()
 
-    
-    /// Изображение правого узора
     private let rightTraceryImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.nameForRightTraceryImage)
@@ -60,7 +57,6 @@ final class OrderListViewController: UIViewController {
         return imageView
     }()
 
-    /// Лейбл-Ваш заказ
     private let yourOrderLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
@@ -72,7 +68,6 @@ final class OrderListViewController: UIViewController {
         )
     }()
 
-    /// Узор под итоговой ценой
     private let bottomTraceryImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.nameImageForBottomTracery)
@@ -81,7 +76,6 @@ final class OrderListViewController: UIViewController {
         return imageView
     }()
 
-    /// Кнопка перехода на экран ClosingViewController
     private lazy var paymentButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.titleForPaymentButton, for: .normal)
@@ -95,7 +89,7 @@ final class OrderListViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.addTarget(
             self,
-            action: #selector(buttonPressed),
+            action: #selector(showClosingViewController),
             for: .touchUpInside
         )
         return button
@@ -115,7 +109,6 @@ final class OrderListViewController: UIViewController {
 
     // MARK: - Properties
 
-    /// Название выбранного кофе
     var nameCoffeeLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
@@ -127,7 +120,6 @@ final class OrderListViewController: UIViewController {
         )
     }()
 
-    /// Стоимость выбранного кофе
     var costCoffeeLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
@@ -140,132 +132,121 @@ final class OrderListViewController: UIViewController {
         )
     }()
 
-    /// Лейбл ингридиента - молоко
     var milkIndgredientLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
             text: Constants.textForMilkIndgredient,
             color: .black,
-            fontName: Constants.nameFont,
+            fontName: Constants.nameFontName,
             fontSize: 16,
             frame: CGRect(x: 20, y: 191, width: 150, height: 30)
         )
     }()
 
-    /// Стоимость молока
     var costMilkLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
             text: Constants.textForCostMilkLabel,
             color: .black,
-            fontName: Constants.nameFont,
+            fontName: Constants.nameFontName,
             fontSize: 16,
             frame: CGRect(x: 215, y: 191, width: 150, height: 30),
             textAlignment: .right
         )
     }()
 
-    /// Лейбл ингридиента - сироп
     var syrupIndgredientLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
             text: Constants.textForSyrupIndgredient,
             color: .black,
-            fontName: Constants.nameFont,
+            fontName: Constants.nameFontName,
             fontSize: 16,
             frame: CGRect(x: 20, y: 227, width: 150, height: 30)
         )
     }()
 
-    /// Стоимость сиропа
     var costSyrupLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
             text: Constants.textForCostSyrup,
             color: .black,
-            fontName: Constants.nameFont,
+            fontName: Constants.nameFontName,
             fontSize: 16,
             frame: CGRect(x: 215, y: 227, width: 150, height: 30),
             textAlignment: .right
         )
     }()
 
-    /// Лейбл ингридиента - соевое молоко
     var soyMilkIndgredientLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
             text: Constants.textForSoyMilkIndgredient,
             color: .black,
-            fontName: Constants.nameFont,
+            fontName: Constants.nameFontName,
             fontSize: 16,
             frame: CGRect(x: 20, y: 263, width: 150, height: 30)
         )
     }()
 
-    /// Стоимость соевого молока
     var costSoyMilkLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
             text: Constants.textForCostSoyMilk,
             color: .black,
-            fontName: Constants.nameFont,
+            fontName: Constants.nameFontName,
             fontSize: 16,
             frame: CGRect(x: 215, y: 263, width: 150, height: 30),
             textAlignment: .right
         )
     }()
 
-    /// Лейбл ингридиента - миндальное молоко
     var almondMilkIndgredientLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
             text: Constants.textForAlmondMilkIndgredient,
             color: .black,
-            fontName: Constants.nameFont,
+            fontName: Constants.nameFontName,
             fontSize: 16,
             frame: CGRect(x: 20, y: 299, width: 170, height: 30)
         )
     }()
 
-    /// Стоимость миндального молока
     var costAlmondMilkLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
             text: Constants.textForCostAlmondMilkLabel,
             color: .black,
-            fontName: Constants.nameFont,
+            fontName: Constants.nameFontName,
             fontSize: 16,
             frame: CGRect(x: 215, y: 299, width: 150, height: 30),
             textAlignment: .right
         )
     }()
 
-    /// Лейбл ингридиента - экспрессо
     var espressoIndgredientLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
             text: Constants.textForEspressoIndgredient,
             color: .black,
-            fontName: Constants.nameFont,
+            fontName: Constants.nameFontName,
             fontSize: 16,
             frame: CGRect(x: 20, y: 335, width: 150, height: 30)
         )
     }()
 
-    /// Стоимость экспрессо
     var costEspressoLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
             text: Constants.textForCostEspresso,
             color: .black,
-            fontName: Constants.nameFont,
+            fontName: Constants.nameFontName,
             fontSize: 16,
             frame: CGRect(x: 215, y: 335, width: 150, height: 30),
             textAlignment: .right
         )
     }()
 
-    /// Итоговая цена
     var resultCostLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
@@ -318,12 +299,12 @@ final class OrderListViewController: UIViewController {
     }
 
     /// Создаем переход на экран спасибо
-    @objc private func buttonPressed() {
-        let closingVC = ClosingViewController()
+    @objc private func showClosingViewController() {
+        let closingViewController = ClosingViewController()
         // navigationController?.pushViewController(closingVC, animated: true)
-        closingVC.delegate = self
-        closingVC.modalPresentationStyle = .fullScreen
-        present(closingVC, animated: true)
+        closingViewController.delegate = self
+        closingViewController.modalPresentationStyle = .fullScreen
+        present(closingViewController, animated: true)
     }
 
     /// вернуться на экран меню кофе
@@ -333,7 +314,7 @@ final class OrderListViewController: UIViewController {
 }
 
 /// Расширение, реализующее возврат в корневой контроллер
-extension OrderListViewController: Rootable {
+extension OrderListViewController: RootableDelegate {
     func didDismissModal() {
         navigationController?.popToRootViewController(animated: true)
     }

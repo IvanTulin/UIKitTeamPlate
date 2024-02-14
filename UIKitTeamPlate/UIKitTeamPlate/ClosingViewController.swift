@@ -3,7 +3,7 @@
 
 import UIKit
 
-/// Закрывающий экран
+/// Экран благодарности
 final class ClosingViewController: UIViewController {
     // MARK: - Constants
 
@@ -14,7 +14,7 @@ final class ClosingViewController: UIViewController {
         на безплатный напитокъ и получи
         скидку 10% на слѣдующій заказъ.
         """
-        static let nameFont = "Verdana"
+        static let nameFontName = "Verdana"
         static let nameFontBold = "Verdana-Bold"
         static let imageNameTracery = "traceryImage"
         static let imageNameThanksForTheOrder = "thanksImage"
@@ -23,7 +23,6 @@ final class ClosingViewController: UIViewController {
 
     // MARK: - Visual Components
 
-    /// Изображение узора
     private let traceryImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.imageNameTracery)
@@ -32,7 +31,6 @@ final class ClosingViewController: UIViewController {
         return imageView
     }()
 
-    /// Изображение спасибо за заказ
     private let thanksForTheOrderImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(
@@ -42,13 +40,12 @@ final class ClosingViewController: UIViewController {
         return imageView
     }()
 
-    /// Текст приглашения
     private let textRecommendationLabel: UILabel = {
         let label = UILabel()
         return label.createCustomLabel(
             text: Constants.textRecommendation,
             color: .gray,
-            fontName: Constants.nameFont,
+            fontName: Constants.nameFontName,
             fontSize: 16,
             frame: CGRect(x: 30, y: 362, width: 315, height: 89),
             numberOfLines: 0,
@@ -56,7 +53,6 @@ final class ClosingViewController: UIViewController {
         )
     }()
 
-    /// Кнопка перехода на экран ClosingViewController
     private lazy var returnMainMenuScreenButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.titleNameForButton, for: .normal)
@@ -75,8 +71,7 @@ final class ClosingViewController: UIViewController {
 
     // MARK: - Properties
 
-    /// Делегирование перехода на корневой контроллер при исчезновении модального
-    weak var delegate: Rootable?
+    weak var delegate: RootableDelegate?
 
     // MARK: - Life Cycle
 
@@ -101,5 +96,17 @@ final class ClosingViewController: UIViewController {
     @objc private func buttonPressed() {
         delegate?.didDismissModal()
         dismiss(animated: false)
+        
+        // или
+
+        // navigationController?.popViewController(animated: true)
+        //        if let viewControllers = navigationController?.viewControllers {
+        //            for viewController in viewControllers {
+        //                if let mainMenuVC = viewController as? MainMenuViewController {
+        //                    navigationController?.popToViewController(mainMenuVC, animated: true)
+        //                }
+        //            }
+        //        }
+
     }
 }

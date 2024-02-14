@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Модель экземпляра кофе
+/// Кофе
 struct Coffee {
     /// Перечисление с типами обжарки
     enum RoastingOption: String {

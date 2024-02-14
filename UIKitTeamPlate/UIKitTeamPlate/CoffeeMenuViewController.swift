@@ -4,11 +4,10 @@
 // Наташа
 import UIKit
 
-/// Контролер кофейнного меню
-class CoffeeMenuViewController: UIViewController {
+/// Экран кофейнного меню
+final class CoffeeMenuViewController: UIViewController {
     // MARK: - Visual Components
 
-    /// Кнопка перехода OrderListViewController
     lazy var switchOrderListButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 20, y: 516, width: 335, height: 80)
@@ -16,7 +15,11 @@ class CoffeeMenuViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.red.cgColor
-        button.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
+        button.addTarget(
+            self,
+            action: #selector(showOrderListViewController),
+            for: .touchUpInside
+        )
         return button
     }()
 
@@ -29,14 +32,13 @@ class CoffeeMenuViewController: UIViewController {
 
     // MARK: - Private Methods
 
-    /// добавляем и конфигурируем UI элементы на контроллер
     private func configureUI() {
         view.backgroundColor = .systemBlue
         view.addSubview(switchOrderListButton)
     }
 
     /// Переходим на OrderListViewController
-    @objc private func pressedButton() {
+    @objc private func showOrderListViewController() {
         let orderContoller = OrderListViewController()
         navigationController?.pushViewController(
             orderContoller,

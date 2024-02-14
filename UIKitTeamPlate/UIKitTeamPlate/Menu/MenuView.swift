@@ -3,16 +3,16 @@
 
 import UIKit
 
-/// Вью меню для контроллера
+/// Вью меню
 class MenuView: UIView {
     // MARK: - Constants
 
     enum Constants {
-        static let titleForAddressesCoffeeShops = "Адреса кофеен"
+        static let titleForAddressesCoffeeShopsText = "Адреса кофеен"
         static let textForAddressesCoffeeShops = "Разрѣшите доступъ къ ​геолокаціи для поиска ближайшей кофейни"
         static let nameImageAddressesCoffeeShops = "mappinPlace"
         static let textForWelcomeLabel = "Добро пожаловать,\nГость"
-        static let nameFont = "Verdana"
+        static let nameFontName = "Verdana"
         static let nameFontBold = "Verdana-Bold"
         static let nameImageForLogoMenu = "menu"
 
@@ -28,20 +28,19 @@ class MenuView: UIView {
 
     // MARK: - Visual Components
 
-    /// вью адресов кофеен
     private let addressesCoffeeShopsView: UIView = {
         let view = UIView()
         return view.createCustomView(
             viewBackgroundColor: .appLightBlue,
             viewFrame: CGRect(x: 20, y: 40, width: 335, height: 70),
             viewCornerRadius: 20,
-            title: Constants.titleForAddressesCoffeeShops,
+            title: Constants.titleForAddressesCoffeeShopsText,
             titleFontName: Constants.nameFontBold,
             titleFontSize: 12,
             titleFrame: CGRect(x: 15, y: 12, width: 0, height: 0),
             text: Constants.textForAddressesCoffeeShops,
             textColor: .systemGray,
-            textFontName: Constants.nameFont,
+            textFontName: Constants.nameFontName,
             textFontSize: 12,
             textFrame: CGRect(x: 15, y: 30, width: 260, height: 30),
             imageName: Constants.nameImageAddressesCoffeeShops,
@@ -49,7 +48,6 @@ class MenuView: UIView {
         )
     }()
 
-    /// Логотип меню
     private let logoMenuImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.nameImageForLogoMenu)
@@ -58,7 +56,6 @@ class MenuView: UIView {
         return imageView
     }()
 
-    /// Вью для меню выбора пирогов
     private let pieSelectionView: UIView = {
         let view = UIView()
         return view.createCustomView(
@@ -78,7 +75,6 @@ class MenuView: UIView {
         )
     }()
 
-    /// Вью для меню горячих напитков
     private let viewOfTheSelectionHotDrinks: UIView = {
         let view = UIView()
         return view.createCustomView(
@@ -98,7 +94,6 @@ class MenuView: UIView {
         )
     }()
 
-    /// Вью для меню выбора кофе
     let coffeeSelectionView: UIView = {
         let view = UIView()
         return view.createCustomView(
@@ -118,13 +113,10 @@ class MenuView: UIView {
         )
     }()
 
-    /// Кнопка перехода на CoffeeMenuViewController
     let switchCoffeeMenu: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 20, y: 416, width: 335, height: 80)
         button.layer.cornerRadius = 10
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.red.cgColor
         return button
     }()
 
