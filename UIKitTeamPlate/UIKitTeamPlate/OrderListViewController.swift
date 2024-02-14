@@ -1,7 +1,6 @@
 // OrderListViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
-// Иван
 import UIKit
 
 /// Переход на корневой контроллер

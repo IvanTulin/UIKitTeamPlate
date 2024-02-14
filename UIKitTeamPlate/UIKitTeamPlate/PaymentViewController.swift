@@ -4,4 +4,4 @@
 import UIKit
 
 /// Экран оплаты
-class PaymentViewController: UIViewController {}
+final class PaymentViewController: UIViewController {}
