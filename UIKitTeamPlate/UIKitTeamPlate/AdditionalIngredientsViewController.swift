@@ -14,11 +14,18 @@ final class AdditionalIngredientsViewController: UIViewController {
 
         /// Строки для текстовых лейблов
         static let mainLabelText = "Выберите дополнительные ингредіенты"
-        static let milkText = "Молоко +\(Coffee.CoffeePrice.milk) руб"
-        static let syrupText = "Молоко +\(Coffee.CoffeePrice.syrup) руб"
-        static let soyaMilkText = "Молоко соевое +\(Coffee.CoffeePrice.soyaMilk) руб"
-        static let almondMilkText = "Молоко миндальное +\(Coffee.CoffeePrice.almondMilk) руб"
-        static let espressoLabelText = "Эспрессо 50мл +\(Coffee.CoffeePrice.espresso) руб"
+
+        /// Строки для двуцветных лейблов
+        static let milkText = "Молоко"
+        static let greenMilkText = "+\(Coffee.CoffeePrice.milk) руб"
+        static let syrupText = "Сироп"
+        static let greenSyrupText = " +\(Coffee.CoffeePrice.syrup) руб"
+        static let soyaMilkText = "Молоко соевое"
+        static let greenSoyaMilkText = "+\(Coffee.CoffeePrice.soyaMilk) руб"
+        static let almondMilkText = "Молоко миндальное"
+        static let greenAlmondMilkText = "+\(Coffee.CoffeePrice.almondMilk) руб"
+        static let espressoText = "Эспрессо 50мл"
+        static let greenEspressoText = "+\(Coffee.CoffeePrice.espresso) руб"
 
         /// Шрифт
         static let verdanaBoldFont = "Verdana-Bold"
@@ -56,11 +63,31 @@ final class AdditionalIngredientsViewController: UIViewController {
     }()
 
     /// Текстовые лейблы для опций
-    private lazy var standardMilkLabel = addLabel(yPoint: 124, blackText: Constants.milkText, greenText: "")
-    private lazy var syrupLabel = addLabel(yPoint: 174, blackText: Constants.syrupText, greenText: "")
-    private lazy var soyaMilkLabel = addLabel(yPoint: 224, blackText: Constants.soyaMilkText, greenText: "")
-    private lazy var almondMilkLabel = addLabel(yPoint: 274, blackText: Constants.almondMilkText, greenText: "")
-    private lazy var espressoLabel = addLabel(yPoint: 324, blackText: Constants.espressoLabelText, greenText: "")
+    private lazy var standardMilkLabel = addLabel(
+        yPoint: 124,
+        blackText: Constants.milkText,
+        greenText: Constants.greenMilkText
+    )
+    private lazy var syrupLabel = addLabel(
+        yPoint: 174,
+        blackText: Constants.syrupText,
+        greenText: Constants.greenSyrupText
+    )
+    private lazy var soyaMilkLabel = addLabel(
+        yPoint: 224,
+        blackText: Constants.soyaMilkText,
+        greenText: Constants.greenSoyaMilkText
+    )
+    private lazy var almondMilkLabel = addLabel(
+        yPoint: 274,
+        blackText: Constants.almondMilkText,
+        greenText: Constants.greenAlmondMilkText
+    )
+    private lazy var espressoLabel = addLabel(
+        yPoint: 324,
+        blackText: Constants.espressoText,
+        greenText: Constants.greenEspressoText
+    )
 
     /// Свитчеры для выбора опций
     private lazy var milkSwitch = UISwitch(frame: CGRect(x: 301, y: 124, width: 31, height: 31))
@@ -117,7 +144,12 @@ final class AdditionalIngredientsViewController: UIViewController {
     private func addLabel(yPoint: Int, blackText: String, greenText: String) -> UILabel {
         let label = UILabel()
         label.frame = CGRect(x: 20, y: yPoint, width: 275, height: 35)
-        label.text = blackText
+        let blackText = blackText
+        let space = " "
+        let coloredText = blackText + space + greenText
+        let colored = NSMutableAttributedString(string: coloredText)
+        colored.setColor(color: .greenText, forText: greenText)
+        label.attributedText = colored
         label.textAlignment = .left
         label.font = UIFont(name: "Verdana", size: 18)
         return label
@@ -147,3 +179,4 @@ final class AdditionalIngredientsViewController: UIViewController {
         dismiss(animated: true)
     }
 }
+

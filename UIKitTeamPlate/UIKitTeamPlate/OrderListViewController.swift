@@ -6,8 +6,5 @@ import UIKit
 
 /// Экран счета
 class OrderListViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .green
-    }
+
 }

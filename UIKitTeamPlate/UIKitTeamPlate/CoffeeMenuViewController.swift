@@ -294,7 +294,7 @@ extension CoffeeMenuViewController {
         navigationController?.popViewController(animated: true)
     }
 
-    @objc func shareCode() {
+    @objc private func shareCode() {
         present(shareSheetController, animated: true)
     }
 }
