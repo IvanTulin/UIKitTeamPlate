@@ -5,4 +5,6 @@
 import UIKit
 
 /// Главный контролер с меню
-class MainMenuViewController: UIViewController {}
+final class MainMenuViewController: UIViewController {
+    // TODO: Здесь будет работать IvanTulin
+}

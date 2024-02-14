@@ -8,13 +8,10 @@ final class AdditionalIngredientsViewController: UIViewController {
     // MARK: - Constants
 
     enum Constants {
-        /// картинка закрывающей кнопки
         static let closeImage = "close"
 
-        /// Строки для текстовых лейблов
         static let mainLabelText = "Выберите дополнительные ингредіенты"
 
-        /// Строки для двуцветных лейблов
         static let milkText = "Молоко"
         static let greenMilkText = "+\(Coffee.CoffeePrice.milk) руб"
         static let syrupText = "Сироп"
@@ -26,21 +23,17 @@ final class AdditionalIngredientsViewController: UIViewController {
         static let espressoText = "Эспрессо 50мл"
         static let greenEspressoText = "+\(Coffee.CoffeePrice.espresso) руб"
 
-        /// Шрифт
         static let verdanaBoldFont = "Verdana-Bold"
     }
 
     // MARK: - Public Properties
 
-    /// Экземпляр модели
     var coffeeItem = Coffee()
 
-    /// Экземпляр делегата для обмена экземпляром модели между контроллерами
     weak var delegate: TransferCoffeeOptionsDelegate?
 
     // MARK: - Visual Components
 
-    /// Кнопка "Скрыть экран"
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 20, y: 26, width: 14, height: 14)
@@ -49,7 +42,6 @@ final class AdditionalIngredientsViewController: UIViewController {
         return button
     }()
 
-    /// Заголовок "Добавить опции"
     private lazy var addOptionLabel: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 40, y: 53, width: 294, height: 44)
@@ -61,39 +53,61 @@ final class AdditionalIngredientsViewController: UIViewController {
         return label
     }()
 
-    /// Текстовые лейблы для опций
-    private lazy var standardMilkLabel = addLabel(
+    private lazy var standardMilkLabel = makeLabel(
         yPoint: 124,
         blackText: Constants.milkText,
         greenText: Constants.greenMilkText
     )
-    private lazy var syrupLabel = addLabel(
+    private lazy var syrupLabel = makeLabel(
         yPoint: 174,
         blackText: Constants.syrupText,
         greenText: Constants.greenSyrupText
     )
-    private lazy var soyaMilkLabel = addLabel(
+    private lazy var soyaMilkLabel = makeLabel(
         yPoint: 224,
         blackText: Constants.soyaMilkText,
         greenText: Constants.greenSoyaMilkText
     )
-    private lazy var almondMilkLabel = addLabel(
+    private lazy var almondMilkLabel = makeLabel(
         yPoint: 274,
         blackText: Constants.almondMilkText,
         greenText: Constants.greenAlmondMilkText
     )
-    private lazy var espressoLabel = addLabel(
+    private lazy var espressoLabel = makeLabel(
         yPoint: 324,
         blackText: Constants.espressoText,
         greenText: Constants.greenEspressoText
     )
 
-    /// Свитчеры для выбора опций
-    private lazy var milkSwitch = UISwitch(frame: CGRect(x: 301, y: 124, width: 31, height: 31))
-    private lazy var syrupSwitch = UISwitch(frame: CGRect(x: 301, y: 174, width: 31, height: 31))
-    private lazy var soyaMilkSwitch = UISwitch(frame: CGRect(x: 301, y: 224, width: 31, height: 31))
-    private lazy var almondMilkSwitch = UISwitch(frame: CGRect(x: 301, y: 274, width: 31, height: 31))
-    private lazy var espressoSwitch = UISwitch(frame: CGRect(x: 301, y: 324, width: 31, height: 31))
+    private lazy var milkSwitch: UISwitch = {
+        var switcher = UISwitch(frame: CGRect(x: 301, y: 124, width: 31, height: 31))
+        switcher.addTarget(self, action: #selector(changeOption(sender:)), for: .valueChanged)
+        return switcher
+    }()
+
+    private lazy var syrupSwitch: UISwitch = {
+        var switcher = UISwitch(frame: CGRect(x: 301, y: 174, width: 31, height: 31))
+        switcher.addTarget(self, action: #selector(changeOption(sender:)), for: .valueChanged)
+        return switcher
+    }()
+
+    private lazy var soyaMilkSwitch: UISwitch = {
+        var switcher = UISwitch(frame: CGRect(x: 301, y: 224, width: 31, height: 31))
+        switcher.addTarget(self, action: #selector(changeOption(sender:)), for: .valueChanged)
+        return switcher
+    }()
+
+    private lazy var almondMilkSwitch: UISwitch = {
+        var switcher = UISwitch(frame: CGRect(x: 301, y: 274, width: 31, height: 31))
+        switcher.addTarget(self, action: #selector(changeOption(sender:)), for: .valueChanged)
+        return switcher
+    }()
+
+    private lazy var espressoSwitch: UISwitch = {
+        var switcher = UISwitch(frame: CGRect(x: 301, y: 324, width: 31, height: 31))
+        switcher.addTarget(self, action: #selector(changeOption(sender:)), for: .valueChanged)
+        return switcher
+    }()
 
     // MARK: - Life Cycle
 
@@ -104,7 +118,6 @@ final class AdditionalIngredientsViewController: UIViewController {
 
     // MARK: - Private Methods
 
-    /// Установка вью
     private func setupUI() {
         view.backgroundColor = .white
         [
@@ -124,23 +137,15 @@ final class AdditionalIngredientsViewController: UIViewController {
         setupSwitchers()
     }
 
-    /// Конфигурация и установка состояния свитчеров
     private func setupSwitchers() {
         milkSwitch.isOn = coffeeItem.isStandardMilkAdded.0
         syrupSwitch.isOn = coffeeItem.isSyrupAdded.0
         soyaMilkSwitch.isOn = coffeeItem.isSoyaMilkAdded.0
         almondMilkSwitch.isOn = coffeeItem.isAlmondMilkAdded.0
         espressoSwitch.isOn = coffeeItem.isEspressoChosen.0
-
-        milkSwitch.addTarget(self, action: #selector(changeOption(sender:)), for: .valueChanged)
-        syrupSwitch.addTarget(self, action: #selector(changeOption(sender:)), for: .valueChanged)
-        soyaMilkSwitch.addTarget(self, action: #selector(changeOption(sender:)), for: .valueChanged)
-        almondMilkSwitch.addTarget(self, action: #selector(changeOption(sender:)), for: .valueChanged)
-        espressoSwitch.addTarget(self, action: #selector(changeOption(sender:)), for: .valueChanged)
     }
 
-    /// Функция для этого класса, создающая текстовые вьюшки одного стиля
-    private func addLabel(yPoint: Int, blackText: String, greenText: String) -> UILabel {
+    private func makeLabel(yPoint: Int, blackText: String, greenText: String) -> UILabel {
         let label = UILabel()
         label.frame = CGRect(x: 20, y: yPoint, width: 275, height: 35)
         let blackText = blackText
@@ -154,7 +159,6 @@ final class AdditionalIngredientsViewController: UIViewController {
         return label
     }
 
-    /// Функция для сохранения значения по изменению состояния свитчера
     @objc private func changeOption(sender: UISwitch) {
         switch sender {
         case milkSwitch:
@@ -172,7 +176,6 @@ final class AdditionalIngredientsViewController: UIViewController {
         }
     }
 
-    /// Функция закрытия экрана
     @objc private func closeView() {
         delegate?.transferCoffeeOptions(item: coffeeItem)
         dismiss(animated: true)

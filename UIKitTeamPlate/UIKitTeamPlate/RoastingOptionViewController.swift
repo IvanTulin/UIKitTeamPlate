@@ -8,29 +8,23 @@ final class RoastingOptionViewController: UIViewController {
     // MARK: - Constants
 
     enum Constants {
-        /// Строки для лейблов
         static let roastLabelText = "Уточните обжарку зеренъ"
         static let darkRoastText = "Темная обжарка"
         static let lightRoastText = "Свѣтлая обжарка"
 
-        /// Названия изображений типов обжарки
         static let darkRoastImage = "dark roast"
         static let lightRoastImage = "light roast"
 
-        /// Название изображения для кнопки "Назад"
         static let closeImage = "close"
 
-        /// Шрифты
         static let verdanaFont = "Verdana"
         static let verdanaBoldFont = "Verdana-Bold"
     }
 
     // MARK: - Private Properties
 
-    /// Экземпляр модели
     var coffeeItem = Coffee()
 
-    /// Экземпляр делегата для обмена экземпляром модели между контроллерами
     weak var delegate: TransferCoffeeOptionsDelegate?
 
     // MARK: - Visual Components
@@ -40,7 +34,7 @@ final class RoastingOptionViewController: UIViewController {
         let button = UIButton()
         button.frame = CGRect(x: 20, y: 26, width: 14, height: 14)
         button.setImage(UIImage(named: Constants.closeImage), for: .normal)
-        button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+        button.addTarget(self, action: #selector(closeScreen), for: .touchUpInside)
         return button
     }()
 
@@ -102,20 +96,18 @@ final class RoastingOptionViewController: UIViewController {
 
     // MARK: - Private Methods
 
-    /// Установка вью
     private func setupUI() {
         view.backgroundColor = .white
         [roastOptionLabel, darkRoastButton, lightRoastButton, cancelButton].forEach { view.addSubview($0) }
-        if coffeeItem.roast == .dark {
-            darkRoastButton.layer.borderColor = UIColor.seaGreen.cgColor
-            lightRoastButton.layer.borderColor = UIColor.customGray.cgColor
-        } else {
-            darkRoastButton.layer.borderColor = UIColor.customGray.cgColor
-            lightRoastButton.layer.borderColor = UIColor.seaGreen.cgColor
-        }
+
+        lightRoastButton.layer.borderColor = UIColor.customGray.cgColor
+        darkRoastButton.layer.borderColor = UIColor.customGray.cgColor
+
+        coffeeItem
+            .roast == .dark ? (darkRoastButton.layer.borderColor = UIColor.seaGreen.cgColor) :
+            (lightRoastButton.layer.borderColor = UIColor.seaGreen.cgColor)
     }
 
-    /// Метод выбора и сохранения обжарки
     @objc private func chooseRoast(sender: UIButton) {
         darkRoastButton.layer.borderColor = UIColor.customGray.cgColor
         lightRoastButton.layer.borderColor = UIColor.customGray.cgColor
@@ -123,8 +115,7 @@ final class RoastingOptionViewController: UIViewController {
         sender == darkRoastButton ? (coffeeItem.roast = .dark) : (coffeeItem.roast = .light)
     }
 
-    /// Метод закрытия экрана
-    @objc private func closeView() {
+    @objc private func closeScreen() {
         delegate?.transferCoffeeOptions(item: coffeeItem)
         dismiss(animated: true)
     }

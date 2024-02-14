@@ -4,4 +4,6 @@
 import UIKit
 
 /// Экран оплаты
-class PaymentViewController: UIViewController {}
+final class PaymentViewController: UIViewController {
+    // TODO: Здесь будет работать IvanTulin
+}

@@ -4,4 +4,6 @@
 import UIKit
 
 /// Закрывающий экран
-class ClosingViewController: UIViewController {}
+final class ClosingViewController: UIViewController {
+    // TODO: Здесь будет работать IvanTulin
+}

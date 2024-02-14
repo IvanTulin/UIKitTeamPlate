@@ -10,58 +10,53 @@ protocol TransferCoffeeOptionsDelegate: AnyObject {
 }
 
 /// Контролер кофейного меню
-final class CoffeeMenuViewController: UIViewController, UIGestureRecognizerDelegate {
+final class CoffeeMenuViewController: UIViewController {
     // MARK: - Constants
 
     enum Constants {
-        /// Массив заголовков для использования в сегмент контроллере
         static let coffeeTitles = ["Американо", "Капучино", "Латте"]
+        static let coffeeTypes = [Coffee.CoffeeType.americano, Coffee.CoffeeType.cappuccino, Coffee.CoffeeType.latte]
 
-        /// Имена изображений для основного изображения
-        static let americanoImage = "americano"
-        static let cappuccinoImage = "cappuccino"
-        static let latteImage = "latte"
+        static let americanoImageName = "americano"
+        static let cappuccinoImageName = "cappuccino"
+        static let latteImageName = "latte"
 
-        /// Имена изображений для кнопки типа обжарки
-        static let darkRoastImage = "dark roast"
-        static let lightRoastImage = "light roast"
+        static let darkRoastImageName = "dark roast"
+        static let lightRoastImageName = "light roast"
 
-        /// Имена изображений для кнопки выбора дополнительных опций
-        static let addItemImage = "addItem"
-        static let addedItemImage = "added"
+        static let addItemImageName = "addItem"
+        static let addedItemImageName = "added"
 
-        /// Имена изображений для кнопок Navigation Bar
-        static let arrowImage = "arrow"
-        static let paperPlaneImage = "plane"
+        static let arrowImageName = "arrow"
+        static let paperPlaneImageName = "plane"
 
-        /// Строки для текстовых лейблов
         static let modificationLabelText = "Модификация"
         static let additionsButtonTitleLabelText = "Дополнительные ингредіенты"
         static let orderButtonTitleLabelText = "Заказать"
         static let promocodeText = "Лови промокод roadmaplove на любой напиток из Кофейнов"
 
-        /// Шрифты
         static let verdanaFont = "Verdana"
         static let verdanaBoldFont = "Verdana-Bold"
+
+        static let startPriceText = "Цѣна - "
+        static let endPriceText = " руб"
     }
 
     // MARK: - Private Properties
 
-    private lazy var coffeeItem = Coffee() {
+    private var coffeeItem = Coffee() {
         didSet { setupUI() }
     }
 
-    private lazy var priceLabelText = "Цѣна - \(coffeeItem.fullPrice) руб"
+    private lazy var priceLabelText = "\(Constants.startPriceText)\(coffeeItem.fullPrice)\(Constants.endPriceText)"
 
     // MARK: - Visual Components
 
-    /// Контроллер для передачи промокода в share
     private lazy var shareSheetController = UIActivityViewController(
         activityItems: [Constants.promocodeText],
         applicationActivities: nil
     )
 
-    /// Вью-подложка, бежевый фон
     private lazy var backgroundView: UIView = {
         let backgroundView = UIView()
         backgroundView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 346)
@@ -71,15 +66,13 @@ final class CoffeeMenuViewController: UIViewController, UIGestureRecognizerDeleg
         return backgroundView
     }()
 
-    /// Основная картинка
     private lazy var coffeeImageView: UIImageView = {
         let view = UIImageView()
         view.frame = CGRect(x: 112, y: 128, width: 150, height: 150)
-        view.image = UIImage(named: Constants.americanoImage)
+        view.image = UIImage(named: Constants.americanoImageName)
         return view
     }()
 
-    /// Сегмент контроллер с выбором типа кофе
     private lazy var segmentedControl: UISegmentedControl = {
         let control = UISegmentedControl(items: Constants.coffeeTitles)
         control.frame = CGRect(x: 15, y: 368, width: 345, height: 44)
@@ -88,7 +81,6 @@ final class CoffeeMenuViewController: UIViewController, UIGestureRecognizerDeleg
         return control
     }()
 
-    /// Заголовок над кнопками модификаций
     private lazy var modificationLabel: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 15, y: 432, width: 200, height: 30)
@@ -97,13 +89,12 @@ final class CoffeeMenuViewController: UIViewController, UIGestureRecognizerDeleg
         return label
     }()
 
-    /// Кнопка выбора обжарки
     private lazy var chooseRoastButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 15, y: 482, width: 165, height: 165)
         button.configuration = .plain()
         button.configuration?.imagePlacement = .top
-        button.configuration?.image = UIImage(named: Constants.darkRoastImage)
+        button.configuration?.image = UIImage(named: Constants.darkRoastImageName)
         button.setTitle(coffeeItem.roast.rawValue, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(.gray, for: .highlighted)
@@ -114,14 +105,13 @@ final class CoffeeMenuViewController: UIViewController, UIGestureRecognizerDeleg
         return button
     }()
 
-    /// Кнопка добавления опций
     private lazy var additionsButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 195, y: 482, width: 165, height: 165)
         button.configuration = .plain()
         button.configuration?.imagePlacement = .top
         button.configuration?.imagePadding = 10
-        button.configuration?.image = UIImage(named: Constants.addItemImage)
+        button.configuration?.image = UIImage(named: Constants.addItemImageName)
         button.setTitle(Constants.additionsButtonTitleLabelText, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(.gray, for: .highlighted)
@@ -133,7 +123,6 @@ final class CoffeeMenuViewController: UIViewController, UIGestureRecognizerDeleg
         return button
     }()
 
-    /// Лейбл цены заказа
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 15, y: 669, width: 345, height: 30)
@@ -143,7 +132,6 @@ final class CoffeeMenuViewController: UIViewController, UIGestureRecognizerDeleg
         return label
     }()
 
-    /// Кнопка формирования заказа
     private lazy var orderButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 15, y: 717, width: 345, height: 53)
@@ -164,7 +152,6 @@ final class CoffeeMenuViewController: UIViewController, UIGestureRecognizerDeleg
 
     // MARK: - Private Methods
 
-    /// Установка вью на супервью
     private func setupUI() {
         navigationItem.leftBarButtonItem = createLeftBarButtonItem()
         navigationItem.rightBarButtonItem = createRightBarButtonItem()
@@ -184,25 +171,24 @@ final class CoffeeMenuViewController: UIViewController, UIGestureRecognizerDeleg
 
         switch coffeeItem.roast {
         case .dark:
-            chooseRoastButton.configuration?.image = UIImage(named: Constants.darkRoastImage)
+            chooseRoastButton.configuration?.image = UIImage(named: Constants.darkRoastImageName)
             chooseRoastButton.setTitle(coffeeItem.roast.rawValue, for: .normal)
         case .light:
-            chooseRoastButton.configuration?.image = UIImage(named: Constants.lightRoastImage)
+            chooseRoastButton.configuration?.image = UIImage(named: Constants.lightRoastImageName)
             chooseRoastButton.setTitle(coffeeItem.roast.rawValue, for: .normal)
         }
 
-        priceLabelText = "Цѣна - \(coffeeItem.fullPrice) руб"
+        priceLabelText = "\(Constants.startPriceText)\(coffeeItem.fullPrice)\(Constants.endPriceText)"
         priceLabel.text = priceLabelText
 
         switch coffeeItem.fullPrice {
         case coffeeItem.standardPrice:
-            additionsButton.configuration?.image = UIImage(named: Constants.addItemImage)
+            additionsButton.configuration?.image = UIImage(named: Constants.addItemImageName)
         default:
-            additionsButton.configuration?.image = UIImage(named: Constants.addedItemImage)
+            additionsButton.configuration?.image = UIImage(named: Constants.addedItemImageName)
         }
     }
 
-    /// Метод сброса опций модели
     private func reloadOptions() {
         coffeeItem.roast = .dark
         coffeeItem.isStandardMilkAdded.0 = false
@@ -212,35 +198,19 @@ final class CoffeeMenuViewController: UIViewController, UIGestureRecognizerDeleg
         coffeeItem.isEspressoChosen.0 = false
     }
 
-    /// Метод возврата на один экран назад
     @objc private func popToPrevious() {
         navigationController?.popViewController(animated: true)
     }
 
-    /// Метод изменения вью и модели от изменения состояния свитчера
     @objc private func changeCoffeeType() {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            coffeeItem.coffeeType = .americano
-            reloadOptions()
-            coffeeImageView.image = UIImage(named: Constants.americanoImage)
-            priceLabel.text = priceLabelText
-        case 1:
-            coffeeItem.coffeeType = .cappuccino
-            reloadOptions()
-            coffeeImageView.image = UIImage(named: Constants.cappuccinoImage)
-            priceLabel.text = priceLabelText
-        case 2:
-            coffeeItem.coffeeType = .latte
-            reloadOptions()
-            coffeeImageView.image = UIImage(named: Constants.latteImage)
-            priceLabel.text = priceLabelText
-        default:
-            break
-        }
+        let coffeeTypes = [Coffee.CoffeeType.americano, Coffee.CoffeeType.cappuccino, Coffee.CoffeeType.latte]
+        let coffeeImageNames = ["americano", "cappuccino", "latte"]
+        coffeeItem.coffeeType = coffeeTypes[segmentedControl.selectedSegmentIndex]
+        coffeeImageView.image = UIImage(named: coffeeImageNames[segmentedControl.selectedSegmentIndex])
+        reloadOptions()
+        priceLabel.text = priceLabelText
     }
 
-    /// Метод перехода к экрану выбора обжарки
     @objc private func chooseRoast() {
         let controllerToMove = RoastingOptionViewController()
         controllerToMove.coffeeItem = coffeeItem
@@ -248,7 +218,6 @@ final class CoffeeMenuViewController: UIViewController, UIGestureRecognizerDeleg
         present(controllerToMove, animated: true)
     }
 
-    /// Метод перехода к экрану выбора опций
     @objc private func chooseAdditions() {
         let controllerToMove = AdditionalIngredientsViewController()
         controllerToMove.delegate = self
@@ -256,10 +225,8 @@ final class CoffeeMenuViewController: UIViewController, UIGestureRecognizerDeleg
         present(controllerToMove, animated: true)
     }
 
-    /// Метод "Сделать заказ"
     @objc private func makeOrder() {
         let controllerToMove = OrderListViewController()
-//        newVC.coffeeItem = coffeeItem
         present(controllerToMove, animated: true)
     }
 }
@@ -278,7 +245,7 @@ extension CoffeeMenuViewController {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         button.clipsToBounds = true
-        button.setImage(UIImage(named: Constants.arrowImage), for: .normal)
+        button.setImage(UIImage(named: Constants.arrowImageName), for: .normal)
         button.layer.backgroundColor = UIColor(red: 235 / 255, green: 246 / 255, blue: 247 / 255, alpha: 1).cgColor
         button.layer.cornerRadius = 22
         button.addTarget(self, action: #selector(popBack), for: .touchUpInside)
@@ -291,7 +258,7 @@ extension CoffeeMenuViewController {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         button.clipsToBounds = true
-        button.setImage(UIImage(named: Constants.paperPlaneImage), for: .normal)
+        button.setImage(UIImage(named: Constants.paperPlaneImageName), for: .normal)
         button.addTarget(self, action: #selector(shareCode), for: .touchUpInside)
         let item = UIBarButtonItem(customView: button)
         return item

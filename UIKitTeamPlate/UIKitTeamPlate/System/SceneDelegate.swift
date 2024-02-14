@@ -3,8 +3,7 @@
 
 import UIKit
 
-///  класс SceneDelegate
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(
@@ -13,6 +12,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options _: UIScene.ConnectionOptions
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        setupScene(windowScene: windowScene)
+    }
+
+    func setupScene(windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene)
         let vc = CoffeeMenuViewController()
         let navController = UINavigationController(rootViewController: vc)
