@@ -1,7 +1,6 @@
 // CoffeeMenuViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
-// Наташа
 import UIKit
 
 /// Протокол для передачи экземпляра модели Coffee между контроллерами после смены опций
