@@ -63,7 +63,7 @@ final class OrderListViewController: UIViewController {
         )
         return button
     }()
-    
+
     private lazy var exitButton: UIButton = {
         let exitButton = UIButton()
         exitButton.setImage(UIImage(named: "cross"), for: .normal)
@@ -277,13 +277,13 @@ final class OrderListViewController: UIViewController {
 
         let buttomItem = UIBarButtonItem(customView: exitButton)
         navigationItem.leftBarButtonItem = buttomItem
+        navigationController?.navigationBar.isHidden = false
     }
 
     /// Создаем переход на экран спасибо
     @objc private func buttonPressed() {
         let closingVC = ClosingViewController()
-        closingVC.modalPresentationStyle = .fullScreen
-        present(closingVC, animated: true)
+        navigationController?.pushViewController(closingVC, animated: true)
     }
 
     /// вернуться на экран меню кофе

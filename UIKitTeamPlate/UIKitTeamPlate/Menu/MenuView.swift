@@ -97,6 +97,7 @@ class MenuView: UIView {
         )
     }()
 
+    /// Кнопка перехода на CoffeeMenuViewController
     let switchCoffeeMenu: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 20, y: 416, width: 335, height: 80)
@@ -120,6 +121,7 @@ class MenuView: UIView {
 
     // MARK: - Private Methods
 
+    /// добавляем и конфигурируем UI элементы на контроллер
     private func configureUI() {
         addSubview(addressesCoffeeShopsView)
         addSubview(logoMenuImageView)

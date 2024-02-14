@@ -5,10 +5,4 @@
 import UIKit
 
 /// Экрн выбора дополнительных ингридиентов
-class AdditionalIngredientsViewController: UIViewController {
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        // Do any additional setup after loading the view.
-//    }
-}
+class AdditionalIngredientsViewController: UIViewController {}

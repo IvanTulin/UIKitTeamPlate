@@ -76,13 +76,19 @@ final class ClosingViewController: UIViewController {
         view.addSubview(thanksForTheOrderImageView)
         view.addSubview(textRecommendationLabel)
         view.addSubview(returnMainMenuScreenButton)
+        navigationController?.navigationBar.isHidden = true
     }
 
-    // TODO: Finish the transition
     /// возврат на экран MainMenuViewController
     @objc private func buttonPressed() {
         print("go to main")
-        let mainMenuVC = MainMenuViewController()
         navigationController?.popViewController(animated: true)
+        if let viewControllers = navigationController?.viewControllers {
+            for viewController in viewControllers {
+                if let mainMenuVC = viewController as? MainMenuViewController {
+                    navigationController?.popToViewController(mainMenuVC, animated: true)
+                }
+            }
+        }
     }
 }
