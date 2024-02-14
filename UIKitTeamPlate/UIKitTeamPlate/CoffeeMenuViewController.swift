@@ -147,12 +147,12 @@ final class CoffeeMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        configureUI()
     }
 
     // MARK: - Private Methods
 
-    private func setupUI() {
+    private func configureUI() {
         navigationItem.leftBarButtonItem = createLeftBarButtonItem()
         navigationItem.rightBarButtonItem = createRightBarButtonItem()
 
@@ -226,8 +226,11 @@ final class CoffeeMenuViewController: UIViewController {
     }
 
     @objc private func makeOrder() {
-        let controllerToMove = OrderListViewController()
-        present(controllerToMove, animated: true)
+        let orderContoller = OrderListViewController()
+        navigationController?.pushViewController(
+            orderContoller,
+            animated: true
+        )
     }
 }
 
