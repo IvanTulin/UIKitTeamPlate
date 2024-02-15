@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
     }
 
     private func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBlue
         navigationItem.title = "Профиль"
         configureTabBar()
     }

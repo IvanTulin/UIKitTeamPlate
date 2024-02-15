@@ -12,7 +12,7 @@ class ShoppingCartViewController: UIViewController {
     }
 
     private func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .orange
         navigationItem.title = "Корзина"
         configureTabBar()
     }
