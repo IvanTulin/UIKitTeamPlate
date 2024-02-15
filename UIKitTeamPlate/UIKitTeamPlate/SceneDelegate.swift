@@ -15,7 +15,39 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let sceneWindow = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: sceneWindow)
-        window.rootViewController = CatalogViewController()
+        let catalogViewController = CatalogViewController()
+        let profileViewController = ProfileViewController()
+        let shoppingCartViewController = ShoppingCartViewController()
+
+        let catalogNavigationController = UINavigationController(
+            rootViewController: catalogViewController
+        )
+
+        let profileNavigationController = UINavigationController(
+            rootViewController: profileViewController
+        )
+
+        let shoppingCartNavigationController = UINavigationController(
+            rootViewController: shoppingCartViewController
+        )
+
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers(
+            [
+                catalogNavigationController,
+                shoppingCartNavigationController,
+                profileNavigationController
+            ],
+            animated: true
+        )
+        tabBarController.tabBar.unselectedItemTintColor = .black
+        tabBarController.tabBar.tintColor = .systemPink
+
+//        if catalogNavigationController == tabBarController.viewControllers?.first {
+//            tabBarController.selectedViewController = catalogNavigationController
+//        }
+
+        window.rootViewController = tabBarController
         self.window = window
         window.makeKeyAndVisible()
     }
