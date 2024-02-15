@@ -14,15 +14,5 @@ class ProfileViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .systemBlue
         navigationItem.title = "Профиль"
-        configureTabBar()
-    }
-
-    private func configureTabBar() {
-        let tabBarItem = UITabBarItem(
-            title: "Профиль",
-            image: UIImage(named: "profileImage"),
-            selectedImage: nil
-        )
-        self.tabBarItem = tabBarItem
     }
 }

@@ -14,15 +14,5 @@ class ShoppingCartViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .orange
         navigationItem.title = "Корзина"
-        configureTabBar()
-    }
-
-    private func configureTabBar() {
-        let tabBarItem = UITabBarItem(
-            title: "Корзина",
-            image: UIImage(named: "basketImage"),
-            selectedImage: nil
-        )
-        self.tabBarItem = tabBarItem
     }
 }
