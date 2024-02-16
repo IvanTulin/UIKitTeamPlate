@@ -190,12 +190,12 @@ class ChoosingShoesViewController: UIViewController {
                 for: .normal
             )
         }
-         //delegate?.setupImage(image: .shoesWithHeels)
+        // delegate?.setupImage(image: .shoesWithHeels)
         ShoppingCartViewController.shared.images.append(.shoesWithHeels)
         print(ShoppingCartViewController.shared.images.count)
-        
-        let shopVc = ShoppingCartViewController()
-        shopVc.imageView.image = .shoesWithHeels
-        navigationController?.pushViewController(shopVc, animated: true)
+
+//        let shopVc = ShoppingCartViewController()
+//        shopVc.imageView.image = .shoesWithHeels
+//        navigationController?.pushViewController(shopVc, animated: true)
     }
 }
