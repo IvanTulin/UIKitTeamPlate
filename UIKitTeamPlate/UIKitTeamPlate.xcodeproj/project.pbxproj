@@ -11,6 +11,7 @@
 		4FAF5C022B7E628000509B33 /* Shoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF5C012B7E628000509B33 /* Shoes.swift */; };
 		4FAF5C042B7ED58700509B33 /* Extension+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF5C032B7ED58700509B33 /* Extension+UITextField.swift */; };
 		4FAF5C062B7EDD0800509B33 /* ShoppingCartReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF5C052B7EDD0800509B33 /* ShoppingCartReusableView.swift */; };
+		4FAF5C082B7F243100509B33 /* SavedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF5C072B7F243100509B33 /* SavedItems.swift */; };
 		BA3A321E2B7DF73500C72FC1 /* ChoosingShoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3A321D2B7DF73500C72FC1 /* ChoosingShoesViewController.swift */; };
 		BA3A32202B7DF76700C72FC1 /* ChoosingTheSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3A321F2B7DF76700C72FC1 /* ChoosingTheSizeViewController.swift */; };
 		BA3A32222B7DF7AC00C72FC1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3A32212B7DF7AC00C72FC1 /* ProfileViewController.swift */; };
@@ -28,6 +29,7 @@
 		4FAF5C012B7E628000509B33 /* Shoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shoes.swift; sourceTree = "<group>"; };
 		4FAF5C032B7ED58700509B33 /* Extension+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITextField.swift"; sourceTree = "<group>"; };
 		4FAF5C052B7EDD0800509B33 /* ShoppingCartReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartReusableView.swift; sourceTree = "<group>"; };
+		4FAF5C072B7F243100509B33 /* SavedItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItems.swift; sourceTree = "<group>"; };
 		BA3A321D2B7DF73500C72FC1 /* ChoosingShoesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosingShoesViewController.swift; sourceTree = "<group>"; };
 		BA3A321F2B7DF76700C72FC1 /* ChoosingTheSizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosingTheSizeViewController.swift; sourceTree = "<group>"; };
 		BA3A32212B7DF7AC00C72FC1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				BA3A32212B7DF7AC00C72FC1 /* ProfileViewController.swift */,
 				BA3A32232B7DF7E900C72FC1 /* UserDataViewController.swift */,
 				4FAF5BFF2B7E4AB200509B33 /* User.swift */,
+				4FAF5C072B7F243100509B33 /* SavedItems.swift */,
 				4FAF5C032B7ED58700509B33 /* Extension+UITextField.swift */,
 				BA632C682B711B3C00D0F110 /* Assets.xcassets */,
 				BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */,
@@ -212,6 +215,7 @@
 				BA632C642B711B3B00D0F110 /* CatalogViewController.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
 				BA3A32242B7DF7E900C72FC1 /* UserDataViewController.swift in Sources */,
+				4FAF5C082B7F243100509B33 /* SavedItems.swift in Sources */,
 				4FAF5C002B7E4AB200509B33 /* User.swift in Sources */,
 				BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */,
 				BA3A321E2B7DF73500C72FC1 /* ChoosingShoesViewController.swift in Sources */,

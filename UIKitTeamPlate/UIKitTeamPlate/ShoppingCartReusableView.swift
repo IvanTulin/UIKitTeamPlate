@@ -12,7 +12,8 @@ class ShoppingCartReusableView: UIView {
         static let sizes = [35, 36, 37, 38, 39]
     }
 
-    var completionForButton: (() -> ())?
+    var increasingCompletion: (() -> ())?
+    var decreasingCompletion: (() -> ())?
 
     lazy var itemImageView: UIImageView = {
         let imageView = UIImageView()
@@ -44,7 +45,7 @@ class ShoppingCartReusableView: UIView {
 
     lazy var itemNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Women Shoes"
+//        label.text = "Women Shoes"
         label.font = UIFont(name: "Verdana", size: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
@@ -68,9 +69,10 @@ class ShoppingCartReusableView: UIView {
         button.backgroundColor = .lightPink
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(.customMagenta, for: .highlighted)
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 7
         button.contentVerticalAlignment = .center
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(deleteOneItem), for: .touchUpInside)
         addSubview(button)
         return button
     }()
@@ -92,10 +94,10 @@ class ShoppingCartReusableView: UIView {
         button.backgroundColor = .lightPink
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(.customMagenta, for: .highlighted)
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 7
         button.contentVerticalAlignment = .center
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(addOneMore), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addOneMoreItem), for: .touchUpInside)
         addSubview(button)
         return button
     }()
@@ -120,9 +122,10 @@ class ShoppingCartReusableView: UIView {
 
     lazy var priceLabel: UILabel = {
         let label = UILabel()
-        label.text = "4250 ₽"
+//        label.text = "4250 ₽"
         label.font = UIFont(name: "Verdana-Bold", size: 10)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .right
         addSubview(label)
         return label
     }()
@@ -278,7 +281,7 @@ class ShoppingCartReusableView: UIView {
         priceLabel.topAnchor.constraint(equalTo: priceTitleLabel.topAnchor).isActive = true
         priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         priceLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        priceLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        priceLabel.widthAnchor.constraint(equalToConstant: 60).isActive = true
     }
 
     func createSizeButton(size: Int) -> UIButton {
@@ -286,15 +289,17 @@ class ShoppingCartReusableView: UIView {
         button.backgroundColor = UIColor.lightPink
         button.setTitle("\(size)", for: .normal)
         button.layer.cornerRadius = 10
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.red.cgColor
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tag = size
         addSubview(button)
         return button
     }
 
-    @objc private func addOneMore() {
-        completionForButton?()
+    @objc private func addOneMoreItem() {
+        increasingCompletion?()
+    }
+
+    @objc private func deleteOneItem() {
+        decreasingCompletion?()
     }
 }

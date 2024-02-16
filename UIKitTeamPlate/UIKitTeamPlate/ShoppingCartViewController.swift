@@ -7,19 +7,17 @@ import UIKit
 /// Экран корзины покупок
 class ShoppingCartViewController: UIViewController {
     var padding: CGFloat = 20
+    var orderprice: Int {
+        var sum = 0
+        for item in SavedItems.shared.savedItems {
+            sum += item.fullPrice
+        }
+        return sum
+    }
+
+    var shoppingCartCells: [ShoppingCartReusableView] = []
 
     // MARK: - Visual Components
-
-//    private lazy var cartCell = ShoppingCartReusableView()
-
-    private var cartItems: [Shoes] = [Shoes(
-        imageName: "invite",
-        model: "Женские туфли",
-        sostav: "кожа питона",
-        chosenSize: 36,
-        quantity: 1,
-        itemPrice: 2750
-    ), Shoes(imageName: "shoe", model: "лучшие ботинки", sostav: "", chosenSize: 37, quantity: 2, itemPrice: 3200)]
 
     private lazy var purchaseButton: UIButton = {
         let button = UIButton()
@@ -30,7 +28,6 @@ class ShoppingCartViewController: UIViewController {
         button.layer.shadowColor = UIColor.lightGray.cgColor
         button.layer.shadowRadius = 2
         button.layer.shadowOpacity = 5
-        button.setTitle("Оформить заказ", for: .normal)
         button.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 18)
         button.setTitleColor(.white, for: .normal)
         button.setTitleColor(.lightGray, for: .highlighted)
@@ -40,23 +37,28 @@ class ShoppingCartViewController: UIViewController {
         return button
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureUI()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        shoppingCartCells.forEach { $0.removeFromSuperview() }
+        padding = 20
+//        }
     }
 
     private func configureUI() {
         view.backgroundColor = .white
         navigationItem.title = "Корзина"
         configureTabBar()
-//        view.addSubview(cartCell)
         configureConstraints()
+        purchaseButton.setTitle("Оформить заказ - \(orderprice)", for: .normal)
         setupCollection()
     }
 
     func setupCollection() {
-        for (index, item) in cartItems.enumerated() {
-            print(index)
+        for (index, item) in SavedItems.shared.savedItems.enumerated() {
             let cell = ShoppingCartReusableView()
             cell.itemImageView.image = UIImage(named: item.imageName) ?? UIImage(named: "logo")
             cell.itemNameLabel.text = item.model
@@ -66,12 +68,19 @@ class ShoppingCartViewController: UIViewController {
             cell.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding).isActive = true
             cell.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
             cell.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+            shoppingCartCells.append(cell)
             padding += 177
             cell.increasingCompletion = { [weak self] in
-                self?.cartItems[index].quantity += 1
-                print("cell \(self?.cartItems[index].quantity ?? 00)")
-                cell.quantityLabel.text = "\(self?.cartItems[index].quantity ?? 0)"
-                cell.priceLabel.text = "\(self?.cartItems[index].fullPrice ?? 0) ₽"
+                SavedItems.shared.savedItems[index].quantity += 1
+                cell.quantityLabel.text = "\(SavedItems.shared.savedItems[index].quantity)"
+                cell.priceLabel.text = "\(SavedItems.shared.savedItems[index].fullPrice) ₽"
+                self?.purchaseButton.setTitle("Оформить заказ - \(self?.orderprice ?? 0)", for: .normal)
+            }
+            cell.decreasingCompletion = { [weak self] in
+                SavedItems.shared.savedItems[index].quantity -= 1
+                cell.quantityLabel.text = "\(SavedItems.shared.savedItems[index].quantity)"
+                cell.priceLabel.text = "\(SavedItems.shared.savedItems[index].fullPrice) ₽"
+                self?.purchaseButton.setTitle("Оформить заказ - \(self?.orderprice ?? 0)", for: .normal)
             }
         }
     }
