@@ -3,12 +3,18 @@
 
 import Foundation
 
-/// Структура, хранящая данные пользователя
+/// Данные пользователя приложения
 struct User {
-    var name = ""
-    var lastName = ""
-    var shoeSize = ""
-    var phoneNumber = ""
-    var birthdayDate = ""
-    var email = ""
+    /// имя
+    var name: String = ""
+    /// фамилия
+    var lastName: String = ""
+    /// размер обуви
+    var shoeSize: String = ""
+    /// номер телефона
+    var phoneNumber: String = ""
+    /// Дата рождения
+    var birthdayDate: String = ""
+    /// Адрес электронной почты
+    var email: String = ""
 }

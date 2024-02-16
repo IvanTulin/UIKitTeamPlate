@@ -5,7 +5,7 @@
 import UIKit
 
 /// Экран корзины покупок
-class ShoppingCartViewController: UIViewController {
+final class ShoppingCartViewController: UIViewController {
     var padding: CGFloat = 20
     var orderprice: Int {
         var sum = 0

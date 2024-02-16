@@ -4,12 +4,16 @@
 import Foundation
 
 /// Данные о выбранном предмете
-///
 struct Shoes {
+    /// название картинки
     var imageName: String
+    /// Модель
     var model: String
-    var sostav: String
+    /// Состав
+    var material: String
+    /// Выбранный размер
     var chosenSize: Int
+    /// Кол-во
     var quantity: Int {
         didSet {
             if quantity < 1 {
@@ -18,6 +22,8 @@ struct Shoes {
         }
     }
 
+    /// Цена одного предмета
     var itemPrice: Int
+    /// Суммарная всех предметов
     var fullPrice: Int { quantity * itemPrice }
 }

@@ -3,7 +3,11 @@
 
 import UIKit
 
+/// Рсширение добавляет к текстфилду тулбар с кнопками Done и Cancel
 extension UITextField {
+    /// Добавляет к текстфилду тулбар с кнопками Done и Cancel
+    /// - Parameter onDone: Принимает функцию, которую прицепит к кнопке done
+    /// - Parameter onCancel: Принимает функцию, которую прицепит к кнопке cancel
     func addDoneCancelToolbar(
         onDone: (target: Any, action: Selector)? = nil,
         onCancel: (target: Any, action: Selector)? = nil

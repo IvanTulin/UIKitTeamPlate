@@ -5,7 +5,7 @@
 import UIKit
 
 /// Экран с данными пользлвателя
-class UserDataViewController: UIViewController {
+final class UserDataViewController: UIViewController {
     // MARK: - Constants
 
     enum Constants {
@@ -15,19 +15,19 @@ class UserDataViewController: UIViewController {
         static let shoeSizePlaceholder = "Размер ноги"
         static let birthdayDatePlaceholder = "Дата рождения"
         static let emailPlaceholder = "Почта"
+        static let maxNumberCount = 11
     }
-
-    private let maxNumberCount = 11
 
     // MARK: - Visual Components
 
-    // TODO: посмотреть, как создаются строки для почты, номера карты с нулями, телефона и т.п. Как создаются тени на вью, что означают штуки типа опасити и т.п.
     private lazy var nameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = Constants.namePlaceholder
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .black.withAlphaComponent(0.05)
+        textField.backgroundColor = .backgroundGray
         textField.layer.cornerRadius = 12
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        textField.leftViewMode = .always
         textField.tag = 1
         textField.returnKeyType = .done
         view.addSubview(textField)
@@ -38,8 +38,10 @@ class UserDataViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = Constants.lastNamePlaceholder
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .black.withAlphaComponent(0.05)
+        textField.backgroundColor = .backgroundGray
         textField.layer.cornerRadius = 12
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        textField.leftViewMode = .always
         textField.tag = 2
         view.addSubview(textField)
         textField.returnKeyType = .done
@@ -52,8 +54,10 @@ class UserDataViewController: UIViewController {
         textField.keyboardType = .numberPad
         textField.leftViewMode = .always
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .black.withAlphaComponent(0.05)
+        textField.backgroundColor = .backgroundGray
         textField.layer.cornerRadius = 12
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        textField.leftViewMode = .always
         textField.tag = 3
         textField.addDoneCancelToolbar()
         view.addSubview(textField)
@@ -64,8 +68,10 @@ class UserDataViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = Constants.shoeSizePlaceholder
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .black.withAlphaComponent(0.05)
+        textField.backgroundColor = .backgroundGray
         textField.layer.cornerRadius = 12
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        textField.leftViewMode = .always
         textField.tag = 4
         view.addSubview(textField)
         return textField
@@ -75,8 +81,10 @@ class UserDataViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = Constants.birthdayDatePlaceholder
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .black.withAlphaComponent(0.05)
+        textField.backgroundColor = .backgroundGray
         textField.layer.cornerRadius = 12
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        textField.leftViewMode = .always
         textField.tag = 5
         textField.inputView = datePicker
         view.addSubview(textField)
@@ -86,7 +94,8 @@ class UserDataViewController: UIViewController {
     private lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.center = view.center
-        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.frame = CGRect(x: 0, y: 150, width: 200, height: 200)
+        datePicker.preferredDatePickerStyle = .inline
         datePicker.datePickerMode = .date
         datePicker.backgroundColor = .white
         datePicker.maximumDate = Date()
@@ -98,7 +107,9 @@ class UserDataViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = Constants.emailPlaceholder
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .black.withAlphaComponent(0.05)
+        textField.backgroundColor = .backgroundGray
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        textField.leftViewMode = .always
         textField.layer.cornerRadius = 12
         textField.keyboardType = .emailAddress
         textField.tag = 6
@@ -206,8 +217,8 @@ class UserDataViewController: UIViewController {
             guard !(shoulRemoveLastDigit && phoneNumber.count <= 2) else { return "+" }
             let range = NSString(string: phoneNumber).range(of: phoneNumber)
             number = regex.stringByReplacingMatches(in: phoneNumber, options: [], range: range, withTemplate: "")
-            if number.count > maxNumberCount {
-                let maxIndex = number.index(number.startIndex, offsetBy: maxNumberCount)
+            if number.count > Constants.maxNumberCount {
+                let maxIndex = number.index(number.startIndex, offsetBy: Constants.maxNumberCount)
                 number = String(number[number.startIndex ..< maxIndex])
             }
             if shoulRemoveLastDigit {
@@ -240,7 +251,7 @@ class UserDataViewController: UIViewController {
         return "+\(number)"
     }
 
-    @objc func chooseBirthdayDate() {
+    @objc private func chooseBirthdayDate() {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         birthdayTextField.text = formatter.string(from: datePicker.date)

@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка корзины
-class ShoppingCartReusableView: UIView {
+final class ShoppingCartReusableView: UIView {
     // MARK: - Constants
 
     enum Constants {
@@ -12,8 +12,12 @@ class ShoppingCartReusableView: UIView {
         static let sizes = [35, 36, 37, 38, 39]
     }
 
+    // MARK: - Public Properties
+
     var increasingCompletion: (() -> ())?
     var decreasingCompletion: (() -> ())?
+
+    // MARK: - Visual Components
 
     lazy var itemImageView: UIImageView = {
         let imageView = UIImageView()
@@ -45,7 +49,6 @@ class ShoppingCartReusableView: UIView {
 
     lazy var itemNameLabel: UILabel = {
         let label = UILabel()
-//        label.text = "Women Shoes"
         label.font = UIFont(name: "Verdana", size: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
@@ -122,7 +125,6 @@ class ShoppingCartReusableView: UIView {
 
     lazy var priceLabel: UILabel = {
         let label = UILabel()
-//        label.text = "4250 ₽"
         label.font = UIFont(name: "Verdana-Bold", size: 10)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .right
@@ -182,7 +184,9 @@ class ShoppingCartReusableView: UIView {
         setupView()
     }
 
-    func setupView() {
+    // MARK: - Private Methods
+
+    private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: 157).isActive = true
 
@@ -192,62 +196,52 @@ class ShoppingCartReusableView: UIView {
         addSubview(button38)
         addSubview(button39)
 
-        /// картинка
         itemImageView.centerXAnchor.constraint(equalTo: imageBackgroundView.centerXAnchor).isActive = true
         itemImageView.centerYAnchor.constraint(equalTo: imageBackgroundView.centerYAnchor).isActive = true
 
-        /// фон картинки
         imageBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
         imageBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
         imageBackgroundView.heightAnchor.constraint(equalToConstant: 157).isActive = true
         imageBackgroundView.widthAnchor.constraint(equalToConstant: 157).isActive = true
 
-        /// корзинка
         cartButton.topAnchor.constraint(equalTo: imageBackgroundView.topAnchor, constant: 16).isActive = true
         cartButton.trailingAnchor.constraint(equalTo: imageBackgroundView.trailingAnchor, constant: -16).isActive = true
 
-        /// названия обуви
         itemNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
         itemNameLabel.leadingAnchor.constraint(equalTo: imageBackgroundView.trailingAnchor, constant: 20)
             .isActive = true
         itemNameLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         itemNameLabel.widthAnchor.constraint(equalToConstant: 110).isActive = true
 
-        /// колво
         quantityTitleLabel.topAnchor.constraint(equalTo: itemNameLabel.bottomAnchor, constant: 10).isActive = true
         quantityTitleLabel.leadingAnchor.constraint(equalTo: imageBackgroundView.trailingAnchor, constant: 20)
             .isActive = true
         quantityTitleLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         quantityTitleLabel.widthAnchor.constraint(equalToConstant: 72).isActive = true
 
-        /// кнопка плюс
         minusItemButton.topAnchor.constraint(equalTo: quantityTitleLabel.topAnchor).isActive = true
         minusItemButton.leadingAnchor.constraint(equalTo: quantityTitleLabel.trailingAnchor, constant: 24)
             .isActive = true
         minusItemButton.heightAnchor.constraint(equalToConstant: 15).isActive = true
         minusItemButton.widthAnchor.constraint(equalToConstant: 15).isActive = true
 
-        /// number
         quantityLabel.topAnchor.constraint(equalTo: quantityTitleLabel.topAnchor).isActive = true
         quantityLabel.leadingAnchor.constraint(equalTo: minusItemButton.trailingAnchor, constant: 4)
             .isActive = true
         quantityLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         quantityLabel.widthAnchor.constraint(equalToConstant: 15).isActive = true
 
-        /// кнопка минус
         plusItemButton.topAnchor.constraint(equalTo: quantityTitleLabel.topAnchor).isActive = true
         plusItemButton.leadingAnchor.constraint(equalTo: quantityLabel.trailingAnchor, constant: 4)
             .isActive = true
         plusItemButton.heightAnchor.constraint(equalToConstant: 15).isActive = true
         plusItemButton.widthAnchor.constraint(equalToConstant: 15).isActive = true
 
-        /// размер
         sizeLabel.topAnchor.constraint(equalTo: quantityTitleLabel.bottomAnchor, constant: 10).isActive = true
         sizeLabel.leadingAnchor.constraint(equalTo: imageBackgroundView.trailingAnchor, constant: 20).isActive = true
         sizeLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         sizeLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
 
-        /// Размеры
         [
             button35,
             button36,
@@ -270,21 +264,19 @@ class ShoppingCartReusableView: UIView {
         button38.leadingAnchor.constraint(equalTo: button37.trailingAnchor, constant: 4).isActive = true
         button39.leadingAnchor.constraint(equalTo: imageBackgroundView.trailingAnchor, constant: 20).isActive = true
 
-        /// титл цены
         priceTitleLabel.topAnchor.constraint(equalTo: button39.bottomAnchor, constant: 10).isActive = true
         priceTitleLabel.leadingAnchor.constraint(equalTo: imageBackgroundView.trailingAnchor, constant: 20)
             .isActive = true
         priceTitleLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         priceTitleLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
 
-        /// цена
         priceLabel.topAnchor.constraint(equalTo: priceTitleLabel.topAnchor).isActive = true
         priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         priceLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         priceLabel.widthAnchor.constraint(equalToConstant: 60).isActive = true
     }
 
-    func createSizeButton(size: Int) -> UIButton {
+    private func createSizeButton(size: Int) -> UIButton {
         let button = UIButton()
         button.backgroundColor = UIColor.lightPink
         button.setTitle("\(size)", for: .normal)
