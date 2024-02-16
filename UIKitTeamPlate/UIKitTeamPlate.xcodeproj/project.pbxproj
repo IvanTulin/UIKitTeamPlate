@@ -23,6 +23,7 @@
 		BA632C642B711B3B00D0F110 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C632B711B3B00D0F110 /* CatalogViewController.swift */; };
 		BA632C692B711B3C00D0F110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA632C682B711B3C00D0F110 /* Assets.xcassets */; };
 		BA632C6C2B711B3C00D0F110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */; };
+		BABAA3F32B7EA7B100B68FC3 /* ChoosingShoesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAA3F22B7EA7B100B68FC3 /* ChoosingShoesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		BA632C682B711B3C00D0F110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA632C6B2B711B3C00D0F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA632C6D2B711B3C00D0F110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BABAA3F22B7EA7B100B68FC3 /* ChoosingShoesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosingShoesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +110,7 @@
 				BA632C612B711B3B00D0F110 /* SceneDelegate.swift */,
 				BA05B9E02B7E5573000A80BF /* Catalog */,
 				BA05B9E32B7E7C83000A80BF /* Models */,
-				BA3A321D2B7DF73500C72FC1 /* ChoosingShoesViewController.swift */,
+				BABAA3F42B7EA82200B68FC3 /* ChoosingShoes */,
 				BA3A321F2B7DF76700C72FC1 /* ChoosingTheSizeViewController.swift */,
 				BA3A32212B7DF7AC00C72FC1 /* ProfileViewController.swift */,
 				BA3A32232B7DF7E900C72FC1 /* UserDataViewController.swift */,
@@ -119,6 +121,15 @@
 				BA632C6D2B711B3C00D0F110 /* Info.plist */,
 			);
 			path = UIKitTeamPlate;
+			sourceTree = "<group>";
+		};
+		BABAA3F42B7EA82200B68FC3 /* ChoosingShoes */ = {
+			isa = PBXGroup;
+			children = (
+				BA3A321D2B7DF73500C72FC1 /* ChoosingShoesViewController.swift */,
+				BABAA3F22B7EA7B100B68FC3 /* ChoosingShoesView.swift */,
+			);
+			path = ChoosingShoes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +254,7 @@
 				BA05B9E92B7E8ACD000A80BF /* ModelChildrensCatalog.swift in Sources */,
 				BA05B9E72B7E864F000A80BF /* ModelMensCatalog.swift in Sources */,
 				BA632C642B711B3B00D0F110 /* CatalogViewController.swift in Sources */,
+				BABAA3F32B7EA7B100B68FC3 /* ChoosingShoesView.swift in Sources */,
 				BA05B9DF2B7E5566000A80BF /* CatalogView.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
 				BA3A32242B7DF7E900C72FC1 /* UserDataViewController.swift in Sources */,

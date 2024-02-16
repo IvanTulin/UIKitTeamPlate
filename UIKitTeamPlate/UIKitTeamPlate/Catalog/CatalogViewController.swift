@@ -14,7 +14,63 @@ class CatalogViewController: UIViewController {
         static let nameFontBold = "Verdana-Bold"
     }
 
+    let imagePickerController = UIImagePickerController()
+
     // MARK: - Visual Components
+
+    private lazy var cameraButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(
+            barButtonSystemItem: .camera,
+            target: self,
+            action: #selector(openCamera)
+        )
+        button.tintColor = .black
+        imagePickerController.delegate = self
+        return button
+    }()
+
+    private let qrCodeButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = .qrCode
+        button.style = .plain
+        button.tintColor = .black
+        return button
+    }()
+
+    private let flexibleSpace: UIBarButtonItem = {
+        let button = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        return button
+    }()
+
+    private let manCatalogView: CatalogView = {
+        let view = CatalogView()
+        view.newProductImageView.image = ModelMensCatalog.Constant.imageOfTheNewProduct
+        view.saleImageView.image =
+            ModelMensCatalog.Constant.imageOfTheSale
+        view.brendImageView.image = ModelMensCatalog.Constant.imageForTheBrandsView
+        view.shoesImageView.image = ModelMensCatalog.Constant.imageForTheShoesView
+        view.bagsImageView.image = ModelMensCatalog.Constant.imageForTheBagsView
+
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    private let childrenCatalogView: CatalogView = {
+        let view = CatalogView()
+        view.newProductImageView.image = ModelChildrensCatalog.Constant.imageOfTheNewProduct
+        view.saleImageView.image =
+            ModelChildrensCatalog.Constant.imageOfTheSale
+        view.brendImageView.image = ModelChildrensCatalog.Constant.imageForTheBrandsView
+        view.shoesImageView.image = ModelChildrensCatalog.Constant.imageForTheShoesView
+        view.bagsImageView.image = ModelChildrensCatalog.Constant.imageForTheBagsView
+
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     private lazy var segmentController: UISegmentedControl = {
         let segmentController = UISegmentedControl(items: Constant.genders)
@@ -46,32 +102,6 @@ class CatalogViewController: UIViewController {
         return view
     }()
 
-    private let manCatalogView: CatalogView = {
-        let view = CatalogView()
-        view.newProductImageView.image = ModelMensCatalog.Constant.imageOfTheNewProduct
-        view.saleImageView.image =
-            ModelMensCatalog.Constant.imageOfTheSale
-        view.brendImageView.image = ModelMensCatalog.Constant.imageForTheBrandsView
-        view.shoesImageView.image = ModelMensCatalog.Constant.imageForTheShoesView
-        view.bagsImageView.image = ModelMensCatalog.Constant.imageForTheBagsView
-
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    private let childrenCatalogView: CatalogView = {
-        let view = CatalogView()
-        view.newProductImageView.image = ModelChildrensCatalog.Constant.imageOfTheNewProduct
-        view.saleImageView.image =
-            ModelChildrensCatalog.Constant.imageOfTheSale
-        view.brendImageView.image = ModelChildrensCatalog.Constant.imageForTheBrandsView
-        view.shoesImageView.image = ModelChildrensCatalog.Constant.imageForTheShoesView
-        view.bagsImageView.image = ModelChildrensCatalog.Constant.imageForTheBagsView
-
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -84,6 +114,7 @@ class CatalogViewController: UIViewController {
 
     private func configureUI() {
         navigationItem.title = Constant.nameForNavigationTitle
+        navigationItem.rightBarButtonItems = [flexibleSpace, qrCodeButton, cameraButton]
         view.backgroundColor = .white
         view.addSubview(segmentController)
         view.addSubview(womensCatalogView)
@@ -152,6 +183,15 @@ class CatalogViewController: UIViewController {
         ])
     }
 
+    @objc private func openCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePickerController.sourceType = .camera
+            present(imagePickerController, animated: true)
+        } else {
+            print("Камера недоступна на этом устройстве")
+        }
+    }
+
     @objc private func selectedValue() {
         if segmentController.selectedSegmentIndex == 0 {
             womensCatalogView.isHidden = false
@@ -174,5 +214,11 @@ class CatalogViewController: UIViewController {
             choosingShoesViewController,
             animated: true
         )
+    }
+}
+
+extension CatalogViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
     }
 }
