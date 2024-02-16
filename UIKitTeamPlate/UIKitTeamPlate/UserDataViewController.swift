@@ -151,6 +151,9 @@ final class UserDataViewController: UIViewController {
     // MARK: - Private Methods
 
     private func configureUI() {
+        navigationController?.navigationBar.topItem?.title = ""
+        navigationController?.navigationBar.tintColor = .black
+
         view.backgroundColor = .white
         view.addSubview(nameTextField)
         view.addSubview(lastNameTextField)
