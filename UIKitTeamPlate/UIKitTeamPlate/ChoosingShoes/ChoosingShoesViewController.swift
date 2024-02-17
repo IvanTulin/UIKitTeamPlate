@@ -9,7 +9,7 @@ import UIKit
 // }
 
 /// Экран выбора обуви
-class ChoosingShoesViewController: UIViewController {
+final class ChoosingShoesViewController: UIViewController {
     // MARK: - Constants
 
     enum Constant {
@@ -23,11 +23,12 @@ class ChoosingShoesViewController: UIViewController {
 
     // MARK: - Visual Components
 
-    lazy var shoesWithHeelsView: ChoosingShoesView = {
+    private lazy var shoesWithHeelsView: ChoosingShoesView = {
         let view = ChoosingShoesView()
         view.backgroundColor = .appLightGray
         view.shoesImageView.image = .shoesWithHeels
         view.costLabel.text = Constant.textForCostShoesWithHeelsLabel
+        view.shoppingCartButton.tag = 0
         view.shoppingCartButton.addTarget(
             self,
             action: #selector(transferToShoppingCart),
@@ -38,17 +39,23 @@ class ChoosingShoesViewController: UIViewController {
         return view
     }()
 
-    private let bootsView: ChoosingShoesView = {
+    private lazy var bootsView: ChoosingShoesView = {
         let view = ChoosingShoesView()
         view.backgroundColor = .appLightGray
         view.shoesImageView.image = .boots
         view.costLabel.text = Constant.textForCostBootsLabel
+        view.shoppingCartButton.tag = 1
+        view.shoppingCartButton.addTarget(
+            self,
+            action: #selector(transferToShoppingCart),
+            for: .touchUpInside
+        )
         view.layer.cornerRadius = 15
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    private let runningShoesView: ChoosingShoesView = {
+    private lazy var runningShoesView: ChoosingShoesView = {
         let view = ChoosingShoesView()
         view.backgroundColor = .appLightGray
         view.shoesImageView.image = .runningShoes
@@ -58,7 +65,7 @@ class ChoosingShoesViewController: UIViewController {
         return view
     }()
 
-    private let yellowShoesView: ChoosingShoesView = {
+    private lazy var yellowShoesView: ChoosingShoesView = {
         let view = ChoosingShoesView()
         view.backgroundColor = .appLightGray
         view.shoesImageView.image = .yellowShoes
@@ -68,7 +75,7 @@ class ChoosingShoesViewController: UIViewController {
         return view
     }()
 
-    private let sneakersView: ChoosingShoesView = {
+    private lazy var sneakersView: ChoosingShoesView = {
         let view = ChoosingShoesView()
         view.backgroundColor = .appLightGray
         view.shoesImageView.image = .sneakers
@@ -85,10 +92,6 @@ class ChoosingShoesViewController: UIViewController {
         button.addTarget(self, action: #selector(returnCatalogViewController), for: .touchUpInside)
         return button
     }()
-
-    // MARK: - Properties
-
-    weak var delegate: ShoppingCartProtocol?
 
     // MARK: - Life Cycle
 
@@ -179,23 +182,24 @@ class ChoosingShoesViewController: UIViewController {
                 .basketFill,
                 for: .normal
             )
-//            let choosingSizeVewController = ChoosingTheSizeViewController()
-//            navigationController?.present(
-//                choosingSizeVewController,
-//                animated: true
-//            )
+            let choosingSizeVewController = ChoosingTheSizeViewController()
+            navigationController?.present(
+                choosingSizeVewController,
+                animated: true
+            )
         } else {
             shoesWithHeelsView.shoppingCartButton.setImage(
                 .shoppinCart,
                 for: .normal
             )
         }
-        // delegate?.setupImage(image: .shoesWithHeels)
-        ShoppingCartViewController.shared.images.append(.shoesWithHeels)
-        print(ShoppingCartViewController.shared.images.count)
-
-//        let shopVc = ShoppingCartViewController()
-//        shopVc.imageView.image = .shoesWithHeels
-//        navigationController?.pushViewController(shopVc, animated: true)
+        if shoesWithHeelsView.shoppingCartButton.tag == 0 {
+            ShoppingCartModel.shared.shoes = shoesWithHeelsView.shoesImageView.image
+            ShoppingCartModel.shared.costShoes = shoesWithHeelsView.costLabel.text
+        } else if bootsView.shoppingCartButton.tag == 1 {
+            ShoppingCartModel.shared.shoes = bootsView.shoesImageView.image
+            ShoppingCartModel.shared.costShoes = bootsView.costLabel.text
+        }
+        
     }
 }

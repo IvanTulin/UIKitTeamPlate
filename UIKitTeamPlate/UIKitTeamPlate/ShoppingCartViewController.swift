@@ -4,41 +4,12 @@
 // Наташа
 import UIKit
 
-protocol ShoppingCartProtocol: AnyObject {
-    func setupImage(image: UIImage)
-}
-
 /// Экран корзины покупок
-class ShoppingCartViewController: UIViewController {
-    // MARK: - Constants
-
-    static let shared = ShoppingCartViewController()
-    let choosingShoesViewController = ChoosingShoesViewController()
-
-    lazy var imageView: UIImageView = {
-        let image = UIImageView()
-        // image.image = images.first
-        image.layer.borderWidth = 2
-        image.frame = CGRect(x: 100, y: 300, width: 150, height: 150)
-        return image
-    }()
-
+final class ShoppingCartViewController: UIViewController {
     // MARK: - Visual Components
 
-    lazy var selectedShoesView: ChoosingShoesView = {
-        let view = ChoosingShoesView()
-        view.backgroundColor = .appLightGray
-        // view.shoesImageView.image = images.first
-        view.shoesImageView.backgroundColor = .systemBlue
-        view.shoppingCartButton.addTarget(self, action: #selector(pressButton), for: .touchUpInside)
-        view.layer.cornerRadius = 15
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    // MARK: - Properties
-
-    var images: [UIImage] = []
+    var selectedShoesView: ChoosingShoesView!
+    var costLabel: UILabel!
 
     // MARK: - Life Cycle
 
@@ -46,15 +17,6 @@ class ShoppingCartViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureConstraints()
-
-        choosingShoesViewController.delegate = self
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureUI()
-        configureConstraints()
-        imageView.image = images.first
     }
 
     // MARK: - Private Methods
@@ -62,9 +24,7 @@ class ShoppingCartViewController: UIViewController {
     private func configureUI() {
         navigationItem.title = "Корзина"
         view.backgroundColor = .white
-        view.addSubview(selectedShoesView)
-        view.addSubview(imageView)
-        selectedShoesView.shoesImageView.image = images.first
+        configureChoosingShoesView()
     }
 
     private func configureConstraints() {
@@ -78,18 +38,40 @@ class ShoppingCartViewController: UIViewController {
                 constant: 116
             ),
             selectedShoesView.widthAnchor.constraint(equalToConstant: 157),
-            selectedShoesView.heightAnchor.constraint(equalToConstant: 157)
+            selectedShoesView.heightAnchor.constraint(equalToConstant: 157),
+
+            costLabel.leftAnchor.constraint(
+                equalTo: view.leftAnchor,
+                constant: 296
+            ),
+            costLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 260),
+            costLabel.widthAnchor.constraint(equalToConstant: 63),
+            costLabel.heightAnchor.constraint(equalToConstant: 12)
         ])
     }
 
-    @objc private func pressButton() {
-        selectedShoesView.shoesImageView.image = images.first
-        print("pressButton")
-    }
-}
+    private func configureChoosingShoesView() {
+        selectedShoesView = ChoosingShoesView()
+        selectedShoesView.backgroundColor = .appLightGray
+        selectedShoesView.shoppingCartButton.addTarget(self, action: #selector(pressButton), for: .touchUpInside)
+        selectedShoesView.layer.cornerRadius = 15
+        selectedShoesView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(selectedShoesView)
 
-extension ShoppingCartViewController: ShoppingCartProtocol {
-    func setupImage(image: UIImage) {
-        selectedShoesView.shoesImageView.image = image
+        costLabel = UILabel()
+        costLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(costLabel)
+
+        if let image = ShoppingCartModel.shared.shoes {
+            selectedShoesView.shoesImageView.image = image
+        }
+        if let text = ShoppingCartModel.shared.costShoes {
+            // selectedShoesView.costLabel.text = text
+            costLabel.text = text
+        }
+    }
+
+    @objc private func pressButton() {
+        print("pressButton")
     }
 }

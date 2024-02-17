@@ -4,7 +4,7 @@
 import UIKit
 
 /// Вью каталога
-class CatalogView: UIView {
+final class CatalogView: UIView {
     // MARK: - Constants
 
     enum Constants {
@@ -27,6 +27,43 @@ class CatalogView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
+    let showChoosingShoesButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let saleImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage()
+        imageView.backgroundColor = .orange
+        imageView.layer.cornerRadius = 12
+        imageView.addShadow()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    var brendImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    var shoesImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    var bagsImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
 
     private let newProductLabel: UILabel = {
         let label = UILabel()
@@ -36,16 +73,6 @@ class CatalogView: UIView {
         label.font = UIFont(name: Constants.nameFontBold, size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-
-    let saleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage()
-        imageView.backgroundColor = .orange
-        imageView.layer.cornerRadius = 12
-        imageView.addShadow()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
     }()
 
     private let saleLabel: UILabel = {
@@ -72,12 +99,6 @@ class CatalogView: UIView {
         view.layer.cornerRadius = 12
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-    }()
-
-    let showChoosingShoesButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
     }()
 
     private let bagsView: UIView = {
@@ -110,29 +131,6 @@ class CatalogView: UIView {
         label.font = UIFont(name: Constants.nameFontBold, size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-
-    // MARK: - Properties
-
-    var brendImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-
-    var shoesImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-
-    var bagsImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
     }()
 
     // MARK: - Life Cycle

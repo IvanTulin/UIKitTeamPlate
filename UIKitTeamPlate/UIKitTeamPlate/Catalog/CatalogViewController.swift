@@ -5,7 +5,7 @@
 import UIKit
 
 /// Экран католога
-class CatalogViewController: UIViewController {
+final class CatalogViewController: UIViewController {
     // MARK: - Constants
 
     enum Constant {

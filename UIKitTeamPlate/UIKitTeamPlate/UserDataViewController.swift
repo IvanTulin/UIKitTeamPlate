@@ -5,7 +5,7 @@
 import UIKit
 
 /// Экран с данными пользлвателя
-class UserDataViewController: UIViewController {
+final class UserDataViewController: UIViewController {
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
 //

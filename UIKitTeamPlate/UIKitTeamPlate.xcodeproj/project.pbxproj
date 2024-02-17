@@ -23,6 +23,7 @@
 		BA632C642B711B3B00D0F110 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C632B711B3B00D0F110 /* CatalogViewController.swift */; };
 		BA632C692B711B3C00D0F110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA632C682B711B3C00D0F110 /* Assets.xcassets */; };
 		BA632C6C2B711B3C00D0F110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */; };
+		BA804A3E2B80EA9A009D13FA /* ShoppingCartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA804A3D2B80EA9A009D13FA /* ShoppingCartManager.swift */; };
 		BABAA3F32B7EA7B100B68FC3 /* ChoosingShoesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAA3F22B7EA7B100B68FC3 /* ChoosingShoesView.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		BA632C682B711B3C00D0F110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA632C6B2B711B3C00D0F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA632C6D2B711B3C00D0F110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA804A3D2B80EA9A009D13FA /* ShoppingCartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartManager.swift; sourceTree = "<group>"; };
 		BABAA3F22B7EA7B100B68FC3 /* ChoosingShoesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosingShoesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 				BA3A321F2B7DF76700C72FC1 /* ChoosingTheSizeViewController.swift */,
 				BA3A32212B7DF7AC00C72FC1 /* ProfileViewController.swift */,
 				BA3A32232B7DF7E900C72FC1 /* UserDataViewController.swift */,
+				BA804A3D2B80EA9A009D13FA /* ShoppingCartManager.swift */,
 				BA3A32252B7DF85600C72FC1 /* ShoppingCartViewController.swift */,
 				BA05B9DB2B7E52E2000A80BF /* Extension */,
 				BA632C682B711B3C00D0F110 /* Assets.xcassets */,
@@ -248,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA05B9E22B7E6049000A80BF /* UIView+Extension.swift in Sources */,
+				BA804A3E2B80EA9A009D13FA /* ShoppingCartManager.swift in Sources */,
 				BA05B9DD2B7E5306000A80BF /* UISegmentedControl+Extension.swift in Sources */,
 				BA3A32262B7DF85600C72FC1 /* ShoppingCartViewController.swift in Sources */,
 				BA3A32222B7DF7AC00C72FC1 /* ProfileViewController.swift in Sources */,

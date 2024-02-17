@@ -5,7 +5,7 @@
 import UIKit
 
 /// Экран выбора размера
-class ChoosingTheSizeViewController: UIViewController {
+final class ChoosingTheSizeViewController: UIViewController {
     // MARK: - Constants
 
     enum Constant {

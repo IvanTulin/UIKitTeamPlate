@@ -4,7 +4,7 @@
 import UIKit
 
 /// Вью выбора обуви
-class ChoosingShoesView: UIView {
+final class ChoosingShoesView: UIView {
     // MARK: - Constants
 
     enum Constant {
