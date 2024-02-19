@@ -1,12 +1,13 @@
-// ViewController.swift
+// ProfileViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-/// Стартовый экран
-class ViewController: UIViewController {
+/// Экран профиля
+class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.backgroundColor = .white
     }
 }
