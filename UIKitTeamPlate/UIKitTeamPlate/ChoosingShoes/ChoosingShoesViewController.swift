@@ -28,7 +28,7 @@ final class ChoosingShoesViewController: UIViewController {
         view.backgroundColor = .appLightGray
         view.shoesImageView.image = .shoesWithHeels
         view.costLabel.text = Constant.textForCostShoesWithHeelsLabel
-        view.shoppingCartButton.tag = 0
+        view.shoppingCartButton.tag = 1
         view.shoppingCartButton.addTarget(
             self,
             action: #selector(transferToShoppingCart),
@@ -44,10 +44,10 @@ final class ChoosingShoesViewController: UIViewController {
         view.backgroundColor = .appLightGray
         view.shoesImageView.image = .boots
         view.costLabel.text = Constant.textForCostBootsLabel
-        view.shoppingCartButton.tag = 1
+        view.shoppingCartButton.tag = 2
         view.shoppingCartButton.addTarget(
             self,
-            action: #selector(transferToShoppingCart),
+            action: #selector(transferToShoppingCart2),
             for: .touchUpInside
         )
         view.layer.cornerRadius = 15
@@ -176,6 +176,28 @@ final class ChoosingShoesViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 
+    @objc private func transferToShoppingCart2() {
+        if bootsView.shoppingCartButton.currentImage == .shoppinCart {
+            bootsView.shoppingCartButton.setImage(
+                .basketFill,
+                for: .normal
+            )
+            let choosingSizeVewController = ChoosingTheSizeViewController()
+            navigationController?.present(
+                choosingSizeVewController,
+                animated: true
+            )
+        } else {
+            bootsView.shoppingCartButton.setImage(
+                .shoppinCart,
+                for: .normal
+            )
+        }
+
+        ShoppingCartModel.shared.shoes = bootsView.shoesImageView.image
+        ShoppingCartModel.shared.costShoes = bootsView.costLabel.text
+    }
+
     @objc private func transferToShoppingCart() {
         if shoesWithHeelsView.shoppingCartButton.currentImage == .shoppinCart {
             shoesWithHeelsView.shoppingCartButton.setImage(
@@ -193,12 +215,11 @@ final class ChoosingShoesViewController: UIViewController {
                 for: .normal
             )
         }
-        if shoesWithHeelsView.shoppingCartButton.tag == 0 {
+        if shoesWithHeelsView.shoppingCartButton.tag == 1 {
+            print("Tag 1")
             ShoppingCartModel.shared.shoes = shoesWithHeelsView.shoesImageView.image
             ShoppingCartModel.shared.costShoes = shoesWithHeelsView.costLabel.text
-        } else if bootsView.shoppingCartButton.tag == 1 {
-            ShoppingCartModel.shared.shoes = bootsView.shoesImageView.image
-            ShoppingCartModel.shared.costShoes = bootsView.costLabel.text
         }
+
     }
 }
