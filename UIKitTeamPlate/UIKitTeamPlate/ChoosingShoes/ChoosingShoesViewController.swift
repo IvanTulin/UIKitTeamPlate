@@ -200,6 +200,5 @@ final class ChoosingShoesViewController: UIViewController {
             ShoppingCartModel.shared.shoes = bootsView.shoesImageView.image
             ShoppingCartModel.shared.costShoes = bootsView.costLabel.text
         }
-        
     }
 }

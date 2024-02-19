@@ -9,9 +9,9 @@ final class CatalogView: UIView {
 
     enum Constants {
         static let nameFontBold = "Verdana-Bold"
-        static let textForLableBrend = "Бренд"
-        static let textForLableShoes = "Обувь"
-        static let textForLableBags = "Сумки"
+        static let textForLabelBrend = "Бренд"
+        static let textForLabelShoes = "Обувь"
+        static let textForLabelBags = "Сумки"
         static let textForLabelNewProduct = "Новинки"
         static let textForLabelSale = "Распродажа"
     }
@@ -27,13 +27,13 @@ final class CatalogView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+
     let showChoosingShoesButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     let saleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage()
@@ -43,7 +43,7 @@ final class CatalogView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+
     var brendImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage()
@@ -111,7 +111,7 @@ final class CatalogView: UIView {
 
     private let brendLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.textForLableBrend
+        label.text = Constants.textForLabelBrend
         label.font = UIFont(name: Constants.nameFontBold, size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -119,7 +119,7 @@ final class CatalogView: UIView {
 
     private let shoesLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.textForLableShoes
+        label.text = Constants.textForLabelShoes
         label.font = UIFont(name: Constants.nameFontBold, size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -127,7 +127,7 @@ final class CatalogView: UIView {
 
     private let bagsLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.textForLableBags
+        label.text = Constants.textForLabelBags
         label.font = UIFont(name: Constants.nameFontBold, size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -150,7 +150,6 @@ final class CatalogView: UIView {
 
     // MARK: - Private Methods
 
-    /// Конфигурируем все элементы UI
     private func configureUI() {
         addSubview(newProductImageView)
         addSubview(newProductLabel)
@@ -168,7 +167,6 @@ final class CatalogView: UIView {
         addSubview(showChoosingShoesButton)
     }
 
-    /// Конфигурируем констрейнты для вью
     private func configureConstraintsForViews() {
         NSLayoutConstraint.activate([
             // Configure newProductImageView

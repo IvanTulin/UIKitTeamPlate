@@ -6,6 +6,12 @@ import UIKit
 
 /// Экран корзины покупок
 final class ShoppingCartViewController: UIViewController {
+    // MARK: - Constants
+
+    enum Constant {
+        static let nameForTitleNavigationItem = "Корзина"
+    }
+
     // MARK: - Visual Components
 
     var selectedShoesView: ChoosingShoesView!
@@ -22,7 +28,7 @@ final class ShoppingCartViewController: UIViewController {
     // MARK: - Private Methods
 
     private func configureUI() {
-        navigationItem.title = "Корзина"
+        navigationItem.title = Constant.nameForTitleNavigationItem
         view.backgroundColor = .white
         configureChoosingShoesView()
     }
