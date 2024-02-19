@@ -14,8 +14,8 @@ final class ChoosingShoesViewController: UIViewController {
 
     enum Constant {
         static let nameForTitleNavigationItem = "Обувь"
-        static let textForCostShoesWithHeelsLabel = "2250 ₽"
-        static let textForCostBootsLabel = "4250 ₽"
+        static let textForCostShoesWithHeelsLabel = 2250
+        static let textForCostBootsLabel = 4250
         static let textForCostRunningShoesLabel = "5750 ₽"
         static let textForCostYellowShoesLabel = "3500 ₽"
         static let textForCostSneakersLabel = "5750 ₽"
@@ -27,11 +27,11 @@ final class ChoosingShoesViewController: UIViewController {
         let view = ChoosingShoesView()
         view.backgroundColor = .appLightGray
         view.shoesImageView.image = .shoesWithHeels
-        view.costLabel.text = Constant.textForCostShoesWithHeelsLabel
+        view.costLabel.text = "\(Constant.textForCostShoesWithHeelsLabel) р."
         view.shoppingCartButton.tag = 1
         view.shoppingCartButton.addTarget(
             self,
-            action: #selector(transferToShoppingCart),
+            action: #selector(transferToShoppingCart(sender:)),
             for: .touchUpInside
         )
         view.layer.cornerRadius = 15
@@ -43,11 +43,11 @@ final class ChoosingShoesViewController: UIViewController {
         let view = ChoosingShoesView()
         view.backgroundColor = .appLightGray
         view.shoesImageView.image = .boots
-        view.costLabel.text = Constant.textForCostBootsLabel
+        view.costLabel.text = "\(Constant.textForCostBootsLabel) р."
         view.shoppingCartButton.tag = 2
         view.shoppingCartButton.addTarget(
             self,
-            action: #selector(transferToShoppingCart2),
+            action: #selector(transferToShoppingCart(sender:)),
             for: .touchUpInside
         )
         view.layer.cornerRadius = 15
@@ -194,32 +194,79 @@ final class ChoosingShoesViewController: UIViewController {
             )
         }
 
-        ShoppingCartModel.shared.shoes = bootsView.shoesImageView.image
-        ShoppingCartModel.shared.costShoes = bootsView.costLabel.text
+        let shoeItem = Shoes(
+            imageName: "bootsImage",
+            model: "Women shoes",
+            material: "some",
+            chosenSize: .thirtyEight,
+            quantity: 1,
+            itemPrice: Constant.textForCostBootsLabel
+        )
+        SavedItems.shared.savedItems.append(shoeItem)
     }
 
-    @objc private func transferToShoppingCart() {
-        if shoesWithHeelsView.shoppingCartButton.currentImage == .shoppinCart {
-            shoesWithHeelsView.shoppingCartButton.setImage(
-                .basketFill,
-                for: .normal
+    @objc private func transferToShoppingCart(sender: UIButton) {
+//        if shoesWithHeelsView.shoppingCartButton.currentImage == .shoppinCart {
+//            shoesWithHeelsView.shoppingCartButton.setImage(
+//                .basketFill,
+//                for: .normal
+//            )
+        let choosingSizeVewController = ChoosingTheSizeViewController()
+        navigationController?.present(
+            choosingSizeVewController,
+            animated: true
+        )
+//        } else {
+//            shoesWithHeelsView.shoppingCartButton.setImage(
+//                .shoppinCart,
+//                for: .normal
+//            )
+//        }
+        switch sender.tag {
+        case 1:
+            if sender.currentImage == .shoppinCart {
+                sender.setImage(
+                    .basketFill,
+                    for: .normal
+                )
+            } else {
+                sender.setImage(
+                    .shoppinCart,
+                    for: .normal
+                )
+            }
+            let shoeItem = Shoes(
+                imageName: "shoesWithHeelsImage",
+                model: "Women shoes",
+                material: "some",
+                chosenSize: .thirtySeven,
+                quantity: 1,
+                itemPrice: Constant.textForCostShoesWithHeelsLabel
             )
-            let choosingSizeVewController = ChoosingTheSizeViewController()
-            navigationController?.present(
-                choosingSizeVewController,
-                animated: true
+            SavedItems.shared.savedItems.append(shoeItem)
+        case 2:
+            if sender.currentImage == .shoppinCart {
+                sender.setImage(
+                    .basketFill,
+                    for: .normal
+                )
+            } else {
+                sender.setImage(
+                    .shoppinCart,
+                    for: .normal
+                )
+            }
+            let shoeItem = Shoes(
+                imageName: "bootsImage",
+                model: "Women shoes",
+                material: "some",
+                chosenSize: .thirtyEight,
+                quantity: 1,
+                itemPrice: Constant.textForCostBootsLabel
             )
-        } else {
-            shoesWithHeelsView.shoppingCartButton.setImage(
-                .shoppinCart,
-                for: .normal
-            )
-        }
-        if shoesWithHeelsView.shoppingCartButton.tag == 1 {
-            print("Tag 1")
-//            ShoppingCartModel.shared.shoes = shoesWithHeelsView.shoesImageView.image
-//            ShoppingCartModel.shared.costShoes = shoesWithHeelsView.costLabel.text
-//            SavedItems.shared.savedItems.append(shoesWithHeelsView.shoesImageView.image)
+            SavedItems.shared.savedItems.append(shoeItem)
+        default:
+            break
         }
     }
 }

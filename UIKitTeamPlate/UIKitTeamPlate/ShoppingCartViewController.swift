@@ -78,19 +78,19 @@ final class ShoppingCartViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         shoppingCartCells.forEach { $0.removeFromSuperview() }
-        padding = Constants.padding
+        padding = 20
     }
 
     // MARK: - Private Methods
 
     private func configureUI() {
-        // navigationItem.title = Constant.nameForTitleNavigationItem
         view.backgroundColor = .white
         navigationItem.title = Constants.tabBarItemTitle
         view.addSubview(emptyCartLabel)
         emptyCartLabel.isHidden = SavedItems.shared.savedItems.isEmpty ? false : true
         configureConstraints()
         purchaseButton.setTitle("\(Constants.purchaseButtonText)\(orderprice)", for: .normal)
+        purchaseButton.isHidden = SavedItems.shared.savedItems.isEmpty ? true : false
         setupCollection()
     }
 
@@ -103,7 +103,7 @@ final class ShoppingCartViewController: UIViewController {
             cell.priceLabel.text = "\(item.fullPrice) ₽"
             cell.highlightSizeButton(size: item.chosenSize)
             view.addSubview(cell)
-            cell.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.padding)
+            cell.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding)
                 .isActive = true
             cell.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
             cell.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
