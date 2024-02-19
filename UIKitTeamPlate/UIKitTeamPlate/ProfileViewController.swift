@@ -10,7 +10,7 @@ final class ProfileViewController: UIViewController {
 
     enum Constants {
         static let titleLabelText = "Личные данные"
-
+        static let nameForTitle = "Профиль"
         static let menuButtonsTitles = ["Мои данные", "Приведи друга", "Обратная связь"]
         static let menuButtonsImages = [UIImage.personalInfo, UIImage.invite, UIImage.callback]
     }
@@ -56,7 +56,7 @@ final class ProfileViewController: UIViewController {
 
     private func configureUI() {
         view.backgroundColor = .white
-        navigationItem.title = "Профиль"
+        navigationItem.title = Constants.nameForTitle
         view.addSubview(cardView)
         view.addSubview(titleLabel)
 

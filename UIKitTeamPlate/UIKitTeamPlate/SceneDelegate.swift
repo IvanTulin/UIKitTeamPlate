@@ -15,9 +15,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let sceneWindow = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: sceneWindow)
+
         let catalogViewController = CatalogViewController()
+        catalogViewController.tabBarItem = UITabBarItem(
+            title: "Каталог",
+            image: .catalog,
+            selectedImage: nil
+        )
+
         let profileViewController = ProfileViewController()
+        profileViewController.tabBarItem = UITabBarItem(
+            title: "Профиль",
+            image: UIImage(named: "profileImage"),
+            selectedImage: nil
+        )
+
         let shoppingCartViewController = ShoppingCartViewController()
+        shoppingCartViewController.tabBarItem = UITabBarItem(
+            title: "Корзина",
+            image: UIImage(named: "basketImage"),
+            selectedImage: nil
+        )
 
         let catalogNavigationController = UINavigationController(
             rootViewController: catalogViewController
@@ -42,10 +60,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         tabBarController.tabBar.unselectedItemTintColor = .black
         tabBarController.tabBar.tintColor = .systemPink
-
-//        if catalogNavigationController == tabBarController.viewControllers?.first {
-//            tabBarController.selectedViewController = catalogNavigationController
-//        }
 
         window.rootViewController = tabBarController
         self.window = window
