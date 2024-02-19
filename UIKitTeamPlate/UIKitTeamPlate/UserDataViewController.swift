@@ -263,19 +263,11 @@ final class UserDataViewController: UIViewController {
     }
 
     @objc private func saveUserData() {
-        let user = User(
-            name: nameTextField.text ?? "",
-            lastName: lastNameTextField.text ?? "",
-            shoeSize: shoeSizeTextField.text ?? "",
-            phoneNumber: phoneTextField.text ?? "no number",
-            birthdayDate: birthdayTextField.text ?? "no date",
-            email: emailTextField.text ?? ""
-        )
-        print("save data button tapped \(user.phoneNumber)")
         saveDataButton.isHidden = true
     }
 }
 
+/// Методы UITextFieldDelegate для класса UserDataViewController
 extension UserDataViewController: UITextFieldDelegate {
     func textField(
         _ textField: UITextField,

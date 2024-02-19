@@ -5,6 +5,15 @@ import Foundation
 
 /// Данные о выбранном предмете
 struct Shoes {
+    /// Размеры обуви
+    enum ShoeSize {
+        case thirtyFive
+        case thirtySix
+        case thirtySeven
+        case thirtyEight
+        case thirtyNine
+    }
+
     /// название картинки
     var imageName: String
     /// Модель
@@ -12,7 +21,7 @@ struct Shoes {
     /// Состав
     var material: String
     /// Выбранный размер
-    var chosenSize: Int
+    var chosenSize: ShoeSize
     /// Кол-во
     var quantity: Int {
         didSet {

@@ -184,6 +184,28 @@ final class ShoppingCartReusableView: UIView {
         setupView()
     }
 
+    // MARK: - Public Methods
+
+    func highlightSizeButton(size: Shoes.ShoeSize) {
+        switch size {
+        case .thirtyFive:
+            button35.layer.borderColor = UIColor.red.cgColor
+            button35.layer.borderWidth = 1
+        case .thirtySix:
+            button36.layer.borderColor = UIColor.red.cgColor
+            button36.layer.borderWidth = 1
+        case .thirtySeven:
+            button37.layer.borderColor = UIColor.red.cgColor
+            button37.layer.borderWidth = 1
+        case .thirtyEight:
+            button38.layer.borderColor = UIColor.red.cgColor
+            button38.layer.borderWidth = 1
+        case .thirtyNine:
+            button39.layer.borderColor = UIColor.red.cgColor
+            button39.layer.borderWidth = 1
+        }
+    }
+
     // MARK: - Private Methods
 
     private func setupView() {

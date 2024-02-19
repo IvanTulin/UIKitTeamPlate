@@ -3,7 +3,7 @@
 
 import UIKit
 
-/// Хранилище для добавленных в корзину предметов
+/// Массив для хранения добавленных в корзину предметов
 final class SavedItems {
     var savedItems: [Shoes] = []
     static let shared = SavedItems()

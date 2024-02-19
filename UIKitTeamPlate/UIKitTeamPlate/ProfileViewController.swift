@@ -6,12 +6,16 @@ import UIKit
 
 /// Экран профиля
 final class ProfileViewController: UIViewController {
+    // MARK: - Constants
+
     enum Constants {
         static let titleLabelText = "Личные данные"
 
         static let menuButtonsTitles = ["Мои данные", "Приведи друга", "Обратная связь"]
         static let menuButtonsImages = [UIImage.personalInfo, UIImage.invite, UIImage.callback]
     }
+
+    // MARK: - Visual Components
 
     private lazy var cardView = ClubCardView()
 
@@ -41,10 +45,14 @@ final class ProfileViewController: UIViewController {
         image: Constants.menuButtonsImages[2]
     )
 
+    // MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
     }
+
+    // MARK: - Private Methods
 
     private func configureUI() {
         view.backgroundColor = .white
@@ -84,7 +92,7 @@ final class ProfileViewController: UIViewController {
         callbackButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
 
-    func makeMenuButton(title: String, image: UIImage) -> UIButton {
+    private func makeMenuButton(title: String, image: UIImage) -> UIButton {
         let button = UIButton()
         button.setTitle(title, for: .normal)
         button.setTitleColor(.black, for: .normal)
