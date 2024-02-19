@@ -6,8 +6,8 @@ import UIKit
 
 /// Экран корзины покупок
 final class ShoppingCartViewController: UIViewController {
-    
-  // MARK: - Constants
+    // MARK: - Constants
+
     enum Constants {
         static let padding: CGFloat = 20
         static let cellHeight: CGFloat = 177
@@ -84,7 +84,7 @@ final class ShoppingCartViewController: UIViewController {
     // MARK: - Private Methods
 
     private func configureUI() {
-        navigationItem.title = Constant.nameForTitleNavigationItem
+        // navigationItem.title = Constant.nameForTitleNavigationItem
         view.backgroundColor = .white
         navigationItem.title = Constants.tabBarItemTitle
         view.addSubview(emptyCartLabel)

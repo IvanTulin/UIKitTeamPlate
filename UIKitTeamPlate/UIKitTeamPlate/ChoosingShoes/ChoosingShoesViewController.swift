@@ -217,9 +217,9 @@ final class ChoosingShoesViewController: UIViewController {
         }
         if shoesWithHeelsView.shoppingCartButton.tag == 1 {
             print("Tag 1")
-            ShoppingCartModel.shared.shoes = shoesWithHeelsView.shoesImageView.image
-            ShoppingCartModel.shared.costShoes = shoesWithHeelsView.costLabel.text
+//            ShoppingCartModel.shared.shoes = shoesWithHeelsView.shoesImageView.image
+//            ShoppingCartModel.shared.costShoes = shoesWithHeelsView.costLabel.text
+//            SavedItems.shared.savedItems.append(shoesWithHeelsView.shoesImageView.image)
         }
-
     }
 }
