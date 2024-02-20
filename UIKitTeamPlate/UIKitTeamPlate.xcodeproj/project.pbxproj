@@ -14,6 +14,8 @@
 		BA632C6C2B711B3C00D0F110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */; };
 		BA8CC99B2B83C31000791497 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8CC99A2B83C31000791497 /* NotificationViewController.swift */; };
 		BA8CC99D2B83C33E00791497 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8CC99C2B83C33E00791497 /* ProfileViewController.swift */; };
+		BACD16C22B84C821005760B9 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACD16C12B84C821005760B9 /* PostCell.swift */; };
+		BACD16C72B84CA09005760B9 /* NewStoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACD16C62B84CA09005760B9 /* NewStoriesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		BA632C6D2B711B3C00D0F110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA8CC99A2B83C31000791497 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		BA8CC99C2B83C33E00791497 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BACD16C12B84C821005760B9 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		BACD16C62B84CA09005760B9 /* NewStoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStoriesCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 				BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */,
 				BA632C612B711B3B00D0F110 /* SceneDelegate.swift */,
 				BA632C632B711B3B00D0F110 /* NewsFeedViewController.swift */,
+				BACD16C32B84C835005760B9 /* Cells */,
 				BA8CC99A2B83C31000791497 /* NotificationViewController.swift */,
 				BA8CC99C2B83C33E00791497 /* ProfileViewController.swift */,
 				BA632C682B711B3C00D0F110 /* Assets.xcassets */,
@@ -68,6 +73,15 @@
 				BA632C6D2B711B3C00D0F110 /* Info.plist */,
 			);
 			path = UIKitTeamPlate;
+			sourceTree = "<group>";
+		};
+		BACD16C32B84C835005760B9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BACD16C12B84C821005760B9 /* PostCell.swift */,
+				BACD16C62B84CA09005760B9 /* NewStoriesCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,9 +199,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BACD16C22B84C821005760B9 /* PostCell.swift in Sources */,
 				BA632C642B711B3B00D0F110 /* NewsFeedViewController.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
 				BA8CC99D2B83C33E00791497 /* ProfileViewController.swift in Sources */,
+				BACD16C72B84CA09005760B9 /* NewStoriesCell.swift in Sources */,
 				BA8CC99B2B83C31000791497 /* NotificationViewController.swift in Sources */,
 				BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */,
 			);

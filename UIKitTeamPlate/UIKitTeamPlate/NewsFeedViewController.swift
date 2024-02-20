@@ -5,24 +5,40 @@ import UIKit
 
 /// Экран новостей
 class NewsFeedViewController: UIViewController {
+    // MARK: - Constants
+
+    let news = ["", "", "", "", ""]
+//    let indetifier = "MyCell"
+
     // MARK: - Visual Components
 
-    private let rmLinkImageView: UIImageView = {
-        let image = UIImageView()
-        image.image = .rmLink
-        image.sizeToFit()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-    
-    private let notificationButton: UIButton = {
-        let button = UIButton()
-        button.setImage(.notifiztionIconForButton, for: .normal)
-        button.sizeToFit()
-        button.translatesAutoresizingMaskIntoConstraints = false
+    private let rmLinkButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = .rmLink
+        button.style = .plain
+        button.tintColor = .black
         return button
     }()
 
+    private let notificationButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = .notificationIconForButton
+        button.style = .plain
+        button.tintColor = .black
+        return button
+    }()
+
+    private lazy var tableView: UITableView = {
+        let table = UITableView()
+        table.delegate = self
+        table.dataSource = self
+        table.register(
+            UITableViewCell.self,
+            forCellReuseIdentifier: NewStoriesCell.identifier
+        )
+        table.translatesAutoresizingMaskIntoConstraints = false
+        return table
+    }()
 
     // MARK: - Life Cycle
 
@@ -36,31 +52,40 @@ class NewsFeedViewController: UIViewController {
 
     private func configureUI() {
         view.backgroundColor = .white
-        view.addSubview(rmLinkImageView)
-        view.addSubview(notificationButton)
+        navigationItem.leftBarButtonItem = rmLinkButton
+        navigationItem.rightBarButtonItem = notificationButton
+        view.addSubview(tableView)
     }
 
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            rmLinkImageView.leftAnchor.constraint(
-                equalTo: view.leftAnchor,
-                constant: 15
-            ),
-            rmLinkImageView.topAnchor.constraint(
+            tableView.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor
             ),
-            rmLinkImageView.widthAnchor.constraint(equalToConstant: 100),
-            rmLinkImageView.heightAnchor.constraint(equalToConstant: 26),
-            
-            notificationButton.rightAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.rightAnchor,
-                constant: 17
-            ),
-            notificationButton.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor
-            ),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 
-            
         ])
     }
 }
+
+// MARK: - UITableViewDataSource
+
+extension NewsFeedViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        news.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewStoriesCell.identifier, for: indexPath)
+        cell.textLabel?.text = "section: \(indexPath.section) - row: \(indexPath.row)"
+        cell.backgroundColor = .orange
+
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension NewsFeedViewController: UITableViewDelegate {}
