@@ -1,11 +1,11 @@
-// PostCell.swift
+// RecommendationsCell.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-/// Ячейка поста
-class PostCell: UITableViewCell {
-    static let identifier = "PostCell"
+/// Ячейка рекомнндаций
+class RecommendationsCell: UITableViewCell {
+    static let identifier = "RecommendationsCell"
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -17,5 +17,7 @@ class PostCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func configureUI() {}
+    private func configureUI() {
+        backgroundColor = .systemBlue
+    }
 }

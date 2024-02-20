@@ -7,8 +7,16 @@ import UIKit
 class NewsFeedViewController: UIViewController {
     // MARK: - Constants
 
+    enum RowsType {
+        case stories
+        case firstPost
+        case recommendation
+        case posts
+    }
+
+    let rmLinkStorage = RMLinkStorage()
     let news = ["", "", "", "", ""]
-//    let indetifier = "MyCell"
+    let rowsType: [RowsType] = [.stories, .firstPost, .recommendation, .posts]
 
     // MARK: - Visual Components
 
@@ -33,9 +41,18 @@ class NewsFeedViewController: UIViewController {
         table.delegate = self
         table.dataSource = self
         table.register(
-            UITableViewCell.self,
+            NewStoriesCell.self,
             forCellReuseIdentifier: NewStoriesCell.identifier
         )
+        table.register(
+            PostsCell.self,
+            forCellReuseIdentifier: PostsCell.identifier
+        )
+        table.register(
+            RecommendationsCell.self,
+            forCellReuseIdentifier: RecommendationsCell.identifier
+        )
+
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
@@ -73,19 +90,64 @@ class NewsFeedViewController: UIViewController {
 // MARK: - UITableViewDataSource
 
 extension NewsFeedViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        rowsType.count
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        news.count
+        switch rowsType[section] {
+        case .stories, .firstPost, .recommendation:
+            return 1
+        case .posts:
+            return rmLinkStorage.posts.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewStoriesCell.identifier, for: indexPath)
-        cell.textLabel?.text = "section: \(indexPath.section) - row: \(indexPath.row)"
-        cell.backgroundColor = .orange
+        switch rowsType[indexPath.section] {
+        case .stories:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: NewStoriesCell.identifier,
+                for: indexPath
+            ) as? NewStoriesCell else { return UITableViewCell() }
+            cell.setupValue(with: rmLinkStorage.stories[indexPath.row])
+            return cell
+        case .firstPost:
+            guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: PostsCell.identifier, for: indexPath) as? PostsCell
+            else { return UITableViewCell() }
+            cell.setupValue(with: rmLinkStorage.posts[indexPath.row])
 
-        return cell
+            return cell
+        case .recommendation:
+            let cell = tableView.dequeueReusableCell(withIdentifier: RecommendationsCell.identifier, for: indexPath)
+            cell.backgroundColor = .green
+            return cell
+        case .posts:
+            guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: PostsCell.identifier, for: indexPath) as? PostsCell
+            else { return UITableViewCell() }
+            cell.setupValue(with: rmLinkStorage.posts[indexPath.row])
+
+            return cell
+        }
     }
 }
 
 // MARK: - UITableViewDelegate
 
-extension NewsFeedViewController: UITableViewDelegate {}
+extension NewsFeedViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellType = rowsType[indexPath.section]
+        switch cellType {
+        case .stories:
+            return 85
+        case .firstPost:
+            return 590
+        case .recommendation:
+            return 270
+        case .posts:
+            return 590
+        }
+    }
+}
