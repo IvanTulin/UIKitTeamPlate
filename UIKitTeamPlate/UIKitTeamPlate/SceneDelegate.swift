@@ -8,15 +8,62 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(
-        _: UIScene,
+        _ scene: UIScene,
         willConnectTo _: UISceneSession,
         options _: UIScene.ConnectionOptions
     ) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene
-        // `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see
-        // `application:configurationForConnectingSceneSession` instead).
+        guard let sceneWindow = (scene as? UIWindowScene) else { return }
+
+        let window = UIWindow(windowScene: sceneWindow)
+
+        let catalogViewController = CatalogViewController()
+        catalogViewController.tabBarItem = UITabBarItem(
+            title: "Каталог",
+            image: .catalog,
+            selectedImage: nil
+        )
+
+        let profileViewController = ProfileViewController()
+        profileViewController.tabBarItem = UITabBarItem(
+            title: "Профиль",
+            image: UIImage(named: "profileImage"),
+            selectedImage: nil
+        )
+
+        let shoppingCartViewController = ShoppingCartViewController()
+        shoppingCartViewController.tabBarItem = UITabBarItem(
+            title: "Корзина",
+            image: UIImage(named: "basketImage"),
+            selectedImage: nil
+        )
+
+        let catalogNavigationController = UINavigationController(
+            rootViewController: catalogViewController
+        )
+
+        let profileNavigationController = UINavigationController(
+            rootViewController: profileViewController
+        )
+
+        let shoppingCartNavigationController = UINavigationController(
+            rootViewController: shoppingCartViewController
+        )
+
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers(
+            [
+                catalogNavigationController,
+                shoppingCartNavigationController,
+                profileNavigationController
+            ],
+            animated: true
+        )
+        tabBarController.tabBar.unselectedItemTintColor = .black
+        tabBarController.tabBar.tintColor = .systemPink
+
+        window.rootViewController = tabBarController
+        self.window = window
+        window.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_: UIScene) {
