@@ -4,7 +4,7 @@
 import UIKit
 
 /// Экран уведомлений
-class NotificationViewController: UIViewController {
+final class NotificationViewController: UIViewController {
     // MARK: - Constants
 
     enum Constants {

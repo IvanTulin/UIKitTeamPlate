@@ -4,7 +4,7 @@
 import UIKit
 
 /// Экран новостей
-class NewsFeedViewController: UIViewController {
+final class NewsFeedViewController: UIViewController {
     // MARK: - Constants
 
     enum RowsType {

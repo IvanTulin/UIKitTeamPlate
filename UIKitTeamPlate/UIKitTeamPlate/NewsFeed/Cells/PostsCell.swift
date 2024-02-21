@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка поста
-class PostsCell: UITableViewCell {
+final class PostsCell: UITableViewCell {
     // MARK: - Constants
 
     static let identifier = "PostsCell"

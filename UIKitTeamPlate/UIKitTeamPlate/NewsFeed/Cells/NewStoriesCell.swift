@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка сторис
-class NewStoriesCell: UITableViewCell {
+final class NewStoriesCell: UITableViewCell {
     // MARK: - Constants
 
     static let identifier = "NewStoriesCell"
@@ -41,14 +41,14 @@ class NewStoriesCell: UITableViewCell {
     // MARK: - Private Method
 
     func setupValue(with info: [Stories]) {
-        //nameImages = info.first?.avatarNameImage
+        // nameImages = info.first?.avatarNameImage
 //        if let image = UIImage(named: info.avatarNameImage) {
 //            images = image
 //        }
     }
 
     // MARK: - Private Method
-    
+
     private func setupCell() {
         // Создание ScrollView
         let scrollView = UIScrollView()
@@ -67,15 +67,13 @@ class NewStoriesCell: UITableViewCell {
         var previousImageView: UIImageView?
 
         for item in 0 ..< 10 {
-            
             let imageView = UIImageView()
             scrollView.addSubview(imageView)
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            
+
             if item < nameImages.count {
                 imageView.image = UIImage(named: nameImages[item])
             }
-            
 
             // Констрейнты для UIImageView
             NSLayoutConstraint.activate([
@@ -122,5 +120,4 @@ class NewStoriesCell: UITableViewCell {
             ])
         }
     }
-
 }

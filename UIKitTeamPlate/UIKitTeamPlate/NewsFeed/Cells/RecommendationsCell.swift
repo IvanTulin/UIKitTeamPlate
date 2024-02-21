@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка рекомнндаций
-class RecommendationsCell: UITableViewCell {
+final class RecommendationsCell: UITableViewCell {
     // MARK: - Constants
 
     static let identifier = "RecommendationsCell"
@@ -17,8 +17,9 @@ class RecommendationsCell: UITableViewCell {
 
         return scrollView
     }()
-    
+
     // MARK: - Properties
+
     var nameImages: [String] = [
         "imageForRecomendationOne",
         "blondeGirlImage",

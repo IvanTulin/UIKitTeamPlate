@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка для уведомлений за сегодня
-class TodayNotificationsCell: UITableViewCell {
+final class TodayNotificationsCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {

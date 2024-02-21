@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка для уведомлений за неделю
-class ThisWeekNotificationsCell: UITableViewCell {
+final class ThisWeekNotificationsCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {
