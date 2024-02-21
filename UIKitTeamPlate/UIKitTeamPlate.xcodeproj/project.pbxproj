@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA3BE2882B8544170025E2B7 /* TodayNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3BE2872B8544170025E2B7 /* TodayNotificationsCell.swift */; };
+		BA3BE28A2B8544940025E2B7 /* ThisWeekNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3BE2892B8544940025E2B7 /* ThisWeekNotificationsCell.swift */; };
+		BA3BE28D2B8552B70025E2B7 /* NotificationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3BE28C2B8552B70025E2B7 /* NotificationStorage.swift */; };
 		BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */; };
 		BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C612B711B3B00D0F110 /* SceneDelegate.swift */; };
 		BA632C642B711B3B00D0F110 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C632B711B3B00D0F110 /* NewsFeedViewController.swift */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA3BE2872B8544170025E2B7 /* TodayNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayNotificationsCell.swift; sourceTree = "<group>"; };
+		BA3BE2892B8544940025E2B7 /* ThisWeekNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThisWeekNotificationsCell.swift; sourceTree = "<group>"; };
+		BA3BE28C2B8552B70025E2B7 /* NotificationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStorage.swift; sourceTree = "<group>"; };
 		BA632C5C2B711B3B00D0F110 /* UIKitTeamPlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitTeamPlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA632C612B711B3B00D0F110 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +53,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA3BE2842B8543AE0025E2B7 /* NewsFeed */ = {
+			isa = PBXGroup;
+			children = (
+				BA632C632B711B3B00D0F110 /* NewsFeedViewController.swift */,
+				BACD16C32B84C835005760B9 /* Cells */,
+			);
+			path = NewsFeed;
+			sourceTree = "<group>";
+		};
+		BA3BE2852B8543CA0025E2B7 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				BA8CC99A2B83C31000791497 /* NotificationViewController.swift */,
+				BA3BE2862B8543E00025E2B7 /* Cells */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		BA3BE2862B8543E00025E2B7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BA3BE2872B8544170025E2B7 /* TodayNotificationsCell.swift */,
+				BA3BE2892B8544940025E2B7 /* ThisWeekNotificationsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		BA3BE28B2B85529A0025E2B7 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				BAD9DC7C2B84D7D500A9D6CF /* RMLinkStorage.swift */,
+				BA3BE28C2B8552B70025E2B7 /* NotificationStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		BA632C532B711B3B00D0F110 = {
 			isa = PBXGroup;
 			children = (
@@ -68,10 +110,9 @@
 			children = (
 				BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */,
 				BA632C612B711B3B00D0F110 /* SceneDelegate.swift */,
-				BA632C632B711B3B00D0F110 /* NewsFeedViewController.swift */,
-				BAD9DC7C2B84D7D500A9D6CF /* RMLinkStorage.swift */,
-				BACD16C32B84C835005760B9 /* Cells */,
-				BA8CC99A2B83C31000791497 /* NotificationViewController.swift */,
+				BA3BE28B2B85529A0025E2B7 /* Storage */,
+				BA3BE2842B8543AE0025E2B7 /* NewsFeed */,
+				BA3BE2852B8543CA0025E2B7 /* Notifications */,
 				BA8CC99C2B83C33E00791497 /* ProfileViewController.swift */,
 				BA632C682B711B3C00D0F110 /* Assets.xcassets */,
 				BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */,
@@ -207,10 +248,13 @@
 			files = (
 				BACD16C22B84C821005760B9 /* PostsCell.swift in Sources */,
 				BA632C642B711B3B00D0F110 /* NewsFeedViewController.swift in Sources */,
+				BA3BE28A2B8544940025E2B7 /* ThisWeekNotificationsCell.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
 				BA8CC99D2B83C33E00791497 /* ProfileViewController.swift in Sources */,
 				BAE9683F2B84CD8200AD3ED7 /* RecommendationsCell.swift in Sources */,
 				BAD9DC7D2B84D7D500A9D6CF /* RMLinkStorage.swift in Sources */,
+				BA3BE2882B8544170025E2B7 /* TodayNotificationsCell.swift in Sources */,
+				BA3BE28D2B8552B70025E2B7 /* NotificationStorage.swift in Sources */,
 				BACD16C72B84CA09005760B9 /* NewStoriesCell.swift in Sources */,
 				BA8CC99B2B83C31000791497 /* NotificationViewController.swift in Sources */,
 				BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */,
