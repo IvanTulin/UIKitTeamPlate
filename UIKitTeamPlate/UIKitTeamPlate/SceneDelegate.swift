@@ -12,58 +12,61 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo _: UISceneSession,
         options _: UIScene.ConnectionOptions
     ) {
+        func setupTabBar() {
+            let newsFeedViewController = NewsFeedViewController()
+            newsFeedViewController.tabBarItem = UITabBarItem(
+                title: "Лента",
+                image: .houseIcon,
+                selectedImage: nil
+            )
+
+            let notificationViewController = NotificationViewController()
+            notificationViewController.tabBarItem = UITabBarItem(
+                title: "Уведомления",
+                image: .notificationIcon,
+                selectedImage: nil
+            )
+
+            let profileViewController = ProfileViewController()
+            profileViewController.tabBarItem = UITabBarItem(
+                title: "Профиль",
+                image: .profileIcon,
+                selectedImage: nil
+            )
+
+            let newsFeedNavigationController = UINavigationController(
+                rootViewController: newsFeedViewController
+            )
+
+            let profileNavigationController = UINavigationController(
+                rootViewController: profileViewController
+            )
+
+            let notificationNavigationController = UINavigationController(
+                rootViewController: notificationViewController
+            )
+
+            let tabBarController = UITabBarController()
+            tabBarController.setViewControllers(
+                [
+                    newsFeedNavigationController,
+                    notificationNavigationController,
+                    profileNavigationController
+                ],
+                animated: true
+            )
+
+            tabBarController.tabBar.unselectedItemTintColor = .black
+            tabBarController.tabBar.tintColor = .systemBlue
+
+            window.rootViewController = tabBarController
+            window.makeKeyAndVisible()
+        }
+
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-
-        let newsFeedViewController = NewsFeedViewController()
-        newsFeedViewController.tabBarItem = UITabBarItem(
-            title: "Лента",
-            image: .houseIcon,
-            selectedImage: nil
-        )
-
-        let notificationViewController = NotificationViewController()
-        notificationViewController.tabBarItem = UITabBarItem(
-            title: "Уведомления",
-            image: .notificationIcon,
-            selectedImage: nil
-        )
-
-        let profileViewController = ProfileViewController()
-        profileViewController.tabBarItem = UITabBarItem(
-            title: "Профиль",
-            image: .profileIcon,
-            selectedImage: nil
-        )
-
-        let newsFeedNavigationController = UINavigationController(
-            rootViewController: newsFeedViewController
-        )
-
-        let profileNavigationController = UINavigationController(
-            rootViewController: profileViewController
-        )
-
-        let notificationNavigationController = UINavigationController(
-            rootViewController: notificationViewController
-        )
-
-        let tabBarController = UITabBarController()
-        tabBarController.setViewControllers(
-            [
-                newsFeedNavigationController,
-                notificationNavigationController,
-                profileNavigationController
-            ],
-            animated: true
-        )
-
-        tabBarController.tabBar.unselectedItemTintColor = .black
-        tabBarController.tabBar.tintColor = .systemBlue
-
-        window.rootViewController = tabBarController
         self.window = window
-        window.makeKeyAndVisible()
+        setupTabBar()
     }
 
     func sceneDidDisconnect(_: UIScene) {

@@ -3,98 +3,150 @@
 
 import UIKit
 
-/// Ячейка рекомнндаций
+/// Ячейка рекомендаций
 final class RecommendationsCell: UITableViewCell {
     // MARK: - Constants
 
+    enum Constants {
+        static let nameFontName = "Verdana"
+        static let nameFontBold = "Verdana-Bold"
+        static let textForTitleButton = "Подписаться"
+    }
+
     static let identifier = "RecommendationsCell"
+    let rmLinkStorage = RMLinkStorage()
 
     // MARK: - Visual Components
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
         return scrollView
     }()
-
-    // MARK: - Properties
-
-    var nameImages: [String] = [
-        "imageForRecomendationOne",
-        "blondeGirlImage",
-        "blondeGirlImage",
-    ]
 
     // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupCell()
+        setupAnchor()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupCell()
+        setupAnchor()
+    }
+
+    // MARK: - Methods
+
+    func setupValue(with info: [Recommendations]) {
+        // Создание previousView для задания отсупов между вью
+        var previousView: UIView?
+
+        // Создание трех внутренних View внутри ScrollView
+        let viewWidth = UIScreen.main.bounds.width / 2
+        let viewHeight = 270
+
+        for item in 0 ..< rmLinkStorage.recommendations.count {
+            let view = UIView()
+            scrollView.addSubview(view)
+            view.translatesAutoresizingMaskIntoConstraints = false
+
+            view.backgroundColor = UIColor.white
+            view.widthAnchor.constraint(equalToConstant: 185).isActive = true
+            view.heightAnchor.constraint(equalToConstant: 200).isActive = true
+            view.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 45).isActive = true
+
+            if let previousView = previousView {
+                // Установка отступа между image views
+                NSLayoutConstraint.activate([
+                    view.leadingAnchor.constraint(equalTo: previousView.trailingAnchor, constant: 17)
+                ])
+            } else {
+                // Если первый UIImageView, то отступ от левого края
+                NSLayoutConstraint.activate([
+                    view.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 17)
+                ])
+            }
+
+            // Создание UIImageView
+            let avatarImageView = UIImageView()
+            view.addSubview(avatarImageView)
+            avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+            avatarImageView.image = UIImage(named: info[item].avatarNameImage)
+            avatarImageView.layer.cornerRadius = 60
+            avatarImageView.contentMode = .scaleAspectFill
+            avatarImageView.clipsToBounds = true
+
+            avatarImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            avatarImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
+            avatarImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+            avatarImageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+
+            // Создание Никнейма
+            let namelabel = UILabel()
+            view.addSubview(namelabel)
+            namelabel.translatesAutoresizingMaskIntoConstraints = false
+            namelabel.text = info[item].nameUser
+            namelabel.textColor = .black
+            namelabel.textAlignment = .center
+            namelabel.font = UIFont(name: Constants.nameFontName, size: 10)
+
+            namelabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            namelabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 5).isActive = true
+            namelabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+            namelabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
+
+            // Кнопка подписаться
+            let subscriptButton = UIButton()
+            view.addSubview(subscriptButton)
+            subscriptButton.translatesAutoresizingMaskIntoConstraints = false
+            subscriptButton.backgroundColor = .systemBlue
+            subscriptButton.layer.cornerRadius = 10
+            subscriptButton.setTitle(Constants.textForTitleButton, for: .normal)
+            subscriptButton.titleLabel?.font = UIFont(
+                name: Constants.nameFontBold,
+                size: 10
+            )
+            subscriptButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            subscriptButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -14).isActive = true
+            subscriptButton.widthAnchor.constraint(equalToConstant: 139).isActive = true
+            subscriptButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+
+            // Кнопка закрытия
+            let clossedButton = UIButton()
+            view.addSubview(clossedButton)
+            clossedButton.translatesAutoresizingMaskIntoConstraints = false
+            clossedButton.tintColor = .black
+            clossedButton.setImage(.clearButton, for: .normal)
+            clossedButton.sizeToFit()
+
+            clossedButton.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            clossedButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 167).isActive = true
+
+            previousView = view
+        }
+
+        // Констрейнт для последнего UIImageView, чтобы прокрутка работала корректно
+        if let lastImageView = previousView {
+            NSLayoutConstraint.activate([
+                lastImageView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -22)
+            ])
+        }
+
+        // Установка ширины ScrollView равной ширине всех внутренних View
+        scrollView.contentSize = CGSize(width: CGFloat(3) * viewWidth, height: CGFloat(viewHeight))
     }
 
     // MARK: - Private Methods
 
-    private func setupCell() {
+    private func setupAnchor() {
         contentView.addSubview(scrollView)
 
         scrollView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-
-        // Создание трех внутренних View внутри ScrollView
-        let viewWidth = UIScreen.main.bounds.width / 2
-        let viewHeight = 270
-
-        for item in 0 ..< 3 {
-            let view = UIView()
-            scrollView.addSubview(view)
-            view.translatesAutoresizingMaskIntoConstraints = false
-
-            view.backgroundColor = UIColor.white
-            // view.layer.borderWidth = 2
-            view.widthAnchor.constraint(equalToConstant: 185).isActive = true
-            view.heightAnchor.constraint(equalToConstant: 200).isActive = true
-            view.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 45).isActive = true
-            view.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: CGFloat(item) * viewWidth)
-                .isActive = true
-
-            // Создание UIImageView
-            let imageView = UIImageView()
-            view.addSubview(imageView)
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.image = .imageForRecomendationOne
-            imageView.layer.cornerRadius = 60
-            imageView.contentMode = .scaleAspectFill
-            imageView.clipsToBounds = true
-
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
-            imageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
-            imageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
-
-            // Создание UIButton
-            let button = UIButton()
-            view.addSubview(button)
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.backgroundColor = .systemBlue
-            button.layer.cornerRadius = 10
-            button.setTitle("Подписаться", for: .normal)
-            button.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 10)
-
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -14).isActive = true
-            button.widthAnchor.constraint(equalToConstant: 139).isActive = true
-            button.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        }
-
-        // Установка ширины ScrollView равной ширине всех внутренних View
-        scrollView.contentSize = CGSize(width: CGFloat(3) * viewWidth, height: CGFloat(viewHeight))
     }
 }

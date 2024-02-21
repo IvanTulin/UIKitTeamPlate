@@ -6,17 +6,58 @@ import Foundation
 /// Хранилище данных для заполнения ячеек ленты новостей
 struct RMLinkStorage {
     let stories: [Stories] = [
-        .init(avatarNameImage: "userAvatar", nameUser: "Ваша история"),
-        .init(avatarNameImage: "blondeGirlImage", nameUser: "lavanda123"),
-        .init(avatarNameImage: "blondeGirlImage", nameUser: "lavanda123"),
-        .init(avatarNameImage: "blondeGirlImage", nameUser: "lavanda123"),
-        .init(avatarNameImage: "blondeGirlImage", nameUser: "lavanda123"),
-        .init(avatarNameImage: "blondeGirlImage", nameUser: "lavanda123"),
-        .init(avatarNameImage: "blondeGirlImage", nameUser: "lavanda123"),
-        .init(avatarNameImage: "blondeGirlImage", nameUser: "lavanda123"),
-        .init(avatarNameImage: "blondeGirlImage", nameUser: "lavanda123"),
-        .init(avatarNameImage: "blondeGirlImage", nameUser: "lavanda123"),
+        .init(
+            avatarNameImage: "userAvatar",
+            nameUser: "Ваша история",
+            isHiddenButtons: false
+        ),
+        .init(
+            avatarNameImage: "blondeGirlImage",
+            nameUser: "lavanda123",
+            isHiddenButtons: true
+        ),
+        .init(
+            avatarNameImage: "blondeGirlImage",
+            nameUser: "lavanda123",
+            isHiddenButtons: true
+        ),
+        .init(
+            avatarNameImage: "blondeGirlImage",
+            nameUser: "lavanda123",
+            isHiddenButtons: true
+        ),
+        .init(
+            avatarNameImage: "blondeGirlImage",
+            nameUser: "lavanda123",
+            isHiddenButtons: true
+        ),
+        .init(
+            avatarNameImage: "blondeGirlImage",
+            nameUser: "lavanda123",
+            isHiddenButtons: true
+        ),
+        .init(
+            avatarNameImage: "blondeGirlImage",
+            nameUser: "lavanda123",
+            isHiddenButtons: true
+        ),
+        .init(
+            avatarNameImage: "blondeGirlImage",
+            nameUser: "lavanda123",
+            isHiddenButtons: true
+        ),
+        .init(
+            avatarNameImage: "blondeGirlImage",
+            nameUser: "lavanda123",
+            isHiddenButtons: true
+        ),
+        .init(
+            avatarNameImage: "blondeGirlImage",
+            nameUser: "lavanda123",
+            isHiddenButtons: true
+        ),
     ]
+
     let posts: [Post] = [
         .init(
             avatarNameImage: "avatarImage",
@@ -35,7 +76,7 @@ struct RMLinkStorage {
         .init(
             avatarNameImage: "avatarImage",
             nameTitle: "tur_v_dagestan",
-            postNameImages: ["postNameImageOne"],
+            postNameImages: ["imageForPagecontrolTwo"],
             numberLike: "Нравится: 201",
             isLikePressedButton: true,
             comment: CommentShortInfo(
@@ -49,7 +90,7 @@ struct RMLinkStorage {
         .init(
             avatarNameImage: "avatarImage",
             nameTitle: "tur_v_dagestan",
-            postNameImages: ["postNameImageOne"],
+            postNameImages: ["castleImage"],
             numberLike: "Нравится: 201",
             isLikePressedButton: true,
             comment: CommentShortInfo(
@@ -75,29 +116,67 @@ struct RMLinkStorage {
             descriptionPost: "10 минут назад"
         ),
     ]
+
+    let recommendations = [
+        Recommendations(
+            avatarNameImage: "castleImage",
+            nameUser: "сrimea_082"
+        ),
+        Recommendations(
+            avatarNameImage: "maryPolImage",
+            nameUser: "mary_pol"
+        ),
+        Recommendations(
+            avatarNameImage: "blondeGirlImage",
+            nameUser: "lavarel99"
+        ),
+    ]
 }
 
-/// Данные для сторис
+/// Cторис
 struct Stories {
+    /// название картинки для аватарки
     let avatarNameImage: String
+    /// имя пользователя
     let nameUser: String
+    /// проверка на скрытность кнопки
+    let isHiddenButtons: Bool
 }
 
-/// Данные для поста
+/// Поста
 struct Post {
+    /// название картинки для аватарки
     let avatarNameImage: String
+    /// название титла
     let nameTitle: String
+    /// название картинки для поста
     let postNameImages: [String]
+    /// лейбл с лайками
     let numberLike: String
+    /// проверка нажата ли кнопка
     let isLikePressedButton: Bool
+    /// комментраий
     let comment: CommentShortInfo?
+    /// название картинки для аватарки в комментариях
     let nameImageForCommentUser: String
+    /// текст пользователя для комментариев
     let textForUserComment: String
+    /// текст - когда был в сети
     let descriptionPost: String
 }
 
-/// Данные для комментария
+/// Рекомендации
+struct Recommendations {
+    /// название картинки для аватарки
+    let avatarNameImage: String
+    /// имя пользователя
+    let nameUser: String
+}
+
+/// Комментарий
 struct CommentShortInfo {
+    /// имя пользователя
     let userName: String
+    /// тест комментария
     let commentText: String
 }

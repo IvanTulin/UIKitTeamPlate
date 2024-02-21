@@ -10,7 +10,7 @@ final class ThisWeekNotificationsCell: UITableViewCell {
     enum Constants {
         static let nameFondName = "Verdana"
         static let nameFondBold = "Verdana-Bold"
-        static let textForTimeLabel = "12ч"
+        static let textForTitleButton = "Вы подписаны"
     }
 
     static let identifier = "ThisWeekNotificationsCell"
@@ -78,7 +78,7 @@ final class ThisWeekNotificationsCell: UITableViewCell {
         }
 
         if info.isHiddenButton == false {
-            if info.textForTitleButton == "Вы подписаны" {
+            if info.textForTitleButton == Constants.textForTitleButton {
                 subscriptionButton.setTitle(info.textForTitleButton, for: .normal)
                 subscriptionButton.backgroundColor = .clear
                 subscriptionButton.setTitleColor(.systemGray, for: .normal)

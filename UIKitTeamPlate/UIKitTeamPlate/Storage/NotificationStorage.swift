@@ -95,17 +95,26 @@ struct NotificationStorage {
 
 /// Данные для сегодняшних уведомлений
 struct NotificationToday {
+    /// название картинки для аватарки
     let avatarNameImage: String
+    /// текст уведомления
     let notificationLabel: CommentShortInfo?
+    /// название картинки для поста
     let nameForPostImage: String
 }
 
 /// Данные для уведомлений за неделю
 struct NotificationThisWeek {
+    /// название картинки для аватарки
     let avatarNameImage: String
+    /// текст уведомления
     let notificationLabel: CommentShortInfo?
+    /// текст для титла кнопки
     let textForTitleButton: String?
+    /// проверка на скрытность кнопки
     let isHiddenButton: Bool
+    /// название картинки для поста
     let nameForPostImage: String?
+    /// проверка на скрытность поста
     let isHiddenPostImage: Bool
 }

@@ -4,53 +4,98 @@
 import UIKit
 
 /// Ячейка поста
-final class PostsCell: UITableViewCell {
+final class PostsCell: UITableViewCell, UIScrollViewDelegate {
     // MARK: - Constants
 
+    enum Constants {
+        static let nameFontName = "Verdana"
+        static let nameFontBold = "Verdana-Bold"
+        static let nameForImageOptionsButton = "ellipsis"
+        static let nameForImageLikeButton = "heart"
+        static let nameForImageCommentButton = "messageImage"
+        static let nameForImageShareButton = "paperplane"
+    }
+
     static let identifier = "PostsCell"
+    let images: [UIImage] = [
+        .postNameImageOne,
+        .imageForPagecontrolTwo,
+        .castle
+    ]
 
     // MARK: - Visual Components
+
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.isPagingEnabled = true
+        scrollView.contentSize = CGSize(
+            width: Int(UIScreen.main.bounds.width * 3),
+            height: 239
+        )
+        scrollView.delegate = self
+        scrollView.backgroundColor = .gray
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+
+    lazy var pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.numberOfPages = images.count
+        pageControl.pageIndicatorTintColor = .gray
+        pageControl.currentPageIndicatorTintColor = .black
+
+        return pageControl
+    }()
 
     private let userImageView: UIImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 15
-        view.clipsToBounds = true // разраешаем обрезать границы ячейки
-        // view.sizeToFit()
+        view.clipsToBounds = true
         return view
     }()
 
     private let userNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-
         return label
     }()
 
     private let subTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 11)
-
         return label
     }()
 
     private let optionsButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        button.setImage(
+            UIImage(
+                systemName: Constants.nameForImageOptionsButton
+            ),
+            for: .normal
+        )
         button.tintColor = .black
         button.isEnabled = true
-
         return button
     }()
 
-    private let postImageView: UIImageView = {
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFill
-        return view
-    }()
+//    private let postImageView: UIImageView = {
+//        let view = UIImageView()
+//        view.contentMode = .scaleAspectFill
+//        return view
+//    }()
 
     private let likeButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.setImage(
+            UIImage(
+                systemName: Constants.nameForImageLikeButton
+            ),
+            for: .normal
+        )
         button.tintColor = .black
         return button
     }()
@@ -58,16 +103,24 @@ final class PostsCell: UITableViewCell {
     private let commentButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .black
-        button.setImage(UIImage(named: "messageImage"), for: .normal)
-
+        button.setImage(
+            UIImage(
+                named: Constants.nameForImageCommentButton
+            ),
+            for: .normal
+        )
         return button
     }()
 
     private let shareButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .black
-        button.setImage(UIImage(systemName: "paperplane"), for: .normal)
-
+        button.setImage(
+            UIImage(
+                systemName: Constants.nameForImageShareButton
+            ),
+            for: .normal
+        )
         return button
     }()
 
@@ -75,49 +128,41 @@ final class PostsCell: UITableViewCell {
         let button = UIButton(type: .system)
         button.tintColor = .black
         button.setImage(.favoritesIcon, for: .normal)
-
         return button
     }()
 
     private let numberLikeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Verdana-Bold", size: 11)
-        // label.layer.borderWidth = 2
+        label.font = UIFont(name: Constants.nameFontBold, size: 11)
         return label
     }()
 
     private let commentLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-//        label.lineBreakMode = .byWordWrapping
-//        label.adjustsFontSizeToFitWidth = true
-//        label.sizeToFit()
-        // label.layer.borderWidth = 2
         label.layer.borderColor = UIColor.red.cgColor
-        label.font = UIFont(name: "Verdana", size: 10)
+        label.font = UIFont(name: Constants.nameFontName, size: 10)
         return label
     }()
 
     private let imageForComment: UIImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 10
-        view.clipsToBounds = true // разраешаем обрезать границы ячейки
+        view.clipsToBounds = true
         return view
     }()
 
     private let commentUserLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Verdana", size: 10)
+        label.font = UIFont(name: Constants.nameFontName, size: 10)
         label.textColor = .systemGray2
-        // label.layer.borderWidth = 2
         return label
     }()
 
     private let labelOfTheElapsedTime: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Verdana", size: 10)
+        label.font = UIFont(name: Constants.nameFontName, size: 10)
         label.textColor = .systemGray2
-        // label.layer.borderWidth = 2
         return label
     }()
 
@@ -135,12 +180,16 @@ final class PostsCell: UITableViewCell {
 
     // MARK: - Methods
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(scrollView.contentOffset.x / UIScreen.main.bounds.width)
+    }
+
     func setupValue(with info: Post) {
         userImageView.image = UIImage(named: info.avatarNameImage)
         userNameLabel.text = info.nameTitle
-        if let image = info.postNameImages.first {
-            postImageView.image = UIImage(named: image)
-        }
+//        if let image = info.postNameImages.first {
+//            postImageView.image = UIImage(named: image)
+//        }
         numberLikeLabel.text = info.numberLike
 
         if let comment = info.comment {
@@ -155,15 +204,31 @@ final class PostsCell: UITableViewCell {
 
     private func configureUI() {
         initialize()
+
+        addImageView(image: images[0], position: 0)
+        addImageView(image: images[1], position: 1)
+        addImageView(image: images[2], position: 2)
+    }
+
+    private func addImageView(image: UIImage, position: CGFloat) {
+        let imageView = UIImageView()
+        imageView.image = image
+        scrollView.addSubview(imageView)
+
+        let screenWidth = UIScreen.main.bounds.width
+        imageView.frame = CGRect(x: Int(screenWidth * position), y: 0, width: Int(screenWidth), height: 239)
     }
 
     private func initialize() {
         selectionStyle = .none // убираем выделение ячейки
         [
-            userImageView, userNameLabel, subTitleLabel, optionsButton,
-            postImageView, likeButton, commentButton,
-            shareButton, favoritesButton, numberLikeLabel, commentLabel,
-            imageForComment, commentUserLabel, labelOfTheElapsedTime
+            scrollView, pageControl, userImageView, userNameLabel,
+            subTitleLabel, optionsButton,
+            // postImageView,
+            likeButton,
+            commentButton, shareButton, favoritesButton, numberLikeLabel,
+            commentLabel, imageForComment, commentUserLabel,
+            labelOfTheElapsedTime
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview($0)
@@ -183,26 +248,36 @@ final class PostsCell: UITableViewCell {
 
             optionsButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             optionsButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -15),
-            optionsButton.bottomAnchor.constraint(equalTo: postImageView.topAnchor),
+            optionsButton.bottomAnchor.constraint(equalTo: scrollView.topAnchor),
+//            optionsButton.bottomAnchor.constraint(equalTo: postImageView.topAnchor),
 
-            postImageView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 10),
-            postImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            postImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            postImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
-            postImageView.widthAnchor.constraint(equalToConstant: 375),
+            scrollView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 10),
+            scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            scrollView.heightAnchor.constraint(equalToConstant: 239),
 
-            likeButton.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 5),
+            pageControl.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 5),
+            pageControl.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            // scrollView.widthAnchor.constraint(equalToConstant: 375),
+
+//            postImageView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 10),
+//            postImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+//            postImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+//            postImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
+//            postImageView.widthAnchor.constraint(equalToConstant: 375),
+
+            likeButton.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 5),
             likeButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
 
-            commentButton.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 5),
+            commentButton.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 5),
             commentButton.leftAnchor.constraint(equalTo: likeButton.rightAnchor, constant: 8),
 
-            shareButton.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 5),
+            shareButton.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 5),
             shareButton.leftAnchor.constraint(equalTo: commentButton.rightAnchor, constant: 12),
-            favoritesButton.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 5),
+            favoritesButton.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 5),
             favoritesButton.leftAnchor.constraint(equalTo: shareButton.rightAnchor, constant: 240),
 
-            numberLikeLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 38),
+            numberLikeLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 38),
             numberLikeLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
             numberLikeLabel.widthAnchor.constraint(equalToConstant: 107),
             numberLikeLabel.heightAnchor.constraint(equalToConstant: 15),

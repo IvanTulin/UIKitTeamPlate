@@ -53,7 +53,6 @@ final class NewsFeedViewController: UIViewController {
             RecommendationsCell.self,
             forCellReuseIdentifier: RecommendationsCell.identifier
         )
-
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
@@ -83,12 +82,11 @@ final class NewsFeedViewController: UIViewController {
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-
         ])
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - NewsFeedViewController + UITableViewDataSource
 
 extension NewsFeedViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -111,32 +109,36 @@ extension NewsFeedViewController: UITableViewDataSource {
                 withIdentifier: NewStoriesCell.identifier,
                 for: indexPath
             ) as? NewStoriesCell else { return UITableViewCell() }
-            let stories = rmLinkStorage.stories[indexPath.row]
             cell.setupValue(with: rmLinkStorage.stories)
             return cell
+
         case .firstPost:
             guard let cell = tableView
                 .dequeueReusableCell(withIdentifier: PostsCell.identifier, for: indexPath) as? PostsCell
             else { return UITableViewCell() }
             cell.setupValue(with: rmLinkStorage.posts[indexPath.row])
+            return cell
 
-            return cell
         case .recommendation:
-            let cell = tableView.dequeueReusableCell(withIdentifier: RecommendationsCell.identifier, for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: RecommendationsCell.identifier,
+                for: indexPath
+            ) as? RecommendationsCell else { return UITableViewCell() }
             cell.backgroundColor = .appLightBlue
+            cell.setupValue(with: rmLinkStorage.recommendations)
             return cell
+
         case .posts:
             guard let cell = tableView
                 .dequeueReusableCell(withIdentifier: PostsCell.identifier, for: indexPath) as? PostsCell
             else { return UITableViewCell() }
             cell.setupValue(with: rmLinkStorage.posts[indexPath.row])
-
             return cell
         }
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - NewsFeedViewController + UITableViewDelegate
 
 extension NewsFeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -145,11 +147,11 @@ extension NewsFeedViewController: UITableViewDelegate {
         case .stories:
             return 85
         case .firstPost:
-            return 590
+            return 455
         case .recommendation:
             return 270
         case .posts:
-            return 590
+            return 455
         }
     }
 }

@@ -62,7 +62,6 @@ final class TodayNotificationsCell: UITableViewCell {
         if let notification = info.notificationLabel {
             configureNotificationLabel(comment: notification)
         }
-
         postImageView.image = UIImage(named: info.nameForPostImage)
     }
 

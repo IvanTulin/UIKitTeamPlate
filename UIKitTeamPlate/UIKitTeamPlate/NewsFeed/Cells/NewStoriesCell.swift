@@ -7,80 +7,47 @@ import UIKit
 final class NewStoriesCell: UITableViewCell {
     // MARK: - Constants
 
+    enum Constants {
+        static let textForNameLabel = "Ваша история"
+        static let nameFontName = "Verdana"
+    }
+
     static let identifier = "NewStoriesCell"
+    let rmLinkStorage = RMLinkStorage()
 
-    // MARK: - Properties
+    // MARK: - Visual Components
 
-    var images: [UIImage] = []
-    var nameImages: [String] = [
-        "userAvatar",
-        "blondeGirlImage",
-        "blondeGirlImage",
-        "blondeGirlImage",
-        "blondeGirlImage",
-        "blondeGirlImage",
-        "blondeGirlImage",
-        "blondeGirlImage",
-        "blondeGirlImage",
-        "blondeGirlImage",
-        "blondeGirlImage",
-    ]
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
 
     // MARK: - Life Cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupCell()
+        setupAnchor()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupCell()
+        setupAnchor()
     }
 
-    // MARK: - Private Method
+    // MARK: - Methods
 
     func setupValue(with info: [Stories]) {
-        // nameImages = info.first?.avatarNameImage
-//        if let image = UIImage(named: info.avatarNameImage) {
-//            images = image
-//        }
-    }
-
-    // MARK: - Private Method
-
-    private func setupCell() {
-        // Создание ScrollView
-        let scrollView = UIScrollView()
-        contentView.addSubview(scrollView)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-
-        // Констрейнты для ScrollView
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            scrollView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
-
-        // Создание 10 UIImageView и UILabel внутри ScrollView
+        // Создание previousImageView для задания отсупов между вью
         var previousImageView: UIImageView?
 
-        for item in 0 ..< 10 {
+        for item in 0 ..< rmLinkStorage.stories.count {
             let imageView = UIImageView()
-            scrollView.addSubview(imageView)
             imageView.translatesAutoresizingMaskIntoConstraints = false
-
-            if item < nameImages.count {
-                imageView.image = UIImage(named: nameImages[item])
-            }
-
-            // Констрейнты для UIImageView
-            NSLayoutConstraint.activate([
-                imageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-                imageView.widthAnchor.constraint(equalToConstant: 60),
-                imageView.heightAnchor.constraint(equalToConstant: 60)
-            ])
+            imageView.image = UIImage(named: info[item].avatarNameImage)
+            scrollView.addSubview(imageView)
 
             if let previousImageView = previousImageView {
                 // Установка отступа между image views
@@ -94,22 +61,43 @@ final class NewStoriesCell: UITableViewCell {
                 ])
             }
 
-            // Создание UILabel
-            let label = UILabel()
-            scrollView.addSubview(label)
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = "lavanda123"
-            label.font = UIFont(name: "Verdana", size: 8)
-            label.textAlignment = .center
+            let newStoriesButton = UIButton()
+            scrollView.addSubview(newStoriesButton)
+            newStoriesButton.backgroundColor = .appPink
+            newStoriesButton.setImage(.plus, for: .normal)
+            newStoriesButton.layer.cornerRadius = 10
+            newStoriesButton.isHidden = info[item].isHiddenButtons
+            newStoriesButton.translatesAutoresizingMaskIntoConstraints = false
 
-            // Констрейнты для UILabel
+            // Создание namelabel
+            let namelabel = UILabel()
+            namelabel.translatesAutoresizingMaskIntoConstraints = false
+            namelabel.text = info[item].nameUser
+            if namelabel.text == Constants.textForNameLabel {
+                namelabel.textColor = .gray
+            } else {
+                namelabel.textColor = .black
+            }
+            namelabel.font = UIFont(name: Constants.nameFontName, size: 8)
+            namelabel.textAlignment = .center
+            scrollView.addSubview(namelabel)
+
             NSLayoutConstraint.activate([
-                label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
-                label.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
-                label.widthAnchor.constraint(equalToConstant: 74),
-                label.heightAnchor.constraint(equalToConstant: 10)
-            ])
+                imageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+                imageView.widthAnchor.constraint(equalToConstant: 60),
+                imageView.heightAnchor.constraint(equalToConstant: 60),
 
+                newStoriesButton.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 41),
+                newStoriesButton.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 40),
+                newStoriesButton.widthAnchor.constraint(equalToConstant: 20),
+                newStoriesButton.heightAnchor.constraint(equalToConstant: 20),
+
+                namelabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+                namelabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+                namelabel.widthAnchor.constraint(equalToConstant: 74),
+                namelabel.heightAnchor.constraint(equalToConstant: 10)
+
+            ])
             previousImageView = imageView
         }
 
@@ -119,5 +107,19 @@ final class NewStoriesCell: UITableViewCell {
                 lastImageView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -22)
             ])
         }
+    }
+
+    // MARK: - Private Methods
+
+    private func setupAnchor() {
+        contentView.addSubview(scrollView)
+
+        // Констрейнты для ScrollView
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
     }
 }
