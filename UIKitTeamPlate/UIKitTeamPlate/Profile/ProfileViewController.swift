@@ -2,6 +2,7 @@
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
+import WebKit
 
 /// Экран профиля
 final class ProfileViewController: UIViewController {
@@ -27,6 +28,7 @@ final class ProfileViewController: UIViewController {
     }
 
     let informationType: [InformationType] = [.profileInfo, .stories, .post]
+    let profileStorage = ProfileStorage()
 
     // MARK: - Visual Components
 
@@ -70,6 +72,7 @@ final class ProfileViewController: UIViewController {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorColor = .clear
         tableView.register(ProfileInfornationCell.self, forCellReuseIdentifier: Constants.identifierProfileInfo)
         tableView.register(UserStoriesCell.self, forCellReuseIdentifier: Constants.identifierUserStories)
         tableView.register(UserPostsCell.self, forCellReuseIdentifier: Constants.identifierUserPosts)
@@ -119,16 +122,25 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch informationType[indexPath.section] {
         case .profileInfo:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.identifierProfileInfo, for: indexPath)
-            cell.backgroundColor = .orange
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.identifierProfileInfo,
+                for: indexPath
+            ) as? ProfileInfornationCell else { return UITableViewCell() }
+            cell.delegate = self
             return cell
         case .stories:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.identifierUserStories, for: indexPath)
-            cell.backgroundColor = .gray
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.identifierUserStories,
+                for: indexPath
+            ) as? UserStoriesCell else { return UITableViewCell() }
+            cell.setupValue(with: profileStorage.userStories)
             return cell
         case .post:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.identifierUserPosts, for: indexPath)
-            cell.backgroundColor = .magenta
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.identifierUserPosts,
+                for: indexPath
+            ) as? UserPostsCell else { return UITableViewCell() }
+            cell.configureCollectionView(with: profileStorage.userPosts)
             return cell
         }
     }
@@ -140,11 +152,18 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch informationType[indexPath.section] {
         case .profileInfo:
-            return 200
+            return 220
         case .stories:
-            return 101
+            return 85
         case .post:
-            return 310
+            return 400
         }
+    }
+}
+
+extension ProfileViewController: CellDelegate {
+    func showSite() {
+        let webViewController = WebViewController()
+        present(webViewController, animated: true)
     }
 }

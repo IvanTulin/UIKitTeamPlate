@@ -15,6 +15,8 @@
 		BA632C642B711B3B00D0F110 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C632B711B3B00D0F110 /* NewsFeedViewController.swift */; };
 		BA632C692B711B3C00D0F110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA632C682B711B3C00D0F110 /* Assets.xcassets */; };
 		BA632C6C2B711B3C00D0F110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */; };
+		BA742E532B87B10600681C2D /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA742E522B87B10600681C2D /* ProfileStorage.swift */; };
+		BA742E552B87BAF400681C2D /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA742E542B87BAF400681C2D /* PhotoCell.swift */; };
 		BA8CC99B2B83C31000791497 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8CC99A2B83C31000791497 /* NotificationViewController.swift */; };
 		BA8CC99D2B83C33E00791497 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8CC99C2B83C33E00791497 /* ProfileViewController.swift */; };
 		BACD16C22B84C821005760B9 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACD16C12B84C821005760B9 /* PostsCell.swift */; };
@@ -23,6 +25,7 @@
 		BADCD6452B8764890007DF58 /* ProfileInfornationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCD6442B8764890007DF58 /* ProfileInfornationCell.swift */; };
 		BADCD6472B8764F40007DF58 /* UserStoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCD6462B8764F40007DF58 /* UserStoriesCell.swift */; };
 		BADCD6492B8765490007DF58 /* UserPostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCD6482B8765490007DF58 /* UserPostsCell.swift */; };
+		BADCD64B2B878AF40007DF58 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCD64A2B878AF40007DF58 /* WebViewController.swift */; };
 		BAE9683F2B84CD8200AD3ED7 /* RecommendationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9683E2B84CD8200AD3ED7 /* RecommendationsCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +40,8 @@
 		BA632C682B711B3C00D0F110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA632C6B2B711B3C00D0F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA632C6D2B711B3C00D0F110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA742E522B87B10600681C2D /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
+		BA742E542B87BAF400681C2D /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		BA8CC99A2B83C31000791497 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		BA8CC99C2B83C33E00791497 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BACD16C12B84C821005760B9 /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
@@ -45,6 +50,7 @@
 		BADCD6442B8764890007DF58 /* ProfileInfornationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfornationCell.swift; sourceTree = "<group>"; };
 		BADCD6462B8764F40007DF58 /* UserStoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoriesCell.swift; sourceTree = "<group>"; };
 		BADCD6482B8765490007DF58 /* UserPostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsCell.swift; sourceTree = "<group>"; };
+		BADCD64A2B878AF40007DF58 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		BAE9683E2B84CD8200AD3ED7 /* RecommendationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +97,7 @@
 			children = (
 				BAD9DC7C2B84D7D500A9D6CF /* RMLinkStorage.swift */,
 				BA3BE28C2B8552B70025E2B7 /* NotificationStorage.swift */,
+				BA742E522B87B10600681C2D /* ProfileStorage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -141,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				BA8CC99C2B83C33E00791497 /* ProfileViewController.swift */,
+				BADCD64A2B878AF40007DF58 /* WebViewController.swift */,
 				BADCD6432B87644E0007DF58 /* Cells */,
 			);
 			path = Profile;
@@ -152,6 +160,7 @@
 				BADCD6442B8764890007DF58 /* ProfileInfornationCell.swift */,
 				BADCD6462B8764F40007DF58 /* UserStoriesCell.swift */,
 				BADCD6482B8765490007DF58 /* UserPostsCell.swift */,
+				BA742E542B87BAF400681C2D /* PhotoCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -272,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BACD16C22B84C821005760B9 /* PostsCell.swift in Sources */,
+				BA742E532B87B10600681C2D /* ProfileStorage.swift in Sources */,
 				BA632C642B711B3B00D0F110 /* NewsFeedViewController.swift in Sources */,
 				BADCD6492B8765490007DF58 /* UserPostsCell.swift in Sources */,
 				BA3BE28A2B8544940025E2B7 /* ThisWeekNotificationsCell.swift in Sources */,
@@ -280,12 +290,14 @@
 				BADCD6452B8764890007DF58 /* ProfileInfornationCell.swift in Sources */,
 				BA8CC99D2B83C33E00791497 /* ProfileViewController.swift in Sources */,
 				BAE9683F2B84CD8200AD3ED7 /* RecommendationsCell.swift in Sources */,
+				BA742E552B87BAF400681C2D /* PhotoCell.swift in Sources */,
 				BAD9DC7D2B84D7D500A9D6CF /* RMLinkStorage.swift in Sources */,
 				BA3BE2882B8544170025E2B7 /* TodayNotificationsCell.swift in Sources */,
 				BA3BE28D2B8552B70025E2B7 /* NotificationStorage.swift in Sources */,
 				BACD16C72B84CA09005760B9 /* NewStoriesCell.swift in Sources */,
 				BA8CC99B2B83C31000791497 /* NotificationViewController.swift in Sources */,
 				BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */,
+				BADCD64B2B878AF40007DF58 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
