@@ -8,15 +8,65 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(
-        _: UIScene,
+        _ scene: UIScene,
         willConnectTo _: UISceneSession,
         options _: UIScene.ConnectionOptions
     ) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene
-        // `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see
-        // `application:configurationForConnectingSceneSession` instead).
+        func setupTabBar() {
+            let newsFeedViewController = NewsFeedViewController()
+            newsFeedViewController.tabBarItem = UITabBarItem(
+                title: "Лента",
+                image: .houseIcon,
+                selectedImage: nil
+            )
+
+            let notificationViewController = NotificationViewController()
+            notificationViewController.tabBarItem = UITabBarItem(
+                title: "Уведомления",
+                image: .notificationIcon,
+                selectedImage: nil
+            )
+
+            let profileViewController = ProfileViewController()
+            profileViewController.tabBarItem = UITabBarItem(
+                title: "Профиль",
+                image: .profileIcon,
+                selectedImage: nil
+            )
+
+            let newsFeedNavigationController = UINavigationController(
+                rootViewController: newsFeedViewController
+            )
+
+            let profileNavigationController = UINavigationController(
+                rootViewController: profileViewController
+            )
+
+            let notificationNavigationController = UINavigationController(
+                rootViewController: notificationViewController
+            )
+
+            let tabBarController = UITabBarController()
+            tabBarController.setViewControllers(
+                [
+                    newsFeedNavigationController,
+                    notificationNavigationController,
+                    profileNavigationController
+                ],
+                animated: true
+            )
+
+            tabBarController.tabBar.unselectedItemTintColor = .black
+            tabBarController.tabBar.tintColor = .systemBlue
+
+            window.rootViewController = tabBarController
+            window.makeKeyAndVisible()
+        }
+
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
+        setupTabBar()
     }
 
     func sceneDidDisconnect(_: UIScene) {
