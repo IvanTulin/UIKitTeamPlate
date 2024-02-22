@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка сторис пользователя
-class UserStoriesCell: UITableViewCell {
+final class UserStoriesCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {
@@ -20,6 +20,10 @@ class UserStoriesCell: UITableViewCell {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
+
+    // MARK: - Puplic Properties
+
+    var showStoriesHandler: (() -> ())?
 
     // MARK: - Life Cycle
 
@@ -57,6 +61,12 @@ class UserStoriesCell: UITableViewCell {
                 ])
             }
 
+            let transitionButton = UIButton()
+            transitionButton.layer.borderColor = UIColor.red.cgColor
+            transitionButton.translatesAutoresizingMaskIntoConstraints = false
+            transitionButton.addTarget(self, action: #selector(showStories), for: .touchUpInside)
+            scrollView.addSubview(transitionButton)
+
             let namelabel = UILabel()
             namelabel.translatesAutoresizingMaskIntoConstraints = false
             namelabel.text = info[item].nameTextLabel
@@ -68,6 +78,11 @@ class UserStoriesCell: UITableViewCell {
                 imageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
                 imageView.widthAnchor.constraint(equalToConstant: 49),
                 imageView.heightAnchor.constraint(equalToConstant: 49),
+
+                transitionButton.topAnchor.constraint(equalTo: imageView.topAnchor),
+                transitionButton.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+                transitionButton.widthAnchor.constraint(equalToConstant: 49),
+                transitionButton.heightAnchor.constraint(equalToConstant: 49),
 
                 namelabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 7),
                 namelabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
@@ -97,5 +112,9 @@ class UserStoriesCell: UITableViewCell {
             scrollView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+    }
+
+    @objc private func showStories() {
+        showStoriesHandler?()
     }
 }

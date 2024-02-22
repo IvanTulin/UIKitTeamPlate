@@ -134,6 +134,13 @@ extension ProfileViewController: UITableViewDataSource {
                 for: indexPath
             ) as? UserStoriesCell else { return UITableViewCell() }
             cell.setupValue(with: profileStorage.userStories)
+            cell.showStoriesHandler = { [weak self] in
+                guard let self = self else { return }
+                let storiesViewController = StoriesViewController()
+                storiesViewController.image = .rocket
+
+                self.present(storiesViewController, animated: true)
+            }
             return cell
         case .post:
             guard let cell = tableView.dequeueReusableCell(

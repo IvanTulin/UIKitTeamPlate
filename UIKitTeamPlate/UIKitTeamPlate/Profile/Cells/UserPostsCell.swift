@@ -4,12 +4,14 @@
 import UIKit
 
 /// Ячейка с потсами пользователя
-class UserPostsCell: UITableViewCell {
+final class UserPostsCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {
         static let identifier = "PhotoCell"
     }
+
+    // MARK: - Private Properties
 
     private var photos: [UserPosts] = []
 

@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка фото для колекции постов
-class PhotoCell: UICollectionViewCell {
+final class PhotoCell: UICollectionViewCell {
     // MARK: - Visual Components
 
     private let postImageView: UIImageView = {
@@ -39,8 +39,6 @@ class PhotoCell: UICollectionViewCell {
         contentView.addSubview(postImageView)
 
         NSLayoutConstraint.activate([
-            //            postImageView.widthAnchor.constraint(equalToConstant: 124),
-//            postImageView.heightAnchor.constraint(equalToConstant: 124),
             postImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             postImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             postImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),

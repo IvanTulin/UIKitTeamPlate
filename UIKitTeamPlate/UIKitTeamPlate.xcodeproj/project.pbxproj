@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA1DADA92B87E14300DA42A7 /* StoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1DADA82B87E14300DA42A7 /* StoriesViewController.swift */; };
 		BA3BE2882B8544170025E2B7 /* TodayNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3BE2872B8544170025E2B7 /* TodayNotificationsCell.swift */; };
 		BA3BE28A2B8544940025E2B7 /* ThisWeekNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3BE2892B8544940025E2B7 /* ThisWeekNotificationsCell.swift */; };
 		BA3BE28D2B8552B70025E2B7 /* NotificationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3BE28C2B8552B70025E2B7 /* NotificationStorage.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA1DADA82B87E14300DA42A7 /* StoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesViewController.swift; sourceTree = "<group>"; };
 		BA3BE2872B8544170025E2B7 /* TodayNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayNotificationsCell.swift; sourceTree = "<group>"; };
 		BA3BE2892B8544940025E2B7 /* ThisWeekNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThisWeekNotificationsCell.swift; sourceTree = "<group>"; };
 		BA3BE28C2B8552B70025E2B7 /* NotificationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStorage.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				BA8CC99C2B83C33E00791497 /* ProfileViewController.swift */,
 				BADCD64A2B878AF40007DF58 /* WebViewController.swift */,
+				BA1DADA82B87E14300DA42A7 /* StoriesViewController.swift */,
 				BADCD6432B87644E0007DF58 /* Cells */,
 			);
 			path = Profile;
@@ -285,6 +288,7 @@
 				BA632C642B711B3B00D0F110 /* NewsFeedViewController.swift in Sources */,
 				BADCD6492B8765490007DF58 /* UserPostsCell.swift in Sources */,
 				BA3BE28A2B8544940025E2B7 /* ThisWeekNotificationsCell.swift in Sources */,
+				BA1DADA92B87E14300DA42A7 /* StoriesViewController.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
 				BADCD6472B8764F40007DF58 /* UserStoriesCell.swift in Sources */,
 				BADCD6452B8764890007DF58 /* ProfileInfornationCell.swift in Sources */,

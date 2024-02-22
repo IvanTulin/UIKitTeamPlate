@@ -3,12 +3,13 @@
 
 import UIKit
 
+/// протокол для вызова метода, открывающий сайт
 protocol CellDelegate: AnyObject {
     func showSite()
 }
 
 /// Ячейка информации профиля
-class ProfileInfornationCell: UITableViewCell {
+final class ProfileInfornationCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {
