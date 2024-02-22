@@ -13,7 +13,6 @@ final class NewStoriesCell: UITableViewCell {
     }
 
     static let identifier = "NewStoriesCell"
-    let rmLinkStorage = RMLinkStorage()
 
     // MARK: - Visual Components
 
@@ -37,13 +36,13 @@ final class NewStoriesCell: UITableViewCell {
         setupAnchor()
     }
 
-    // MARK: - Methods
+    // MARK: - Public Methods
 
     func setupValue(with info: [Stories]) {
         // Создание previousImageView для задания отсупов между вью
         var previousImageView: UIImageView?
 
-        for item in 0 ..< rmLinkStorage.stories.count {
+        for item in 0 ..< info.count {
             let imageView = UIImageView()
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.image = UIImage(named: info[item].avatarNameImage)
@@ -69,15 +68,10 @@ final class NewStoriesCell: UITableViewCell {
             newStoriesButton.isHidden = info[item].isHiddenButtons
             newStoriesButton.translatesAutoresizingMaskIntoConstraints = false
 
-            // Создание namelabel
             let namelabel = UILabel()
             namelabel.translatesAutoresizingMaskIntoConstraints = false
             namelabel.text = info[item].nameUser
-            if namelabel.text == Constants.textForNameLabel {
-                namelabel.textColor = .gray
-            } else {
-                namelabel.textColor = .black
-            }
+            namelabel.textColor = namelabel.text == Constants.textForNameLabel ? .gray : .black
             namelabel.font = UIFont(name: Constants.nameFontName, size: 8)
             namelabel.textAlignment = .center
             scrollView.addSubview(namelabel)
@@ -114,7 +108,6 @@ final class NewStoriesCell: UITableViewCell {
     private func setupAnchor() {
         contentView.addSubview(scrollView)
 
-        // Констрейнты для ScrollView
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
             scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor),

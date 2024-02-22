@@ -7,10 +7,15 @@ import UIKit
 final class NewsFeedViewController: UIViewController {
     // MARK: - Constants
 
+    /// Тип ячеек
     enum RowsType {
+        /// сторис
         case stories
+        /// первый пост
         case firstPost
+        /// рекомендации
         case recommendation
+        /// посты после рекомендаций
         case posts
     }
 
@@ -116,7 +121,7 @@ extension NewsFeedViewController: UITableViewDataSource {
             guard let cell = tableView
                 .dequeueReusableCell(withIdentifier: PostsCell.identifier, for: indexPath) as? PostsCell
             else { return UITableViewCell() }
-            cell.setupValue(with: rmLinkStorage.posts[indexPath.row])
+            cell.configureCell(with: rmLinkStorage.posts[indexPath.row])
             return cell
 
         case .recommendation:
@@ -132,7 +137,7 @@ extension NewsFeedViewController: UITableViewDataSource {
             guard let cell = tableView
                 .dequeueReusableCell(withIdentifier: PostsCell.identifier, for: indexPath) as? PostsCell
             else { return UITableViewCell() }
-            cell.setupValue(with: rmLinkStorage.posts[indexPath.row])
+            cell.configureCell(with: rmLinkStorage.posts[indexPath.row])
             return cell
         }
     }

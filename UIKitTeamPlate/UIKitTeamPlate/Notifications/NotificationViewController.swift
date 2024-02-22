@@ -10,12 +10,17 @@ final class NotificationViewController: UIViewController {
     enum Constants {
         static let textForTitleNavigationItem = "Уведомления"
         static let textForSubscriptionRequestLabel = "Запросы на подписку"
+        static let textForTodayHeader = "Сегодня"
+        static let textForThisWeekHeader = "На этой недели"
         static let nameFontName = "Verdana"
         static let nameFontBold = "Verdana-Bold"
     }
 
+    /// Тип уведомления
     enum NotificationType {
+        /// уведомления за сегодня
         case today
+        /// уведомления за эту неделю
         case thisweek
     }
 
@@ -84,40 +89,29 @@ final class NotificationViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - NotificationViewController + UITableViewDataSource
 
 extension NotificationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch notificationType[section] {
         case .today:
-            let headerView = UIView()
-            headerView.backgroundColor = UIColor.white
-
-            let headerLabel = UILabel()
-            headerLabel.font = UIFont(name: Constants.nameFontBold, size: 14)
-            headerLabel.textColor = UIColor.black
-            headerLabel.text = "Сегодня"
-            headerLabel.frame = CGRect(
-                x: 14, y: -5,
-                width: tableView.bounds.size.width, height: 30
-            )
-            headerView.addSubview(headerLabel)
-
-            return headerView
+            return configureHeaderView(with: Constants.textForTodayHeader)
         case .thisweek:
+            return configureHeaderView(with: Constants.textForThisWeekHeader)
+        }
+
+        func configureHeaderView(with text: String) -> UIView {
             let headerView = UIView()
             headerView.backgroundColor = UIColor.white
-
             let headerLabel = UILabel()
             headerLabel.font = UIFont(name: Constants.nameFontBold, size: 14)
             headerLabel.textColor = UIColor.black
-            headerLabel.text = "На этой недели"
+            headerLabel.text = text
             headerLabel.frame = CGRect(
                 x: 14, y: -5,
                 width: tableView.bounds.size.width, height: 30
             )
             headerView.addSubview(headerLabel)
-
             return headerView
         }
     }
@@ -129,9 +123,9 @@ extension NotificationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch notificationType[section] {
         case .today:
-            return 2
+            return notificationStorage.notificationToday.count
         case .thisweek:
-            return 6
+            return notificationStorage.notificationThisWeek.count
         }
     }
 
@@ -150,19 +144,15 @@ extension NotificationViewController: UITableViewDataSource {
                 withIdentifier: ThisWeekNotificationsCell.identifier,
                 for: indexPath
             ) as? ThisWeekNotificationsCell else { return UITableViewCell() }
-            cell.setupValue(with: notificationStorage.notificationThisWeek[indexPath.row])
+            cell.configureCell(with: notificationStorage.notificationThisWeek[indexPath.row])
             return cell
         }
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - NotificationViewController + UITableViewDelegate
 
 extension NotificationViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        30
-    }
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch notificationType[indexPath.section] {
         case .today:

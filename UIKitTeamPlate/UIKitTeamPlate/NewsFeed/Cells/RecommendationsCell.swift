@@ -14,7 +14,6 @@ final class RecommendationsCell: UITableViewCell {
     }
 
     static let identifier = "RecommendationsCell"
-    let rmLinkStorage = RMLinkStorage()
 
     // MARK: - Visual Components
 
@@ -38,7 +37,7 @@ final class RecommendationsCell: UITableViewCell {
         setupAnchor()
     }
 
-    // MARK: - Methods
+    // MARK: - Public Methods
 
     func setupValue(with info: [Recommendations]) {
         // Создание previousView для задания отсупов между вью
@@ -48,7 +47,7 @@ final class RecommendationsCell: UITableViewCell {
         let viewWidth = UIScreen.main.bounds.width / 2
         let viewHeight = 270
 
-        for item in 0 ..< rmLinkStorage.recommendations.count {
+        for item in 0 ..< info.count {
             let view = UIView()
             scrollView.addSubview(view)
             view.translatesAutoresizingMaskIntoConstraints = false
@@ -70,60 +69,15 @@ final class RecommendationsCell: UITableViewCell {
                 ])
             }
 
-            // Создание UIImageView
-            let avatarImageView = UIImageView()
-            view.addSubview(avatarImageView)
-            avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+            let avatarImageView = configureAvatarImageView(view)
             avatarImageView.image = UIImage(named: info[item].avatarNameImage)
-            avatarImageView.layer.cornerRadius = 60
-            avatarImageView.contentMode = .scaleAspectFill
-            avatarImageView.clipsToBounds = true
 
-            avatarImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            avatarImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
-            avatarImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
-            avatarImageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+            let namelabel = configureNameLabel(view: view, imageView: avatarImageView)
+            namelabel.text = info[item].userName
 
-            // Создание Никнейма
-            let namelabel = UILabel()
-            view.addSubview(namelabel)
-            namelabel.translatesAutoresizingMaskIntoConstraints = false
-            namelabel.text = info[item].nameUser
-            namelabel.textColor = .black
-            namelabel.textAlignment = .center
-            namelabel.font = UIFont(name: Constants.nameFontName, size: 10)
+            let subscriptButton = configureSubscriptionButton(view)
 
-            namelabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            namelabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 5).isActive = true
-            namelabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-            namelabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
-
-            // Кнопка подписаться
-            let subscriptButton = UIButton()
-            view.addSubview(subscriptButton)
-            subscriptButton.translatesAutoresizingMaskIntoConstraints = false
-            subscriptButton.backgroundColor = .systemBlue
-            subscriptButton.layer.cornerRadius = 10
-            subscriptButton.setTitle(Constants.textForTitleButton, for: .normal)
-            subscriptButton.titleLabel?.font = UIFont(
-                name: Constants.nameFontBold,
-                size: 10
-            )
-            subscriptButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            subscriptButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -14).isActive = true
-            subscriptButton.widthAnchor.constraint(equalToConstant: 139).isActive = true
-            subscriptButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
-
-            // Кнопка закрытия
-            let clossedButton = UIButton()
-            view.addSubview(clossedButton)
-            clossedButton.translatesAutoresizingMaskIntoConstraints = false
-            clossedButton.tintColor = .black
-            clossedButton.setImage(.clearButton, for: .normal)
-            clossedButton.sizeToFit()
-
-            clossedButton.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-            clossedButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 167).isActive = true
+            let clossedButton = configureClossedButton(view)
 
             previousView = view
         }
@@ -148,5 +102,65 @@ final class RecommendationsCell: UITableViewCell {
         scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    }
+
+    private func configureAvatarImageView(_ view: UIView) -> UIImageView {
+        let avatarImageView = UIImageView()
+        view.addSubview(avatarImageView)
+        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        avatarImageView.layer.cornerRadius = 60
+        avatarImageView.contentMode = .scaleAspectFill
+        avatarImageView.clipsToBounds = true
+        avatarImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        avatarImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
+        avatarImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        avatarImageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        return avatarImageView
+    }
+
+    private func configureNameLabel(view: UIView, imageView: UIImageView) -> UILabel {
+        let namelabel = UILabel()
+        view.addSubview(namelabel)
+        namelabel.translatesAutoresizingMaskIntoConstraints = false
+        namelabel.textColor = .black
+        namelabel.textAlignment = .center
+        namelabel.font = UIFont(name: Constants.nameFontName, size: 10)
+
+        namelabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        namelabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5).isActive = true
+        namelabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        namelabel.heightAnchor.constraint(equalToConstant: 12).isActive = true
+        return namelabel
+    }
+
+    private func configureSubscriptionButton(_ view: UIView) -> UIButton {
+        let subscriptButton = UIButton()
+        view.addSubview(subscriptButton)
+        subscriptButton.translatesAutoresizingMaskIntoConstraints = false
+        subscriptButton.backgroundColor = .systemBlue
+        subscriptButton.layer.cornerRadius = 10
+        subscriptButton.setTitle(Constants.textForTitleButton, for: .normal)
+        subscriptButton.titleLabel?.font = UIFont(
+            name: Constants.nameFontBold,
+            size: 10
+        )
+        subscriptButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        subscriptButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -14).isActive = true
+        subscriptButton.widthAnchor.constraint(equalToConstant: 139).isActive = true
+        subscriptButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        return subscriptButton
+    }
+
+    private func configureClossedButton(_ view: UIView) -> UIButton {
+        let clossedButton = UIButton()
+        view.addSubview(clossedButton)
+        clossedButton.translatesAutoresizingMaskIntoConstraints = false
+        clossedButton.tintColor = .black
+        clossedButton.setImage(.clearButton, for: .normal)
+        clossedButton.sizeToFit()
+
+        clossedButton.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        clossedButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 167).isActive = true
+        return clossedButton
     }
 }

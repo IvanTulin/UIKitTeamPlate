@@ -4,7 +4,7 @@
 import UIKit
 
 /// Ячейка поста
-final class PostsCell: UITableViewCell, UIScrollViewDelegate {
+final class PostsCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {
@@ -24,31 +24,6 @@ final class PostsCell: UITableViewCell, UIScrollViewDelegate {
     ]
 
     // MARK: - Visual Components
-
-    lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.isPagingEnabled = true
-        scrollView.contentSize = CGSize(
-            width: Int(UIScreen.main.bounds.width * 3),
-            height: 239
-        )
-        scrollView.delegate = self
-        scrollView.backgroundColor = .gray
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
-    }()
-
-    lazy var pageControl: UIPageControl = {
-        let pageControl = UIPageControl()
-        pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.numberOfPages = images.count
-        pageControl.pageIndicatorTintColor = .gray
-        pageControl.currentPageIndicatorTintColor = .black
-
-        return pageControl
-    }()
 
     private let userImageView: UIImageView = {
         let view = UIImageView()
@@ -82,12 +57,6 @@ final class PostsCell: UITableViewCell, UIScrollViewDelegate {
         return button
     }()
 
-//    private let postImageView: UIImageView = {
-//        let view = UIImageView()
-//        view.contentMode = .scaleAspectFill
-//        return view
-//    }()
-
     private let likeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(
@@ -104,9 +73,7 @@ final class PostsCell: UITableViewCell, UIScrollViewDelegate {
         let button = UIButton(type: .system)
         button.tintColor = .black
         button.setImage(
-            UIImage(
-                named: Constants.nameForImageCommentButton
-            ),
+            UIImage(named: Constants.nameForImageCommentButton),
             for: .normal
         )
         return button
@@ -166,6 +133,31 @@ final class PostsCell: UITableViewCell, UIScrollViewDelegate {
         return label
     }()
 
+    lazy var pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.numberOfPages = images.count
+        pageControl.pageIndicatorTintColor = .gray
+        pageControl.currentPageIndicatorTintColor = .black
+
+        return pageControl
+    }()
+
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.isPagingEnabled = true
+        scrollView.contentSize = CGSize(
+            width: Int(UIScreen.main.bounds.width * 3),
+            height: 239
+        )
+        scrollView.delegate = self
+        scrollView.backgroundColor = .gray
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+
     // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -175,29 +167,23 @@ final class PostsCell: UITableViewCell, UIScrollViewDelegate {
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        configureUI()
     }
 
-    // MARK: - Methods
+    // MARK: - Public Methods
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        pageControl.currentPage = Int(scrollView.contentOffset.x / UIScreen.main.bounds.width)
-    }
-
-    func setupValue(with info: Post) {
-        userImageView.image = UIImage(named: info.avatarNameImage)
+    func configureCell(with info: Post) {
+        userImageView.image = UIImage(named: info.avatarImageName)
         userNameLabel.text = info.nameTitle
-//        if let image = info.postNameImages.first {
-//            postImageView.image = UIImage(named: image)
-//        }
-        numberLikeLabel.text = info.numberLike
+        numberLikeLabel.text = info.numberLikeText
 
         if let comment = info.comment {
             configureCommentLabel(comment: comment)
         }
         imageForComment.image = UIImage(named: info.nameImageForCommentUser)
-        commentUserLabel.text = info.textForUserComment
-        labelOfTheElapsedTime.text = info.descriptionPost
+        commentUserLabel.text = info.userCommentText
+        labelOfTheElapsedTime.text = info.postDescription
     }
 
     // MARK: - Private Method
@@ -223,9 +209,7 @@ final class PostsCell: UITableViewCell, UIScrollViewDelegate {
         selectionStyle = .none // убираем выделение ячейки
         [
             scrollView, pageControl, userImageView, userNameLabel,
-            subTitleLabel, optionsButton,
-            // postImageView,
-            likeButton,
+            subTitleLabel, optionsButton, likeButton,
             commentButton, shareButton, favoritesButton, numberLikeLabel,
             commentLabel, imageForComment, commentUserLabel,
             labelOfTheElapsedTime
@@ -249,7 +233,6 @@ final class PostsCell: UITableViewCell, UIScrollViewDelegate {
             optionsButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             optionsButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -15),
             optionsButton.bottomAnchor.constraint(equalTo: scrollView.topAnchor),
-//            optionsButton.bottomAnchor.constraint(equalTo: postImageView.topAnchor),
 
             scrollView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 10),
             scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
@@ -258,13 +241,6 @@ final class PostsCell: UITableViewCell, UIScrollViewDelegate {
 
             pageControl.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 5),
             pageControl.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            // scrollView.widthAnchor.constraint(equalToConstant: 375),
-
-//            postImageView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 10),
-//            postImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-//            postImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-//            postImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
-//            postImageView.widthAnchor.constraint(equalToConstant: 375),
 
             likeButton.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 5),
             likeButton.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
@@ -307,7 +283,7 @@ final class PostsCell: UITableViewCell, UIScrollViewDelegate {
     }
 
     /// метод который генерирует Жирный тест в лейбле для определенного отрезка текста
-    func configureCommentLabel(comment: CommentShortInfo) {
+    private func configureCommentLabel(comment: CommentShortInfo) {
         let string = comment.userName + " " + comment.commentText
         let attributedString = NSMutableAttributedString(string: string) // задаем текст который будем менять
         let range = NSRange(
@@ -320,5 +296,13 @@ final class PostsCell: UITableViewCell, UIScrollViewDelegate {
             range: range
         )
         commentLabel.attributedText = attributedString
+    }
+}
+
+// MARK: - PostsCell + UIScrollViewDelegate
+
+extension PostsCell: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(scrollView.contentOffset.x / UIScreen.main.bounds.width)
     }
 }

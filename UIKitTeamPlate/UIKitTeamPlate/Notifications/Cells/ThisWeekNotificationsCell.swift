@@ -61,12 +61,14 @@ final class ThisWeekNotificationsCell: UITableViewCell {
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        configureUI()
+        addConstraints()
     }
 
-    // MARK: - Methods
+    // MARK: - Public Methods
 
-    func setupValue(with info: NotificationThisWeek) {
+    func configureCell(with info: NotificationThisWeek) {
         userAvatarImageView.image = UIImage(named: info.avatarNameImage)
         if let notification = info.notificationLabel {
             configureNotificationLabel(comment: notification)
@@ -125,7 +127,6 @@ final class ThisWeekNotificationsCell: UITableViewCell {
         ])
     }
 
-    /// метод который генерирует Жирный тест в лейбле для определенного отрезка текста
     private func configureNotificationLabel(comment: CommentShortInfo) {
         let string = comment.userName + " " + comment.commentText
         let attributedString = NSMutableAttributedString(string: string) // задаем текст который будем менять

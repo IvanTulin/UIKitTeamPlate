@@ -60,75 +60,75 @@ struct RMLinkStorage {
 
     let posts: [Post] = [
         .init(
-            avatarNameImage: "avatarImage",
+            avatarImageName: "avatarImage",
             nameTitle: "tur_v_dagestan",
-            postNameImages: ["postNameImageOne"],
-            numberLike: "Нравится: 201",
+            postImageNames: ["postNameImageOne"],
+            numberLikeText: "Нравится: 201",
             isLikePressedButton: true,
             comment: CommentShortInfo(
                 userName: "tur_v_dagestan ",
                 commentText: "Насладитесь красотой природы. Забронировать тур в Дагестан можно уже сейчас!"
             ),
             nameImageForCommentUser: "brunetteGirlImage",
-            textForUserComment: "Комментировать ...",
-            descriptionPost: "10 минут назад"
+            userCommentText: "Комментировать ...",
+            postDescription: "10 минут назад"
         ),
         .init(
-            avatarNameImage: "avatarImage",
+            avatarImageName: "avatarImage",
             nameTitle: "tur_v_dagestan",
-            postNameImages: ["imageForPagecontrolTwo"],
-            numberLike: "Нравится: 201",
+            postImageNames: ["imageForPagecontrolTwo"],
+            numberLikeText: "Нравится: 201",
             isLikePressedButton: true,
             comment: CommentShortInfo(
                 userName: "tur_v_dagestan ",
                 commentText: "Насладитесь красотой природы. Забронировать тур в Дагестан можно уже сейчас!"
             ),
             nameImageForCommentUser: "brunetteGirlImage",
-            textForUserComment: "Комментировать ...",
-            descriptionPost: "10 минут назад"
+            userCommentText: "Комментировать ...",
+            postDescription: "10 минут назад"
         ),
         .init(
-            avatarNameImage: "avatarImage",
+            avatarImageName: "avatarImage",
             nameTitle: "tur_v_dagestan",
-            postNameImages: ["castleImage"],
-            numberLike: "Нравится: 201",
+            postImageNames: ["castleImage"],
+            numberLikeText: "Нравится: 201",
             isLikePressedButton: true,
             comment: CommentShortInfo(
                 userName: "tur_v_dagestan ",
                 commentText: "Насладитесь красотой природы. Забронировать тур в Дагестан можно уже сейчас!"
             ),
             nameImageForCommentUser: "brunetteGirlImage",
-            textForUserComment: "Комментировать ...",
-            descriptionPost: "10 минут назад"
+            userCommentText: "Комментировать ...",
+            postDescription: "10 минут назад"
         ),
         .init(
-            avatarNameImage: "avatarImage",
+            avatarImageName: "avatarImage",
             nameTitle: "tur_v_dagestan",
-            postNameImages: ["postNameImageOne"],
-            numberLike: "Нравится: 201",
+            postImageNames: ["postNameImageOne"],
+            numberLikeText: "Нравится: 201",
             isLikePressedButton: true,
             comment: CommentShortInfo(
                 userName: "tur_v_dagestan ",
                 commentText: "Насладитесь красотой природы. Забронировать тур в Дагестан можно уже сейчас!"
             ),
             nameImageForCommentUser: "brunetteGirlImage",
-            textForUserComment: "Комментировать ...",
-            descriptionPost: "10 минут назад"
+            userCommentText: "Комментировать ...",
+            postDescription: "10 минут назад"
         ),
     ]
 
     let recommendations = [
         Recommendations(
             avatarNameImage: "castleImage",
-            nameUser: "сrimea_082"
+            userName: "сrimea_082"
         ),
         Recommendations(
             avatarNameImage: "maryPolImage",
-            nameUser: "mary_pol"
+            userName: "mary_pol"
         ),
         Recommendations(
             avatarNameImage: "blondeGirlImage",
-            nameUser: "lavarel99"
+            userName: "lavarel99"
         ),
     ]
 }
@@ -143,26 +143,26 @@ struct Stories {
     let isHiddenButtons: Bool
 }
 
-/// Поста
+/// Пост пользователя
 struct Post {
     /// название картинки для аватарки
-    let avatarNameImage: String
+    let avatarImageName: String
     /// название титла
     let nameTitle: String
     /// название картинки для поста
-    let postNameImages: [String]
+    let postImageNames: [String]
     /// лейбл с лайками
-    let numberLike: String
+    let numberLikeText: String
     /// проверка нажата ли кнопка
     let isLikePressedButton: Bool
-    /// комментраий
+    /// комментарий
     let comment: CommentShortInfo?
     /// название картинки для аватарки в комментариях
     let nameImageForCommentUser: String
     /// текст пользователя для комментариев
-    let textForUserComment: String
+    let userCommentText: String
     /// текст - когда был в сети
-    let descriptionPost: String
+    let postDescription: String
 }
 
 /// Рекомендации
@@ -170,7 +170,7 @@ struct Recommendations {
     /// название картинки для аватарки
     let avatarNameImage: String
     /// имя пользователя
-    let nameUser: String
+    let userName: String
 }
 
 /// Комментарий
