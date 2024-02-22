@@ -20,6 +20,9 @@
 		BACD16C22B84C821005760B9 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACD16C12B84C821005760B9 /* PostsCell.swift */; };
 		BACD16C72B84CA09005760B9 /* NewStoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACD16C62B84CA09005760B9 /* NewStoriesCell.swift */; };
 		BAD9DC7D2B84D7D500A9D6CF /* RMLinkStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD9DC7C2B84D7D500A9D6CF /* RMLinkStorage.swift */; };
+		BADCD6452B8764890007DF58 /* ProfileInfornationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCD6442B8764890007DF58 /* ProfileInfornationCell.swift */; };
+		BADCD6472B8764F40007DF58 /* UserStoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCD6462B8764F40007DF58 /* UserStoriesCell.swift */; };
+		BADCD6492B8765490007DF58 /* UserPostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADCD6482B8765490007DF58 /* UserPostsCell.swift */; };
 		BAE9683F2B84CD8200AD3ED7 /* RecommendationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9683E2B84CD8200AD3ED7 /* RecommendationsCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +42,9 @@
 		BACD16C12B84C821005760B9 /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		BACD16C62B84CA09005760B9 /* NewStoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStoriesCell.swift; sourceTree = "<group>"; };
 		BAD9DC7C2B84D7D500A9D6CF /* RMLinkStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLinkStorage.swift; sourceTree = "<group>"; };
+		BADCD6442B8764890007DF58 /* ProfileInfornationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfornationCell.swift; sourceTree = "<group>"; };
+		BADCD6462B8764F40007DF58 /* UserStoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoriesCell.swift; sourceTree = "<group>"; };
+		BADCD6482B8765490007DF58 /* UserPostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostsCell.swift; sourceTree = "<group>"; };
 		BAE9683E2B84CD8200AD3ED7 /* RecommendationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,7 +119,7 @@
 				BA3BE28B2B85529A0025E2B7 /* Storage */,
 				BA3BE2842B8543AE0025E2B7 /* NewsFeed */,
 				BA3BE2852B8543CA0025E2B7 /* Notifications */,
-				BA8CC99C2B83C33E00791497 /* ProfileViewController.swift */,
+				BADCD6422B8764400007DF58 /* Profile */,
 				BA632C682B711B3C00D0F110 /* Assets.xcassets */,
 				BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */,
 				BA632C6D2B711B3C00D0F110 /* Info.plist */,
@@ -127,6 +133,25 @@
 				BACD16C12B84C821005760B9 /* PostsCell.swift */,
 				BACD16C62B84CA09005760B9 /* NewStoriesCell.swift */,
 				BAE9683E2B84CD8200AD3ED7 /* RecommendationsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		BADCD6422B8764400007DF58 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BA8CC99C2B83C33E00791497 /* ProfileViewController.swift */,
+				BADCD6432B87644E0007DF58 /* Cells */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		BADCD6432B87644E0007DF58 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BADCD6442B8764890007DF58 /* ProfileInfornationCell.swift */,
+				BADCD6462B8764F40007DF58 /* UserStoriesCell.swift */,
+				BADCD6482B8765490007DF58 /* UserPostsCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -248,8 +273,11 @@
 			files = (
 				BACD16C22B84C821005760B9 /* PostsCell.swift in Sources */,
 				BA632C642B711B3B00D0F110 /* NewsFeedViewController.swift in Sources */,
+				BADCD6492B8765490007DF58 /* UserPostsCell.swift in Sources */,
 				BA3BE28A2B8544940025E2B7 /* ThisWeekNotificationsCell.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
+				BADCD6472B8764F40007DF58 /* UserStoriesCell.swift in Sources */,
+				BADCD6452B8764890007DF58 /* ProfileInfornationCell.swift in Sources */,
 				BA8CC99D2B83C33E00791497 /* ProfileViewController.swift in Sources */,
 				BAE9683F2B84CD8200AD3ED7 /* RecommendationsCell.swift in Sources */,
 				BAD9DC7D2B84D7D500A9D6CF /* RMLinkStorage.swift in Sources */,

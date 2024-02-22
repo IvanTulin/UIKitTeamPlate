@@ -12,8 +12,6 @@ final class TodayNotificationsCell: UITableViewCell {
         static let textForTimeLabel = "12ч"
     }
 
-    static let identifier = "TodayNotificationsCell"
-
     // MARK: - Visual Components
 
     private let userAvatarImageView: UIImageView = {
