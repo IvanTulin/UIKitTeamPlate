@@ -71,6 +71,8 @@ final class UserPostsCell: UITableViewCell {
     }
 }
 
+// MARK: - UserPostsCell + UICollectionViewDataSource
+
 extension UserPostsCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         photos.count
