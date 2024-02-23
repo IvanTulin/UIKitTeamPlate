@@ -43,10 +43,8 @@ final class NewStoriesCell: UITableViewCell {
         var previousImageView: UIImageView?
 
         for item in 0 ..< info.count {
-            let imageView = UIImageView()
-            imageView.translatesAutoresizingMaskIntoConstraints = false
+            let imageView = configureImageView()
             imageView.image = UIImage(named: info[item].avatarNameImage)
-            scrollView.addSubview(imageView)
 
             if let previousImageView = previousImageView {
                 // Установка отступа между image views
@@ -60,38 +58,13 @@ final class NewStoriesCell: UITableViewCell {
                 ])
             }
 
-            let newStoriesButton = UIButton()
-            scrollView.addSubview(newStoriesButton)
-            newStoriesButton.backgroundColor = .appPink
-            newStoriesButton.setImage(.plus, for: .normal)
-            newStoriesButton.layer.cornerRadius = 10
+            let newStoriesButton = confifureNewStoriesButton(imageView)
             newStoriesButton.isHidden = info[item].isHiddenButtons
-            newStoriesButton.translatesAutoresizingMaskIntoConstraints = false
 
-            let namelabel = UILabel()
-            namelabel.translatesAutoresizingMaskIntoConstraints = false
+            let namelabel = configureNamelabel(imageView)
             namelabel.text = info[item].nameUser
             namelabel.textColor = namelabel.text == Constants.textForNameLabel ? .gray : .black
-            namelabel.font = UIFont(name: Constants.nameFontName, size: 8)
-            namelabel.textAlignment = .center
-            scrollView.addSubview(namelabel)
 
-            NSLayoutConstraint.activate([
-                imageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-                imageView.widthAnchor.constraint(equalToConstant: 60),
-                imageView.heightAnchor.constraint(equalToConstant: 60),
-
-                newStoriesButton.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 41),
-                newStoriesButton.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 40),
-                newStoriesButton.widthAnchor.constraint(equalToConstant: 20),
-                newStoriesButton.heightAnchor.constraint(equalToConstant: 20),
-
-                namelabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
-                namelabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
-                namelabel.widthAnchor.constraint(equalToConstant: 74),
-                namelabel.heightAnchor.constraint(equalToConstant: 10)
-
-            ])
             previousImageView = imageView
         }
 
@@ -114,5 +87,42 @@ final class NewStoriesCell: UITableViewCell {
             scrollView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+    }
+
+    private func configureImageView() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(imageView)
+        imageView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        return imageView
+    }
+
+    private func confifureNewStoriesButton(_ imageView: UIImageView) -> UIButton {
+        let button = UIButton()
+        scrollView.addSubview(button)
+        button.backgroundColor = .appPink
+        button.setImage(.plus, for: .normal)
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 41).isActive = true
+        button.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: 40).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        return button
+    }
+
+    private func configureNamelabel(_ imageView: UIImageView) -> UILabel {
+        let namelabel = UILabel()
+        namelabel.translatesAutoresizingMaskIntoConstraints = false
+        namelabel.font = UIFont(name: Constants.nameFontName, size: 8)
+        namelabel.textAlignment = .center
+        scrollView.addSubview(namelabel)
+        namelabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10).isActive = true
+        namelabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor).isActive = true
+        namelabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
+        namelabel.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        return namelabel
     }
 }

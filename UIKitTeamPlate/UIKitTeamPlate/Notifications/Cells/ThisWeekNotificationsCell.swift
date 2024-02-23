@@ -13,8 +13,6 @@ final class ThisWeekNotificationsCell: UITableViewCell {
         static let textForTitleButton = "Вы подписаны"
     }
 
-    static let identifier = "ThisWeekNotificationsCell"
-
     // MARK: - Visual Components
 
     private let userAvatarImageView: UIImageView = {

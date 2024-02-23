@@ -14,6 +14,8 @@ final class NotificationViewController: UIViewController {
         static let textForThisWeekHeader = "На этой недели"
         static let nameFontName = "Verdana"
         static let nameFontBold = "Verdana-Bold"
+        static let identifierToday = "TodayNotificationsCell"
+        static let identifierThisWeek = "ThisWeekNotificationsCell"
     }
 
     /// Тип уведомления
@@ -46,11 +48,11 @@ final class NotificationViewController: UIViewController {
         table.separatorColor = .clear
         table.register(
             TodayNotificationsCell.self,
-            forCellReuseIdentifier: TodayNotificationsCell.identifier
+            forCellReuseIdentifier: Constants.identifierToday
         )
         table.register(
             ThisWeekNotificationsCell.self,
-            forCellReuseIdentifier: ThisWeekNotificationsCell.identifier
+            forCellReuseIdentifier: Constants.identifierThisWeek
         )
 
         return table
@@ -133,7 +135,7 @@ extension NotificationViewController: UITableViewDataSource {
         switch notificationType[indexPath.section] {
         case .today:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: TodayNotificationsCell.identifier,
+                withIdentifier: Constants.identifierToday,
                 for: indexPath
             ) as? TodayNotificationsCell else { return UITableViewCell() }
             cell.setupValue(with: notificationStorage.notificationToday[indexPath.row])
@@ -141,7 +143,7 @@ extension NotificationViewController: UITableViewDataSource {
             return cell
         case .thisweek:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: ThisWeekNotificationsCell.identifier,
+                withIdentifier: Constants.identifierThisWeek,
                 for: indexPath
             ) as? ThisWeekNotificationsCell else { return UITableViewCell() }
             cell.configureCell(with: notificationStorage.notificationThisWeek[indexPath.row])
