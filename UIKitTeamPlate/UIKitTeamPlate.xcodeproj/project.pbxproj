@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */; };
 		BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C612B711B3B00D0F110 /* SceneDelegate.swift */; };
-		BA632C642B711B3B00D0F110 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C632B711B3B00D0F110 /* ViewController.swift */; };
+		BA632C642B711B3B00D0F110 /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA632C632B711B3B00D0F110 /* MainScreenController.swift */; };
 		BA632C672B711B3B00D0F110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA632C652B711B3B00D0F110 /* Main.storyboard */; };
 		BA632C692B711B3C00D0F110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA632C682B711B3C00D0F110 /* Assets.xcassets */; };
 		BA632C6C2B711B3C00D0F110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */; };
+		BABC13B52B8A470500A8AB98 /* TrafficLightStoryboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABC13B42B8A470500A8AB98 /* TrafficLightStoryboardController.swift */; };
+		BABC13B72B8A50D100A8AB98 /* StackViewTrafficLightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABC13B62B8A50D100A8AB98 /* StackViewTrafficLightController.swift */; };
+		BABC13B92B8A598C00A8AB98 /* TrafficLightThisNSLayoutAnchorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABC13B82B8A598C00A8AB98 /* TrafficLightThisNSLayoutAnchorController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BA632C5C2B711B3B00D0F110 /* UIKitTeamPlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitTeamPlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA632C612B711B3B00D0F110 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BA632C632B711B3B00D0F110 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA632C632B711B3B00D0F110 /* MainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
 		BA632C662B711B3B00D0F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA632C682B711B3C00D0F110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA632C6B2B711B3C00D0F110 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA632C6D2B711B3C00D0F110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BABC13B42B8A470500A8AB98 /* TrafficLightStoryboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightStoryboardController.swift; sourceTree = "<group>"; };
+		BABC13B62B8A50D100A8AB98 /* StackViewTrafficLightController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewTrafficLightController.swift; sourceTree = "<group>"; };
+		BABC13B82B8A598C00A8AB98 /* TrafficLightThisNSLayoutAnchorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightThisNSLayoutAnchorController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +64,10 @@
 			children = (
 				BA632C5F2B711B3B00D0F110 /* AppDelegate.swift */,
 				BA632C612B711B3B00D0F110 /* SceneDelegate.swift */,
-				BA632C632B711B3B00D0F110 /* ViewController.swift */,
+				BA632C632B711B3B00D0F110 /* MainScreenController.swift */,
+				BABC13B42B8A470500A8AB98 /* TrafficLightStoryboardController.swift */,
+				BABC13B62B8A50D100A8AB98 /* StackViewTrafficLightController.swift */,
+				BABC13B82B8A598C00A8AB98 /* TrafficLightThisNSLayoutAnchorController.swift */,
 				BA632C652B711B3B00D0F110 /* Main.storyboard */,
 				BA632C682B711B3C00D0F110 /* Assets.xcassets */,
 				BA632C6A2B711B3C00D0F110 /* LaunchScreen.storyboard */,
@@ -183,9 +192,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA632C642B711B3B00D0F110 /* ViewController.swift in Sources */,
+				BA632C642B711B3B00D0F110 /* MainScreenController.swift in Sources */,
+				BABC13B52B8A470500A8AB98 /* TrafficLightStoryboardController.swift in Sources */,
+				BABC13B92B8A598C00A8AB98 /* TrafficLightThisNSLayoutAnchorController.swift in Sources */,
 				BA632C602B711B3B00D0F110 /* AppDelegate.swift in Sources */,
 				BA632C622B711B3B00D0F110 /* SceneDelegate.swift in Sources */,
+				BABC13B72B8A50D100A8AB98 /* StackViewTrafficLightController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
