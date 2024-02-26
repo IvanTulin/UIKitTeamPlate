@@ -4,7 +4,13 @@
 import UIKit
 
 /// Экран светофора с использованием NSLayoutAnchor
-class TrafficLightThisNSLayoutAnchorController: UIViewController {
+final class TrafficLightThisNSLayoutAnchorController: UIViewController {
+    // MARK: - Constants
+    
+    enum Constants {
+        static let nameTitle = "NSLayoutAnchor"
+    }
+    
     // MARK: - Visual Components
 
     private let darkView: UIView = {
@@ -74,6 +80,7 @@ class TrafficLightThisNSLayoutAnchorController: UIViewController {
 
     private func configureView() {
         view.backgroundColor = .gray
+        title = Constants.nameTitle
         view.addSubview(darkView)
 
         darkView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

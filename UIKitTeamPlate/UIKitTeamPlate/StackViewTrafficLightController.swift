@@ -5,6 +5,12 @@ import UIKit
 
 /// Экран Светофора с использованием StackView
 final class StackViewTrafficLightController: UIViewController {
+    // MARK: - Constants
+
+    enum Constants {
+        static let nameTitle = "StackView"
+    }
+
     // MARK: - Visual Components
 
     private lazy var stackView: UIStackView = {
@@ -53,6 +59,7 @@ final class StackViewTrafficLightController: UIViewController {
     private func configureStackView() {
         view.backgroundColor = .white
         view.addSubview(stackView)
+        title = Constants.nameTitle
 
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),

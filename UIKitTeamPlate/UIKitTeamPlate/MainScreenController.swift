@@ -43,6 +43,18 @@ final class MainScreenController: UIViewController {
         return button
     }()
 
+    private lazy var showTrafficLightNSLayoutConstraintButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Светофор с Constraint", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .magenta
+        button.layer.cornerRadius = 10
+        button.sizeToFit()
+        button.addTarget(self, action: #selector(showTrafficLightNSLayoutConstraints), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -57,6 +69,7 @@ final class MainScreenController: UIViewController {
         view.addSubview(showTrafficLightStoryboardButton)
         view.addSubview(showStackViewTrafficLightButton)
         view.addSubview(showTrafficLightNSLayoutAnchorButton)
+        view.addSubview(showTrafficLightNSLayoutConstraintButton)
 
         NSLayoutConstraint.activate([
             showTrafficLightStoryboardButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -74,6 +87,12 @@ final class MainScreenController: UIViewController {
             showTrafficLightNSLayoutAnchorButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             showTrafficLightNSLayoutAnchorButton.topAnchor.constraint(
                 equalTo: showStackViewTrafficLightButton.bottomAnchor,
+                constant: 35
+            ),
+
+            showTrafficLightNSLayoutConstraintButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            showTrafficLightNSLayoutConstraintButton.topAnchor.constraint(
+                equalTo: showTrafficLightNSLayoutAnchorButton.bottomAnchor,
                 constant: 35
             ),
         ])
@@ -97,5 +116,10 @@ final class MainScreenController: UIViewController {
     @objc private func showTrafficLightNSLayoutAnchor() {
         let trafficLightThisNSLayoutAnchorController = TrafficLightThisNSLayoutAnchorController()
         navigationController?.pushViewController(trafficLightThisNSLayoutAnchorController, animated: true)
+    }
+
+    @objc private func showTrafficLightNSLayoutConstraints() {
+        let trafficLightWhisNSLayoutConstraintController = TrafficLightWhisNSLayoutConstraintController()
+        navigationController?.pushViewController(trafficLightWhisNSLayoutConstraintController, animated: true)
     }
 }

@@ -5,6 +5,12 @@ import UIKit
 
 /// Экран светофора созданный сторибордом
 final class TrafficLightStoryboardController: UIViewController {
+    // MARK: - Constants
+
+    enum Constants {
+        static let nameTitle = "Storyboard"
+    }
+
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -16,5 +22,6 @@ final class TrafficLightStoryboardController: UIViewController {
 
     private func configureView() {
         view.backgroundColor = .lightGray
+        title = Constants.nameTitle
     }
 }
