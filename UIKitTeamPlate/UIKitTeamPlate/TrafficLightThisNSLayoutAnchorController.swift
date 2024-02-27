@@ -6,11 +6,11 @@ import UIKit
 /// Экран светофора с использованием NSLayoutAnchor
 final class TrafficLightThisNSLayoutAnchorController: UIViewController {
     // MARK: - Constants
-    
+
     enum Constants {
         static let nameTitle = "NSLayoutAnchor"
     }
-    
+
     // MARK: - Visual Components
 
     private let darkView: UIView = {
